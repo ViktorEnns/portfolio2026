@@ -49,16 +49,16 @@
             
             <!-- LEFT COLUMN (Sidebar info) -->
             <aside class="cv-sidebar">
-                               <!-- Contact Info -->
+                <!-- Contact Info -->
                 <section class="sidebar-block contact-block">
                     <h2>Kontakt</h2>
                     <ul class="info-list">
-                        <li><strong>Tel:</strong> +49 (0) 1578 2114367</li>
-                        <li><strong>Mail:</strong> biguxenergy@gmail.com</li>
+                        <li><strong>Tel:</strong> <a href="tel:+4915782114367">+49 (0) 1578 2114367</a></li>
+                        <li><strong>Mail:</strong> <a href="mailto:biguxenergy@gmail.com">biguxenergy@gmail.com</a></li>
                         <li><strong>Ort:</strong> Saarbrücken, Deutschland</li>
-                        <li><strong>LinkedIn:</strong> linkedin.com/in/uxviktorenns</li>
-                        <li><strong>Medium:</strong> medium.com/@viktorenns</li>
-                        <li><strong>Behance:</strong> behance.net/viktorenns</li>
+                        <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/uxviktorenns/" target="_blank">linkedin.com/in/uxviktorenns</a></li>
+                        <li><strong>Medium:</strong> <a href="https://medium.com/@viktorenns" target="_blank">medium.com/@viktorenns</a></li>
+                        <li><strong>Behance:</strong> <a href="https://www.behance.net/viktorenns" target="_blank">behance.net/viktorenns</a></li>
                     </ul>
                 </section>
 
@@ -251,21 +251,14 @@
         document.addEventListener('DOMContentLoaded', () => {
             const qrBox = document.getElementById('cv-qrcode');
             
-            // Dynamic URL resolver:
-            // Point the QR code to the hosted live digital portfolio!
-            // When hosted, it automatically points to the parent folder index.html
-            let targetUrl = window.location.origin + window.location.pathname.replace('cv.html', 'index.html');
-            
-            // Fallback to local default if opened as a raw file
-            if (window.location.protocol === 'file:') {
-                targetUrl = 'https://www.linkedin.com/in/uxviktorenns/';
-            }
+            // Hardcoded live production URL for recruiters (prevents localhost QR errors when printed)
+            const targetUrl = 'https://portfolio2026.biguxenergy.workers.dev/';
 
             try {
                 new QRCode(qrBox, {
                     text: targetUrl,
-                    width: 120,
-                    height: 120,
+                    width: 102, // Calibrated QR width to fit 14px grid scale
+                    height: 102, // Calibrated QR height
                     colorDark: '#000000',
                     colorLight: '#ffffff',
                     correctLevel: QRCode.CorrectLevel.H

@@ -14,6 +14,10 @@
     --font-body: 'Outfit', -apple-system, sans-serif;
 }
 
+html {
+    font-size: 14px; /* Establish strict A4 14px base root */
+}
+
 /* Base resets */
 * {
     box-sizing: border-box;
@@ -25,8 +29,8 @@ body {
     background-color: #f7fafc; /* Subtle gray background on screen, white in print */
     color: var(--color-text-dark);
     font-family: var(--font-body);
-    line-height: 1.4;
-    font-size: 13px;
+    line-height: 1.35; /* Tighten base line-height for spatial layout economy */
+    font-size: 1rem; /* Exactly 14px */
     -webkit-font-smoothing: antialiased;
 }
 
@@ -88,7 +92,7 @@ body {
     width: 210mm;
     height: 297mm; /* Absolute A4 Bounds */
     margin: 20px auto;
-    padding: 0.9cm 0.8cm;
+    padding: 0.7cm 0.6cm; /* Compressed page padding */
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
     border-radius: 2px;
     position: relative;
@@ -103,13 +107,13 @@ body {
     justify-content: space-between;
     align-items: center;
     border-bottom: 2px solid var(--color-border);
-    padding-bottom: 10px;
-    margin-bottom: 10px;
+    padding-bottom: 6px; /* Space-saving header padding */
+    margin-bottom: 6px;
 }
 
 .header-text h1 {
     font-family: var(--font-heading);
-    font-size: 2.2rem;
+    font-size: 2.1rem; /* Calibrated relative heading size */
     font-weight: 700;
     color: var(--color-text-dark);
     letter-spacing: -0.5px;
@@ -117,7 +121,7 @@ body {
 }
 
 .header-text .subtitle {
-    font-size: 1.1rem;
+    font-size: 1.05rem; /* Calibrated relative subtitle size */
     color: var(--color-accent-gold);
     font-weight: 500;
     margin-top: 3px;
@@ -129,8 +133,8 @@ body {
 }
 
 .header-portrait .profile-img {
-    width: 70px;
-    height: 70px;
+    width: 58px; /* Compact profile image size */
+    height: 58px;
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid var(--color-accent-gold);
@@ -142,8 +146,8 @@ body {
 .cv-grid {
     display: grid;
     grid-template-columns: 195px 1fr; /* Meticulously balanced columns */
-    gap: 16px;
-    height: calc(100% - 90px); /* Fill remaining page area */
+    gap: 12px; /* Compressed grid column gap */
+    height: calc(100% - 72px); /* Calibrated remaining page area height */
 }
 
 /* ==========================================================================
@@ -151,11 +155,11 @@ body {
    ========================================================================== */
 .cv-sidebar {
     border-right: 1px solid var(--color-border-subtle);
-    padding-right: 15px;
+    padding-right: 12px;
 }
 
 .sidebar-block {
-    margin-bottom: 12px;
+    margin-bottom: 8px; /* Compressed sidebar section padding */
 }
 
 .sidebar-block:last-child {
@@ -164,11 +168,11 @@ body {
 
 .sidebar-block h2 {
     font-family: var(--font-heading);
-    font-size: 0.95rem;
+    font-size: 0.92rem; /* Clean, compact section headers */
     color: var(--color-accent-gold);
     border-bottom: 1px solid var(--color-border);
-    padding-bottom: 3px;
-    margin-bottom: 6px;
+    padding-bottom: 2px;
+    margin-bottom: 4px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -179,12 +183,24 @@ body {
 }
 
 .info-list li {
-    font-size: 0.84rem;
-    margin-bottom: 3px;
+    font-size: 0.84rem; /* Exactly 11.8px at 14px base */
+    margin-bottom: 2px;
     color: var(--color-text-dark);
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+}
+
+/* Clickable links inside contacts */
+.info-list a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.info-list a:hover {
+    color: var(--color-accent-gold);
+    text-decoration: underline;
 }
 
 /* Badges */
@@ -195,7 +211,7 @@ body {
 }
 
 .s-badge {
-    font-size: 0.72rem;
+    font-size: 0.74rem; /* Exactly 10.4px base */
     padding: 2px 5px;
     border: 1px solid #cbd5e0;
     color: var(--color-text-dark);
@@ -211,7 +227,7 @@ body {
 
 /* Concise Education */
 .edu-compact {
-    margin-bottom: 8px;
+    margin-bottom: 6px; /* Compact sidebar items gap */
 }
 
 .edu-compact:last-child {
@@ -219,27 +235,27 @@ body {
 }
 
 .edu-compact .edu-date {
-    font-size: 0.7rem;
+    font-size: 0.74rem;
     font-weight: bold;
     color: var(--color-accent-gold);
 }
 
 .edu-compact h3 {
-    font-size: 0.8rem;
+    font-size: 0.84rem;
     font-weight: 600;
     margin: 1px 0;
 }
 
 .edu-compact .school {
-    font-size: 0.74rem;
+    font-size: 0.78rem;
     color: var(--color-text-dark);
     font-weight: 500;
 }
 
 .edu-compact .edu-detail {
-    font-size: 0.74rem;
+    font-size: 0.78rem;
     color: var(--color-text-muted);
-    line-height: 1.3;
+    line-height: 1.25; /* Highly space-saving line height */
     margin-top: 2px;
 }
 
@@ -248,9 +264,9 @@ body {
     background: #ffffff;
     padding: 4px;
     border: 1px solid var(--color-border-subtle);
-    width: 128px;
-    height: 128px;
-    margin: 6px 0;
+    width: 110px; /* Compressed QR Box size */
+    height: 110px;
+    margin: 4px 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -258,14 +274,14 @@ body {
 
 .qrcode-box img {
     display: block;
-    width: 120px;
-    height: 120px;
+    width: 102px; /* Matching compressed QR image size */
+    height: 102px;
 }
 
 .qr-help {
-    font-size: 0.68rem;
+    font-size: 0.72rem; /* Clean secondary sizing */
     color: var(--color-text-muted);
-    line-height: 1.3;
+    line-height: 1.25;
 }
 
 /* ==========================================================================
@@ -274,11 +290,11 @@ body {
 .cv-main {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px; /* Tightened grid flex gaps */
 }
 
 .main-block {
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
 
 .main-block:last-child {
@@ -287,9 +303,9 @@ body {
 
 .block-title {
     font-family: var(--font-heading);
-    font-size: 1.15rem;
+    font-size: 1.15rem; /* Exactly 16.1px for elegant readability */
     color: var(--color-accent-gold);
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     position: relative;
     display: inline-block;
 }
@@ -298,7 +314,7 @@ body {
     content: '';
     position: absolute;
     left: 0;
-    bottom: -3px;
+    bottom: -2px;
     width: 30px;
     height: 1.5px;
     background: var(--color-accent-gold);
@@ -307,7 +323,7 @@ body {
 /* Bio Description */
 .bio-text {
     font-size: 0.84rem;
-    line-height: 1.45;
+    line-height: 1.38; /* Tighter line-height to fit text blocks cleanly */
     color: var(--color-text-muted);
     text-align: justify;
 }
@@ -316,7 +332,7 @@ body {
 .timeline-compact {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px; /* Compressed gaps between jobs */
 }
 
 .role-compact {
@@ -330,19 +346,19 @@ body {
 }
 
 .role-title {
-    font-size: 0.92rem;
+    font-size: 0.92rem; /* Clean 12.9px role headings */
     font-weight: 700;
     color: var(--color-text-dark);
 }
 
 .role-date {
-    font-size: 0.78rem;
+    font-size: 0.8rem; /* Calibrated to fit years elegantly */
     color: var(--color-text-muted);
     font-weight: 500;
 }
 
 .company-name {
-    font-size: 0.8rem;
+    font-size: 0.84rem;
     color: var(--color-accent-gold);
     font-weight: 600;
     display: block;
@@ -358,10 +374,10 @@ body {
 .bullet-compact li {
     position: relative;
     padding-left: 10px;
-    font-size: 0.8rem;
+    font-size: 0.84rem; /* Readability first detail bullets (11.8px) */
     color: var(--color-text-dark);
     margin-bottom: 2px;
-    line-height: 1.35;
+    line-height: 1.34;
 }
 
 .bullet-compact li:last-child {
@@ -397,7 +413,7 @@ body {
 }
 
 .project-item-compact h4 {
-    font-size: 0.82rem;
+    font-size: 0.84rem;
     font-weight: 700;
     color: var(--color-text-dark);
     margin-bottom: 1px;
@@ -407,7 +423,7 @@ body {
 }
 
 .proj-tag {
-    font-size: 0.58rem;
+    font-size: 0.6rem;
     font-weight: bold;
     padding: 1px 4px;
     border-radius: 3px;
@@ -423,7 +439,7 @@ body {
 }
 
 .project-item-compact p {
-    font-size: 0.74rem;
+    font-size: 0.78rem;
     color: var(--color-text-muted);
     line-height: 1.25;
 }
@@ -436,7 +452,7 @@ body {
     html, body {
         background: #ffffff !important;
         color: #000000 !important;
-        font-size: 13px !important;
+        /* Inherit global 14px root scale for exact pixel parity between screen and print */
         width: 100% !important;
         height: 100% !important;
         margin: 0 !important;
@@ -461,7 +477,7 @@ body {
         margin: 0 !important;
         width: 100% !important;
         height: 100% !important;
-        padding: 0.9cm 0.8cm !important;
+        padding: 0.7cm 0.6cm !important; /* Exact parity with screen layout padding */
         background: #ffffff !important;
         position: relative !important;
         overflow: hidden !important;
