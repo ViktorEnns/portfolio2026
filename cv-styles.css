@@ -499,6 +499,39 @@ body {
         color: #2d3748 !important;
     }
 
+    /* Stronger print typography for better readability on paper */
+    body, .cv-sheet, .cv-grid, .cv-sidebar, .cv-main, .cv-header,
+    .header-text h1, .header-text .subtitle, .info-list li, .info-list a,
+    .edu-compact .school, .edu-compact .edu-detail, .role-title, .role-date,
+    .company-name, .bullet-compact li, .project-item-compact h4,
+    .project-item-compact p, .qr-help, .block-title {
+        color: #111111 !important;
+    }
+
+    body {
+        font-weight: 500 !important;
+        text-rendering: optimizeLegibility !important;
+    }
+
+    .header-text h1,
+    .block-title,
+    .role-title,
+    .company-name,
+    .edu-compact h3 {
+        font-weight: 700 !important;
+    }
+
+    .s-badge {
+        background: #ffffff !important;
+        border-color: #718096 !important;
+        color: #000000 !important;
+    }
+
+    a, a:visited {
+        color: #111111 !important;
+        text-decoration: underline !important;
+    }
+
     /* Never page-break sections in single sheet */
     .sidebar-block, .main-block, .role-compact {
         page-break-inside: avoid !important;
