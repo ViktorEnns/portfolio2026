@@ -18,66 +18,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
-    <!-- Screen-Only Controls (Interactive Customizer Sidebar) -->
-    <div class="customizer-panel no-print" id="customizer">
-        <div class="customizer-header">
-            <h3>Portfolio-Konfigurator</h3>
-            <button id="toggle-panel-btn" aria-label="Bedienfeld minimieren">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-            </button>
-        </div>
-        <div class="customizer-body">
-            <div class="control-group">
-                <label for="qr-url-input">QR-Code Zieladresse:</label>
-                <input type="url" id="qr-url-input" value="https://www.linkedin.com/in/uxviktorenns/" placeholder="https://...">
-                <span class="input-help">Ändert das Ziel des QR-Codes dynamisch.</span>
-            </div>
-            
-            <div class="control-group">
-                <label>Portfolio-Fokus wählen:</label>
-                <div class="radio-group">
-                    <label class="radio-label">
-                        <input type="radio" name="focus-toggle" value="all" checked>
-                        <span>Alles anzeigen</span>
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="focus-toggle" value="ux">
-                        <span>UX / UI Design</span>
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="focus-toggle" value="photo">
-                        <span>Fotografie</span>
-                    </label>
-                </div>
-            </div>
 
-            <div class="control-group checkboxes">
-                <label>Sektionen anpassen:</label>
-                <label class="checkbox-label">
-                    <input type="checkbox" id="toggle-portrait" checked>
-                    <span>Profilbild anzeigen</span>
-                </label>
-                <label class="checkbox-label">
-                    <input type="checkbox" id="toggle-competencies" checked>
-                    <span>Kernkompetenzen anzeigen</span>
-                </label>
-                <label class="checkbox-label">
-                    <input type="checkbox" id="toggle-education" checked>
-                    <span>Ausbildung anzeigen</span>
-                </label>
-            </div>
-
-            <button id="print-btn" class="btn-primary">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-                Als PDF drucken / speichern
-            </button>
-
-            <a href="cv.html" class="btn-secondary" style="margin-top: 10px;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                Kompakte 1-Seite Druckversion
-            </a>
-        </div>
-    </div>
 
     <!-- Main Content Container -->
     <div class="portfolio-container">
@@ -105,6 +46,21 @@
                         <span>Saarbrücken, DE</span>
                     </li>
                 </ul>
+            </div>
+
+            <!-- Print and CV Export Actions (Screen Only) -->
+            <div class="sidebar-section print-actions no-print">
+                <h2>Drucken & Export</h2>
+                <div class="print-buttons-group">
+                    <button id="print-portfolio-btn" class="btn-primary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                        Portfolio drucken (PDF)
+                    </button>
+                    <a href="cv.html" class="btn-secondary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        Kompakte A4-Druckversion
+                    </a>
+                </div>
             </div>
 
             <!-- Dynamic QR Code & Links -->
