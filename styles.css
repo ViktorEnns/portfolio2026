@@ -180,13 +180,12 @@ body.customizer-expanded .portfolio-container {
     transform: translateX(3px);
 }
 
-/* QR Code Section styling */
 .qr-container-wrapper {
     background: #ffffff;
     padding: 12px;
     border-radius: var(--border-radius-md);
-    width: 164px;
-    height: 164px;
+    width: 194px;
+    height: 194px;
     margin: 15px auto;
     display: flex;
     justify-content: center;
@@ -202,8 +201,8 @@ body.customizer-expanded .portfolio-container {
 
 .qrcode-box img {
     display: block;
-    width: 140px;
-    height: 140px;
+    width: 170px;
+    height: 170px;
 }
 
 .qr-description {

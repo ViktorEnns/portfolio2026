@@ -48,8 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Generate QR Code using the CDN library
             qrInstance = new QRCode(qrCodeContainer, {
                 text: targetUrl,
-                width: 140,
-                height: 140,
+                width: 170,
+                height: 170,
                 colorDark: '#000000',
                 colorLight: '#ffffff',
                 correctLevel: QRCode.CorrectLevel.H // High error correction for best print scanning
