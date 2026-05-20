@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viktor Enns | Senior Product Strategist & AI Architect</title>
+    <meta name="description" content="Portfolio und Lebenslauf von Viktor Enns - Senior Product Strategist & AI Architect. Experte für benutzerzentriertes Design, KI-gestützte Entwicklung und datengetriebene UX.">
+    
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- QR Code Generator Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <!-- Screen-Only Controls (Interactive Customizer Sidebar) -->
+    <div class="customizer-panel no-print" id="customizer">
+        <div class="customizer-header">
+            <h3>Portfolio-Konfigurator</h3>
+            <button id="toggle-panel-btn" aria-label="Bedienfeld minimieren">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+        </div>
+        <div class="customizer-body">
+            <div class="control-group">
+                <label for="qr-url-input">QR-Code Zieladresse:</label>
+                <input type="url" id="qr-url-input" value="https://www.linkedin.com/in/uxviktorenns/" placeholder="https://...">
+                <span class="input-help">Ändert das Ziel des QR-Codes dynamisch.</span>
+            </div>
+            
+            <div class="control-group">
+                <label>Portfolio-Fokus wählen:</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="focus-toggle" value="all" checked>
+                        <span>Alles anzeigen</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="focus-toggle" value="ux">
+                        <span>UX / UI Design</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="focus-toggle" value="photo">
+                        <span>Fotografie</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="control-group checkboxes">
+                <label>Sektionen anpassen:</label>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="toggle-portrait" checked>
+                    <span>Profilbild anzeigen</span>
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="toggle-competencies" checked>
+                    <span>Kernkompetenzen anzeigen</span>
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="toggle-education" checked>
+                    <span>Ausbildung anzeigen</span>
+                </label>
+            </div>
+
+            <button id="print-btn" class="btn-primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Als PDF drucken / speichern
+            </button>
+
+            <a href="cv.html" class="btn-secondary" style="margin-top: 10px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                Kompakte 1-Seite Druckversion
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <div class="portfolio-container">
+        
+        <!-- SIDEBAR / METADATA COLUMN -->
+        <aside class="sidebar">
+            <div class="portrait-container" id="profile-portrait-box">
+                <img src="assets/viktor_enns.jpg" alt="Viktor Enns Portrait" class="profile-img">
+            </div>
+
+            <div class="sidebar-section contact-info">
+                <h2>Kontakt</h2>
+                <ul class="contact-list">
+                    <li>
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <a href="tel:+4915782114367">+49 (0) 1578 2114367</a>
+                    </li>
+                    <li>
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <a href="mailto:biguxenergy@gmail.com">biguxenergy@gmail.com</a>
+                    </li>
+
+                    <li>
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span>Saarbrücken, DE</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Dynamic QR Code & Links -->
+            <div class="sidebar-section qr-section">
+                <h2>Scannen & Folgen</h2>
+                <div class="qr-container-wrapper">
+                    <div id="qrcode" class="qrcode-box"></div>
+                </div>
+                <p class="qr-description">Scannen Sie den QR-Code, um mein vollständiges Profil, alle Socials und Projektdateien online einzusehen.</p>
+                
+                <div class="print-only socials-list-print">
+                    <div class="print-social-item"><strong>LinkedIn:</strong> linkedin.com/in/uxviktorenns/</div>
+                    <div class="print-social-item"><strong>Medium:</strong> medium.com/@viktorenns</div>
+                    <div class="print-social-item"><strong>Behance:</strong> behance.net/viktorenns</div>
+                </div>
+            </div>
+
+            <!-- Social Media Handles (Interactive view) -->
+            <div class="sidebar-section social-handles no-print">
+                <h2>Social Media</h2>
+                <ul class="socials-list">
+                    <li>
+                        <a href="https://www.linkedin.com/in/uxviktorenns/" target="_blank">
+                            <span class="social-icon">in</span>
+                            <div class="social-details">
+                                <span class="platform">LinkedIn</span>
+                                <span class="handle">@uxviktorenns</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://medium.com/@viktorenns" target="_blank">
+                            <span class="social-icon">M</span>
+                            <div class="social-details">
+                                <span class="platform">Medium (UX)</span>
+                                <span class="handle">@viktorenns</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.behance.net/viktorenns" target="_blank">
+                            <span class="social-icon">Bē</span>
+                            <div class="social-details">
+                                <span class="platform">Behance (Photo)</span>
+                                <span class="handle">viktorenns</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://instagram.com/viktorenns" target="_blank">
+                            <span class="social-icon">IG</span>
+                            <div class="social-details">
+                                <span class="platform">Instagram</span>
+                                <span class="handle">@viktorenns</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Education -->
+            <div class="sidebar-section education-section" id="education-box">
+                <h2>Ausbildung</h2>
+                <div class="edu-item">
+                    <span class="date">2023</span>
+                    <h4>UX / UI Design Zertifikat</h4>
+                    <p class="school">Ironhack Berlin</p>
+                    <p class="details">Abschluss als Jahrgangsbester. Leitung aller 4 großen Praxisprojekte.</p>
+                </div>
+                <div class="edu-item">
+                    <span class="date">2013 – 2014</span>
+                    <h4>Kulturwissenschaften & Anglistik</h4>
+                    <p class="school">Universität des Saarlandes</p>
+                    <p class="details">Fokus: British Cultural Studies & Bildwissenschaften.</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT COLUMN -->
+        <main class="main-content">
+            
+            <!-- Header Block -->
+            <header class="portfolio-header">
+                <h1>Viktor Enns</h1>
+                <p class="tagline">Senior Product Strategist & AI Architect</p>
+                
+                <div class="profile-summary">
+                    <p>Krisenerprobter Product Strategist und AI Architect mit über 15 Jahren Erfahrung in der Skalierung von Umsätzen, der Optimierung operativer Effizienz und der Leitung technischer Architekturen. Ich verbinde nutzerzentriertes Design mit fortschrittlichen AI-Coding-Workflows (React, TypeScript, Firebase) und eliminiere den üblichen funktionsübergreifenden Abstimmungsaufwand, um die Time-to-Market massiv zu beschleunigen. Durch die Kombination von tiefgreifender verhaltenspsychologischer Problemlösungskompetenz und rigoroser Systemarchitektur übersetze ich komplexe Geschäftsziele in skalierbare Produkte und schütze gleichzeitig Investorenkapital durch datengetriebene UX-Forschung.</p>
+                </div>
+            </header>
+
+            <!-- Experience Timeline -->
+            <section class="portfolio-section experience-section">
+                <h2 class="section-title">Berufserfahrung</h2>
+                <div class="timeline">
+                    
+                    <!-- Job 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <h3>Co-Founder & Chief Product Officer (CPO)</h3>
+                                <span class="company">Marble Music Match | Saarbrücken / Remote</span>
+                            </div>
+                            <span class="duration">11.2025 – Heute</span>
+                        </div>
+                        <ul class="bullet-list">
+                            <li><strong>Strategischer Kapitalschutz:</strong> Sicherung des Startup-Runways durch Veto gegen risikoreichen Social-Media-Pivot ("Tinder & Instagram für Musiker"), untermauert durch Wettbewerbsanalysen und qualitative Nutzertests.</li>
+                            <li><strong>Stakeholder-Management:</strong> Etablierung empirischer Frameworks statt Bauchgefühl-Entscheidungen, indem das Management-Team direkt in Nutzertests integriert und Vorbehalte konstruktiv aufgelöst wurden.</li>
+                            <li><strong>AI-Driven MVP Pipeline:</strong> Entwicklung einer agilen MVP-Entwicklungspipeline unter Einsatz von Cursor, Antigravity und Firebase. Drastische Reduzierung der Time-to-Market durch Bereitstellung validierter technischer Frameworks.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Job 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <h3>Founder & AI Product Developer</h3>
+                                <span class="company">Comedy OS | Austin, TX Hub / Remote</span>
+                            </div>
+                            <span class="duration">03.2025 – Heute</span>
+                        </div>
+                        <ul class="bullet-list">
+                            <li><strong>Geofenced Go-to-Market:</strong> Umsetzung einer lokalisierten Netzwerkeffekt-Strategie mit High-Touch Concierge-Onboarding zur Identifikation von Produktivitäts-Engpässen.</li>
+                            <li><strong>AI Research Infrastructure:</strong> Konzeption und Entwicklung eines KI-gestützten Research-Assistenten mit React-Frontend und Gemini-Backend zur Erfassung qualitativer Daten ohne Befragungsmüdigkeit.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Job 3 -->
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <h3>Product Design Consultant</h3>
+                                <span class="company">Energy4U | Remote</span>
+                            </div>
+                            <span class="duration">09.2024 – 02.2025</span>
+                        </div>
+                        <ul class="bullet-list">
+                            <li><strong>Enterprise-Optimierung:</strong> UX-Design und strategische Produktberatung im komplexen SAP-Enterprise-Umfeld. Autonome Initiierung und erfolgreicher Pitch struktureller Verbesserungen auf C-Level.</li>
+                            <li><strong>Engineering Alignment:</strong> Überbrückung der Handoff-Reibung durch aktive Frontend-Entwicklung (TypeScript, HTML, CSS) und Gewährleistung der Skalierbarkeit.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Job 4 -->
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <h3>Lead Product Strategist</h3>
+                                <span class="company">Dalay Zigarren | International</span>
+                            </div>
+                            <span class="duration">04.2015 – 11.2022</span>
+                        </div>
+                        <ul class="bullet-list">
+                            <li><strong>Digitale Transformation (Zero-Budget):</strong> Aufbau des E-Commerce-Kanals ohne Paid Marketing. Verjüngung der Kernzielgruppe von 65 auf 35 Jahre und Stabilisierung der gesamten Finanzstruktur.</li>
+                            <li><strong>Umsatzsteigerung:</strong> Vervierfachung des durchschnittlichen Bestellwerts (von 25 € auf über 100 €) und Steigerung der täglichen Transaktionen um 300 % durch Omnichannel-UX-Optimierungen.</li>
+                            <li><strong>Global Sourcing & Operations:</strong> Leitung von Eigenmarken-Rebrandings in der Dominikanischen Republik und Koordination physischer High-End Marken-Events mit Global Players (z.B. Davidoff, LVMH, Scandinavian Tobacco).</li>
+                            <li><strong>Krisenlogistik & Restrukturierung:</strong> Aufbau alternativer Überland-Lieferwege aus Asien während der COVID-Lieferkettenkrise zur Margensicherung. Konsolidierung des Sortiments um 50 % unproduktiver SKUs basierend auf Datenanalysen.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Skills & Badges -->
+            <section class="portfolio-section skills-section">
+                <div class="skills-grid">
+                    
+                    <!-- Tech Stack -->
+                    <div class="skills-column">
+                        <h2 class="section-title">Tech Stack & Tools</h2>
+                        <div class="badge-group">
+                            <span class="badge badge-tech">React</span>
+                            <span class="badge badge-tech">TypeScript</span>
+                            <span class="badge badge-tech">HTML5 & CSS3</span>
+                            <span class="badge badge-tech">Firebase</span>
+                            <span class="badge badge-tech">Tailwind CSS</span>
+                            <span class="badge badge-tech">Google Cloud (GCP)</span>
+                            <span class="badge badge-tech">Gemini & Claude API</span>
+                            <span class="badge badge-tech">n8n Automation</span>
+                            <span class="badge badge-tech">Figma (Variables/Auto-Layout)</span>
+                            <span class="badge badge-tech">Adobe Photoshop (Experte)</span>
+                            <span class="badge badge-tech">Premiere & Lightroom</span>
+                            <span class="badge badge-tech">Git / GitHub</span>
+                        </div>
+                    </div>
+
+                    <!-- Methods / Competencies -->
+                    <div class="skills-column" id="competencies-box">
+                        <h2 class="section-title">Strategien & Methoden</h2>
+                        <div class="badge-group">
+                            <span class="badge badge-method">Blameless Behavioral Troubleshooting</span>
+                            <span class="badge badge-method">AI System Debugging</span>
+                            <span class="badge badge-method">Multi-Agent-Architekturen</span>
+                            <span class="badge badge-method">Qualitative User Interviews</span>
+                            <span class="badge badge-method">Omnichannel Service Design</span>
+                            <span class="badge badge-method">Global Supply Sourcing</span>
+                            <span class="badge badge-method">Product Rebranding</span>
+                            <span class="badge badge-method">SKU Rationalization</span>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- PROJECTS SHOWCASE -->
+            <section class="portfolio-section projects-section" id="projects-container">
+                
+                <!-- UX Projects Sub-Grid -->
+                <div class="projects-focus-block" id="ux-focus-block">
+                    <h2 class="section-title focus-title">UX & AI Portfolio (Medium)</h2>
+                    <div class="projects-grid">
+                        
+                        <!-- UX Project 1 -->
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3>Building a QR code generator with AI</h3>
+                                <span class="project-tag">AI Product</span>
+                            </div>
+                            <p>Konzeption und Entwicklung von "Qrispy", einem intelligenten und ästhetisch anspruchsvollen QR-Code-Generator für komplexe URLs, Überweisungsdaten und Adressformate.</p>
+                            <a href="https://medium.com/@viktorenns" target="_blank" class="project-link no-print">
+                                Artikel auf Medium lesen 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                            </a>
+                        </div>
+
+                        <!-- UX Project 2 -->
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3>Invisible Organization for Comedy OS</h3>
+                                <span class="project-tag">UX Strategy</span>
+                            </div>
+                            <p>Lösung der klassischen Nutzer-Organisationsmüdigkeit durch die Implementierung von semantischer Suche und Progressive Disclosure im Comedy OS.</p>
+                            <a href="https://medium.com/@viktorenns" target="_blank" class="project-link no-print">
+                                Artikel auf Medium lesen 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                            </a>
+                        </div>
+
+                        <!-- UX Project 3 -->
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3>Samurai Video with Whisk & Veo</h3>
+                                <span class="project-tag">AI Design Research</span>
+                            </div>
+                            <p>Ein experimentelles KI-Designprojekt, das statische Studioporträts mithilfe hochentwickelter Google Labs Generative-Video-Modelle in kinematografische Sequenzen übersetzt.</p>
+                            <a href="https://medium.com/@viktorenns" target="_blank" class="project-link no-print">
+                                Artikel auf Medium lesen 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                            </a>
+                        </div>
+
+                        <!-- UX Project 4 -->
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3>Visual Brand Identity for Shop Chef</h3>
+                                <span class="project-tag">Brand Design</span>
+                            </div>
+                            <p>Entwicklung der gesamten visuellen Markenidentität und Systemdesign-Leitlinien für einen KI-gestützten E-Commerce Einkaufs- und Kochanstifter.</p>
+                            <a href="https://medium.com/@viktorenns" target="_blank" class="project-link no-print">
+                                Artikel auf Medium lesen 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Photography Projects Sub-Grid -->
+                <div class="projects-focus-block" id="photo-focus-block">
+                    <h2 class="section-title focus-title">Fotografie & Art Direction (Behance)</h2>
+                    <div class="projects-grid">
+                        
+                        <!-- Photo Project 1 -->
+                        <div class="project-card photo-card">
+                            <div class="project-header">
+                                <h3>Confessions of a Cigar Photographer</h3>
+                                <span class="project-tag tag-photo">Commercial Photo</span>
+                            </div>
+                            <p>Werbe- und Produktfotografie für High-End Genussprodukte. Fokus auf Materialität, Rauchästhetik und extreme Makroretusche.</p>
+                            <a href="https://www.behance.net/viktorenns" target="_blank" class="project-link no-print">
+                                Showcase auf Behance 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                            </a>
+                        </div>
+
+                        <!-- Photo Project 2 -->
+                        <div class="project-card photo-card">
+                            <div class="project-header">
+                                <h3>Klaus Erforts Maisacker</h3>
+                                <span class="project-tag tag-photo">Gourmet & Editorial</span>
+                            </div>
+                            <p>Kulinarische Reportage und Porträts für den renommierten Restaurantführer Gault Millau beim 3-Sterne-Koch Klaus Erfort.</p>
+                            <a href="https://www.behance.net/viktorenns" target="_blank" class="project-link no-print">
+                                Showcase auf Behance 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                            </a>
+                        </div>
+
+                        <!-- Photo Project 3 -->
+                        <div class="project-card photo-card">
+                            <div class="project-header">
+                                <h3>Lamar - Bespoke Portraiture</h3>
+                                <span class="project-tag tag-photo">Fine Art Portrait</span>
+                            </div>
+                            <p>Konzeptionelle Porträtfotografie mit Fokus auf dramatische, reduzierte Lichtführung und psychologische Tiefe.</p>
+                            <a href="https://www.behance.net/viktorenns" target="_blank" class="project-link no-print">
+                                Showcase auf Behance 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                            </a>
+                        </div>
+
+                        <!-- Photo Project 4 -->
+                        <div class="project-card photo-card">
+                            <div class="project-header">
+                                <h3>Zigarrenabend im Spiegelpalais</h3>
+                                <span class="project-tag tag-photo">Event Art Direction</span>
+                            </div>
+                            <p>Art Direction und atmosphärische Bildbegleitung eines Premium-Events im Spiegelpalais (Kunz Theatre) für exklusive B2B-Markenpartner.</p>
+                            <a href="https://www.behance.net/viktorenns" target="_blank" class="project-link no-print">
+                                Showcase auf Behance 
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+        </main>
+        
+    </div>
+
+    <!-- Print Footer -->
+    <footer class="print-footer print-only">
+        <p>Viktor Enns — Senior Product Strategist & AI Architect | Saarbrücken | +49 (0) 1578 2114367 | biguxenergy@gmail.com</p>
+    </footer>
+
+    <!-- JS Application Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>

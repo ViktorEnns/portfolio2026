@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viktor Enns | Lebenslauf (Kompakt)</title>
+    <meta name="description" content="Lebenslauf von Viktor Enns - Senior Product Strategist & AI Architect. Optimiert für A4-Druck.">
+    
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- Dedicated CV Stylesheet -->
+    <link rel="stylesheet" href="cv-styles.css">
+    
+    <!-- QR Code Generator Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    
+    <!-- Screen-Only Nav Bar -->
+    <nav class="screen-nav no-print">
+        <a href="index.html" class="nav-back">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            Zurück zum Digital-Portfolio
+        </a>
+        <button id="print-cv-btn" class="print-action-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+            Jetzt drucken / PDF speichern
+        </button>
+    </nav>
+
+    <!-- Main CV Sheet -->
+    <div class="cv-sheet">
+        
+        <!-- HEADER BLOCK -->
+        <header class="cv-header">
+            <div class="header-text">
+                <h1>Viktor Enns</h1>
+                <p class="subtitle">Senior Product Strategist & AI Architect</p>
+            </div>
+            <div class="header-portrait">
+                <img src="assets/viktor_enns.jpg" alt="Viktor Enns Portrait" class="profile-img">
+            </div>
+        </header>
+
+        <div class="cv-grid">
+            
+            <!-- LEFT COLUMN (Sidebar info) -->
+            <aside class="cv-sidebar">
+                
+                <!-- Contact Info -->
+                <section class="sidebar-block contact-block">
+                    <h2>Kontakt</h2>
+                    <ul class="info-list">
+                        <li><strong>Tel:</strong> +49 (0) 1578 2114367</li>
+                        <li><strong>Mail:</strong> biguxenergy@gmail.com</li>
+                        <li><strong>Ort:</strong> Saarbrücken, Deutschland</li>
+                    </ul>
+                </section>
+
+                <!-- Core Stack -->
+                <section class="sidebar-block">
+                    <h2>Tech Stack</h2>
+                    <div class="small-badge-group">
+                        <span class="s-badge">React</span>
+                        <span class="s-badge">TypeScript</span>
+                        <span class="s-badge">HTML/CSS</span>
+                        <span class="s-badge">Firebase</span>
+                        <span class="s-badge">GCP</span>
+                        <span class="s-badge">n8n</span>
+                        <span class="s-badge">Figma</span>
+                        <span class="s-badge">Photoshop</span>
+                    </div>
+                </section>
+
+                <!-- Core Methods -->
+                <section class="sidebar-block">
+                    <h2>Methoden</h2>
+                    <div class="small-badge-group">
+                        <span class="s-badge m-badge">Behavioral Troubleshooting</span>
+                        <span class="s-badge m-badge">AI System Debugging</span>
+                        <span class="s-badge m-badge">Multi-Agent Systems</span>
+                        <span class="s-badge m-badge">User Interviews</span>
+                        <span class="s-badge m-badge">Product Rebranding</span>
+                    </div>
+                </section>
+
+                <!-- Concise Education -->
+                <section class="sidebar-block edu-block">
+                    <h2>Ausbildung</h2>
+                    <div class="edu-compact">
+                        <span class="edu-date">2023</span>
+                        <h3>UX/UI Design Zertifikat</h3>
+                        <p class="school">Ironhack Berlin (Jahrgangsbester)</p>
+                    </div>
+                    <div class="edu-compact">
+                        <span class="edu-date">2013 – 2014</span>
+                        <h3>Kulturwissenschaften</h3>
+                        <p class="school">Universität des Saarlandes</p>
+                    </div>
+                </section>
+
+                <!-- High-contrast QR Code -->
+                <section class="sidebar-block qr-block">
+                    <h2>Online-Portfolio</h2>
+                    <div class="qr-box-wrapper">
+                        <div id="cv-qrcode" class="qrcode-box"></div>
+                    </div>
+                    <p class="qr-help">Scannen für alle Links, Socials (LinkedIn, Medium, Behance) & interaktiven Dateien.</p>
+                </section>
+
+            </aside>
+
+            <!-- RIGHT COLUMN (Professional details) -->
+            <main class="cv-main">
+                
+                <!-- Brief Bio -->
+                <section class="main-block bio-block">
+                    <p class="bio-text">
+                        Krisenerprobter Product Strategist und AI Architect mit über 15 Jahren Erfahrung in Umsatzskalierung, operativer Optimierung und technischer Architektur. Ich verbinde nutzerzentriertes Design mit fortschrittlichen AI-Coding-Workflows (React, TypeScript, Firebase) zur massiven Beschleunigung der Time-to-Market. Durch die Verknüpfung von verhaltenspsychologischer Problemlösungskompetenz und rigoroser Systemarchitektur übersetze ich komplexe Geschäftsziele in skalierbare Produkte und schütze Investorenkapital durch datengetriebene UX-Forschung.
+                    </p>
+                </section>
+
+                <!-- Experience Timeline -->
+                <section class="main-block">
+                    <h2 class="block-title">Berufserfahrung</h2>
+                    <div class="timeline-compact">
+                        
+                        <!-- Role 1 -->
+                        <div class="role-compact">
+                            <div class="role-header">
+                                <span class="role-title">Co-Founder & Chief Product Officer (CPO)</span>
+                                <span class="role-date">11.2025 – Heute</span>
+                            </div>
+                            <span class="company-name">Marble Music Match | Saarbrücken / Remote</span>
+                            <ul class="bullet-compact">
+                                <li><strong>Kapitalschutz:</strong> Runway-Sicherung durch datenbelegtes Veto gegen risikoreichen Pivot.</li>
+                                <li><strong>Stakeholder-Management:</strong> Neutralisierung von Vorbehalten durch direkte Einbindung in Nutzertests.</li>
+                                <li><strong>AI-Driven MVP:</strong> Beschleunigung der Time-to-Market durch eine KI-gestützte Entwicklungspipeline.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Role 2 -->
+                        <div class="role-compact">
+                            <div class="role-header">
+                                <span class="role-title">Founder & AI Product Developer</span>
+                                <span class="role-date">03.2025 – Heute</span>
+                            </div>
+                            <span class="company-name">Comedy OS | Remote</span>
+                            <ul class="bullet-compact">
+                                <li><strong>GTM-Strategie:</strong> Lokalisierte Netzwerkeffekte mit High-Touch Concierge-Onboarding.</li>
+                                <li><strong>AI Research:</strong> Architektur eines Gemini-gestützten Research-Bots zur qualitativen Datenerfassung.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Role 3 -->
+                        <div class="role-compact">
+                            <div class="role-header">
+                                <span class="role-title">Product Design Consultant</span>
+                                <span class="role-date">09.2024 – 02.2025</span>
+                            </div>
+                            <span class="company-name">Energy4U | Remote</span>
+                            <ul class="bullet-compact">
+                                <li><strong>Enterprise UX:</strong> UX-Beratung und Frontend-Entwicklung (TypeScript) im SAP-Umfeld.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Role 4 -->
+                        <div class="role-compact">
+                            <div class="role-header">
+                                <span class="role-title">Lead Product Strategist</span>
+                                <span class="role-date">04.2015 – 11.2022</span>
+                            </div>
+                            <span class="company-name">Dalay Zigarren | International</span>
+                            <ul class="bullet-compact">
+                                <li><strong>Wachstum:</strong> Steigerung der Transaktionen um 300 % und Vervierfachung des Bestellwerts (von 25 € auf 100 €+) durch Omnichannel-UX-Optimierung ohne Paid-Marketing-Budget.</li>
+                                <li><strong>Global Sourcing & Operations:</strong> Leitung von Rebrandings in der Dom. Rep. und Verhandlung margenoptimierter B2B-Lieferverträge sowie Aufbau alternativer COVID-Logistikrouten.</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Curated Projects Section -->
+                <section class="main-block projects-block-compact">
+                    <h2 class="block-title">Ausgewählte Portfolio-Projekte</h2>
+                    <div class="projects-grid-compact">
+                        
+                        <!-- UX Project 1 -->
+                        <div class="project-item-compact">
+                            <h4>Qrispy AI QR Generator <span class="proj-tag">UX/AI</span></h4>
+                            <p>Entwicklung eines smarten QR-Generators für komplexe URLs, Bankdaten und Adressen.</p>
+                        </div>
+
+                        <!-- UX Project 2 -->
+                        <div class="project-item-compact">
+                            <h4>Comedy OS Semantic Search <span class="proj-tag">UX Strategy</span></h4>
+                            <p>Beseitigung von Organisationsmüdigkeit durch progressive Datenbereitstellung.</p>
+                        </div>
+
+                        <!-- Photo Project 1 -->
+                        <div class="project-item-compact">
+                            <h4>Cigar Product Photography <span class="proj-tag tag-p">Fotografie</span></h4>
+                            <p>Premium-Makroaufnahmen und hochpräzise Retusche für Luxusgüter.</p>
+                        </div>
+
+                        <!-- Photo Project 2 -->
+                        <div class="project-item-compact">
+                            <h4>Klaus Erfort (Gault Millau) <span class="proj-tag tag-p">Portrait</span></h4>
+                            <p>Kulinarische Reportage und B2B-Porträts für den renommierten Gourmet-Führer.</p>
+                        </div>
+
+                    </div>
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <!-- Script for CV QR Generation -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const qrBox = document.getElementById('cv-qrcode');
+            
+            // Dynamic URL resolver:
+            // Point the QR code to the hosted live digital portfolio!
+            // When hosted, it automatically points to the parent folder index.html
+            let targetUrl = window.location.origin + window.location.pathname.replace('cv.html', 'index.html');
+            
+            // Fallback to local default if opened as a raw file
+            if (window.location.protocol === 'file:') {
+                targetUrl = 'https://www.linkedin.com/in/uxviktorenns/';
+            }
+
+            try {
+                new QRCode(qrBox, {
+                    text: targetUrl,
+                    width: 90,
+                    height: 90,
+                    colorDark: '#000000',
+                    colorLight: '#ffffff',
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+            } catch (e) {
+                console.error("QR Code Error: ", e);
+                qrBox.innerHTML = "<span style='font-size: 8px; color: red;'>QR-Error</span>";
+            }
+
+            // Print Action
+            const printBtn = document.getElementById('print-cv-btn');
+            printBtn.addEventListener('click', () => {
+                window.print();
+            });
+        });
+    </script>
+</body>
+</html>

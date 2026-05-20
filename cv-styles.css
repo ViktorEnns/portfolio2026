@@ -1,0 +1,478 @@
+/* ==========================================================================
+   CV HIGH-CONTRAST LIGHT STYLE (1-PAGE A4 PRECISE ENGINE)
+   ========================================================================== */
+
+:root {
+    --color-bg-print: #ffffff;
+    --color-text-dark: #111111;
+    --color-text-muted: #4a5568;
+    --color-accent-gold: #aa8c2c;
+    --color-border: #d4af37;
+    --color-border-subtle: #e2e8f0;
+    
+    --font-heading: 'Lora', Georgia, serif;
+    --font-body: 'Outfit', -apple-system, sans-serif;
+}
+
+/* Base resets */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f7fafc; /* Subtle gray background on screen, white in print */
+    color: var(--color-text-dark);
+    font-family: var(--font-body);
+    line-height: 1.35;
+    font-size: 11px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   SCREEN NAVIGATION BAR (SCREEN ONLY)
+   ========================================================================== */
+.screen-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1a202c;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.nav-back {
+    color: #cbd5e0;
+    font-weight: 500;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.nav-back:hover {
+    color: #ffffff;
+    transform: translateX(-2px);
+}
+
+.print-action-btn {
+    background: linear-gradient(135deg, #d4af37, #aa8c2c);
+    border: none;
+    color: #1a202c;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.print-action-btn:hover {
+    background: linear-gradient(135deg, #e5a93b, #d4af37);
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   CV SHEET PRECISE BOX (SCREEN PREVIEW)
+   ========================================================================== */
+.cv-sheet {
+    background: var(--color-bg-print);
+    width: 210mm;
+    height: 297mm; /* Absolute A4 Bounds */
+    margin: 20px auto;
+    padding: 1.2cm 1cm;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden; /* Enforces strict 1-page bounds */
+}
+
+/* ==========================================================================
+   CV HEADER SECTION
+   ========================================================================== */
+.cv-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--color-border);
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+}
+
+.header-text h1 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+}
+
+.header-text .subtitle {
+    font-size: 1.1rem;
+    color: var(--color-accent-gold);
+    font-weight: 500;
+    margin-top: 3px;
+    letter-spacing: 0.3px;
+}
+
+.header-portrait {
+    flex-shrink: 0;
+}
+
+.header-portrait .profile-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-accent-gold);
+}
+
+/* ==========================================================================
+   GRID LAYOUT
+   ========================================================================== */
+.cv-grid {
+    display: grid;
+    grid-template-columns: 195px 1fr; /* Meticulously balanced columns */
+    gap: 20px;
+    height: calc(100% - 100px); /* Fill remaining page area */
+}
+
+/* ==========================================================================
+   LEFT COLUMN (SIDEBAR)
+   ========================================================================== */
+.cv-sidebar {
+    border-right: 1px solid var(--color-border-subtle);
+    padding-right: 15px;
+}
+
+.sidebar-block {
+    margin-bottom: 14px;
+}
+
+.sidebar-block:last-child {
+    margin-bottom: 0;
+}
+
+.sidebar-block h2 {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    color: var(--color-accent-gold);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 3px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Contact Info list */
+.info-list {
+    list-style: none;
+}
+
+.info-list li {
+    font-size: 0.76rem;
+    margin-bottom: 4px;
+    color: var(--color-text-dark);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+/* Badges */
+.small-badge-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+}
+
+.s-badge {
+    font-size: 0.68rem;
+    padding: 2px 6px;
+    border: 1px solid #cbd5e0;
+    color: var(--color-text-dark);
+    background: #f7fafc;
+    border-radius: 3px;
+    font-weight: 500;
+}
+
+.s-badge.m-badge {
+    border-color: #a0aec0;
+    background: #edf2f7;
+}
+
+/* Concise Education */
+.edu-compact {
+    margin-bottom: 8px;
+}
+
+.edu-compact:last-child {
+    margin-bottom: 0;
+}
+
+.edu-compact .edu-date {
+    font-size: 0.65rem;
+    font-weight: bold;
+    color: var(--color-accent-gold);
+}
+
+.edu-compact h3 {
+    font-size: 0.74rem;
+    font-weight: 600;
+    margin: 1px 0;
+}
+
+.edu-compact .school {
+    font-size: 0.68rem;
+    color: var(--color-text-muted);
+}
+
+/* QR Code Section */
+.qr-box-wrapper {
+    background: #ffffff;
+    padding: 4px;
+    border: 1px solid var(--color-border-subtle);
+    width: 98px;
+    height: 98px;
+    margin: 4px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.qrcode-box img {
+    display: block;
+    width: 90px;
+    height: 90px;
+}
+
+.qr-help {
+    font-size: 0.62rem;
+    color: var(--color-text-muted);
+    line-height: 1.3;
+}
+
+/* ==========================================================================
+   RIGHT COLUMN (MAIN CONTENT)
+   ========================================================================== */
+.cv-main {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.main-block {
+    margin-bottom: 4px;
+}
+
+.main-block:last-child {
+    margin-bottom: 0;
+}
+
+.block-title {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--color-accent-gold);
+    margin-bottom: 8px;
+    position: relative;
+    display: inline-block;
+}
+
+.block-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 30px;
+    height: 1.5px;
+    background: var(--color-accent-gold);
+}
+
+/* Bio Description */
+.bio-text {
+    font-size: 0.8rem;
+    line-height: 1.45;
+    color: var(--color-text-muted);
+    text-align: justify;
+}
+
+/* Compact Experience Timeline */
+.timeline-compact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.role-compact {
+    position: relative;
+}
+
+.role-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.role-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+}
+
+.role-date {
+    font-size: 0.74rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+}
+
+.company-name {
+    font-size: 0.76rem;
+    color: var(--color-accent-gold);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.bullet-compact {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 2px;
+}
+
+.bullet-compact li {
+    position: relative;
+    padding-left: 10px;
+    font-size: 0.76rem;
+    color: var(--color-text-dark);
+    margin-bottom: 1.5px;
+}
+
+.bullet-compact li:last-child {
+    margin-bottom: 0;
+}
+
+.bullet-compact li::before {
+    content: '▪';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent-gold);
+    font-size: 0.7rem;
+    top: -1px;
+}
+
+/* Condensed Projects Grid */
+.projects-grid-compact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.project-item-compact {
+    border: 1px solid var(--color-border-subtle);
+    padding: 6px 8px;
+    border-radius: 4px;
+    background: #fcfdfd;
+}
+
+.project-item-compact h4 {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    margin-bottom: 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.proj-tag {
+    font-size: 0.58rem;
+    font-weight: bold;
+    padding: 1px 4px;
+    border-radius: 3px;
+    background: rgba(170, 140, 44, 0.08);
+    color: var(--color-accent-gold);
+    border: 1px solid rgba(170, 140, 44, 0.15);
+}
+
+.proj-tag.tag-p {
+    background: rgba(49, 151, 149, 0.08);
+    color: #2c7a7b;
+    border-color: rgba(49, 151, 149, 0.15);
+}
+
+.project-item-compact p {
+    font-size: 0.70rem;
+    color: var(--color-text-muted);
+    line-height: 1.3;
+}
+
+/* ==========================================================================
+   MASTER PRINT STYLESHEET OVERRIDES
+   ========================================================================== */
+@media print {
+    /* Set perfect print environment */
+    html, body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        font-size: 11px !important;
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    /* Target physical A4 exactly */
+    @page {
+        size: A4 portrait;
+        margin: 0 !important; /* Managed exactly by our .cv-sheet padding */
+    }
+
+    .no-print {
+        display: none !important;
+    }
+
+    .cv-sheet {
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        padding: 1.2cm 1cm !important;
+        background: #ffffff !important;
+        position: relative !important;
+        overflow: hidden !important;
+    }
+
+    /* Force high-contrast gray scales */
+    .s-badge {
+        background: #ffffff !important;
+        border-color: #718096 !important;
+        color: #000000 !important;
+    }
+
+    .project-item-compact {
+        background: #ffffff !important;
+        border-color: #cbd5e0 !important;
+    }
+
+    .role-date, .edu-compact .school, .qr-help, .bio-text, .project-item-compact p {
+        color: #2d3748 !important;
+    }
+
+    /* Never page-break sections in single sheet */
+    .sidebar-block, .main-block, .role-compact {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+}
