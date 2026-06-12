@@ -6,7 +6,6 @@ node_modules/
 .gitignore
 .assetsignore
 wrangler.jsonc
-*.pdf
 Passfoto Viktor Enns-20210309-001.jpg
 ViktorPortrait.jpg
 assets/sometimes/knife sharpen VID_20200628_140320.mp4
