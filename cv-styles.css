@@ -99,13 +99,12 @@ body {
         linear-gradient(to bottom, rgba(8, 67, 116, 0.02) 1px, transparent 1px);
     background-size: 24px 24px;
     width: 210mm;
-    height: 297mm; /* Absolute A4 Bounds */
+    min-height: 297mm; /* Allows expanding to multiple pages */
     margin: 20px auto;
-    padding: 0.7cm 0.6cm; /* Compressed page padding */
+    padding: 1.2cm 1.0cm; /* Premium spacious page margins */
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-    border-radius: 2px;
+    border-radius: 4px;
     position: relative;
-    overflow: hidden; /* Enforces strict 1-page bounds */
 }
 
 /* ==========================================================================
@@ -115,14 +114,14 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid var(--color-border);
-    padding-bottom: 6px; /* Space-saving header padding */
-    margin-bottom: 6px;
+    border-bottom: 1.5px solid var(--color-border);
+    padding-bottom: 14px; /* Looser spacing */
+    margin-bottom: 20px;
 }
 
 .header-text h1 {
     font-family: var(--font-heading);
-    font-size: 2.3rem; /* Elegant serif scaling */
+    font-size: 2.5rem; /* Slightly larger, elegant serif title */
     font-weight: 500;
     color: var(--color-text-dark);
     letter-spacing: -0.5px;
@@ -130,10 +129,10 @@ body {
 }
 
 .header-text .subtitle {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     color: var(--color-accent);
     font-weight: 600;
-    margin-top: 3px;
+    margin-top: 4px;
     letter-spacing: 0.3px;
 }
 
@@ -142,8 +141,8 @@ body {
 }
 
 .header-portrait .profile-img {
-    width: 58px;
-    height: 58px;
+    width: 64px; /* Slightly larger profile photo */
+    height: 64px;
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid var(--color-accent-2);
@@ -154,9 +153,8 @@ body {
    ========================================================================== */
 .cv-grid {
     display: grid;
-    grid-template-columns: 195px 1fr; /* Meticulously balanced columns */
-    gap: 12px; /* Compressed grid column gap */
-    height: calc(100% - 72px); /* Calibrated remaining page area height */
+    grid-template-columns: 210px 1fr; /* Wider sidebar for comfortable reading */
+    gap: 28px; /* Looser grid gap */
 }
 
 /* ==========================================================================
@@ -164,11 +162,11 @@ body {
    ========================================================================== */
 .cv-sidebar {
     border-right: 1px solid var(--color-border-subtle);
-    padding-right: 12px;
+    padding-right: 20px; /* More breathing room */
 }
 
 .sidebar-block {
-    margin-bottom: 8px; /* Compressed sidebar section padding */
+    margin-bottom: 24px; /* Comfortable vertical spacing between blocks */
 }
 
 .sidebar-block:last-child {
@@ -237,9 +235,9 @@ body {
     color: var(--color-text-dark);
 }
 
-/* Concise Education */
+/* Loose Education */
 .edu-compact {
-    margin-bottom: 6px; /* Compact sidebar items gap */
+    margin-bottom: 16px; /* Expanded gaps */
 }
 
 .edu-compact:last-child {
@@ -248,28 +246,28 @@ body {
 
 .edu-compact .edu-date {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     font-weight: bold;
     color: var(--color-accent-2);
 }
 
 .edu-compact h3 {
-    font-size: 0.84rem;
+    font-size: 0.88rem;
     font-weight: 600;
-    margin: 1px 0;
+    margin: 3px 0;
 }
 
 .edu-compact .school {
-    font-size: 0.78rem;
+    font-size: 0.82rem;
     color: var(--color-text-dark);
     font-weight: 500;
 }
 
 .edu-compact .edu-detail {
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     color: var(--color-text-muted);
-    line-height: 1.25; /* Highly space-saving line height */
-    margin-top: 2px;
+    line-height: 1.45; /* Loose, readable line-height */
+    margin-top: 4px;
 }
 
 /* QR Code Section */
@@ -303,11 +301,11 @@ body {
 .cv-main {
     display: flex;
     flex-direction: column;
-    gap: 6px; /* Tightened grid flex gaps */
+    gap: 32px; /* Spacious column gap */
 }
 
 .main-block {
-    margin-bottom: 2px;
+    margin-bottom: 12px;
 }
 
 .main-block:last-child {
@@ -316,9 +314,9 @@ body {
 
 .block-title {
     font-family: var(--font-heading);
-    font-size: 1.35rem;
+    font-size: 1.5rem; /* Larger, premium header font size */
     color: var(--color-accent);
-    margin-bottom: 6px;
+    margin-bottom: 12px;
     position: relative;
     display: inline-block;
 }
@@ -327,25 +325,25 @@ body {
     content: '';
     position: absolute;
     left: 0;
-    bottom: -2px;
-    width: 30px;
-    height: 1.5px;
+    bottom: -4px;
+    width: 36px;
+    height: 2px;
     background: var(--color-accent-2);
 }
 
 /* Bio Description */
 .bio-text {
-    font-size: 0.84rem;
-    line-height: 1.38; /* Tighter line-height to fit text blocks cleanly */
+    font-size: 0.92rem;
+    line-height: 1.6; /* Comfortable, open typography spacing */
     color: var(--color-text-muted);
     text-align: justify;
 }
 
-/* Compact Experience Timeline */
+/* Spacious Experience Timeline */
 .timeline-compact {
     display: flex;
     flex-direction: column;
-    gap: 6px; /* Compressed gaps between jobs */
+    gap: 24px; /* Looser spacing between roles */
 }
 
 .role-compact {
@@ -359,38 +357,39 @@ body {
 }
 
 .role-title {
-    font-size: 0.92rem; /* Clean 12.9px role headings */
+    font-size: 0.98rem; /* Slightly larger role headings */
     font-weight: 700;
     color: var(--color-text-dark);
 }
 
 .role-date {
-    font-size: 0.8rem; /* Calibrated to fit years elegantly */
+    font-family: var(--font-mono);
+    font-size: 0.72rem; /* Clean technical date font */
     color: var(--color-text-muted);
     font-weight: 500;
 }
 
 .company-name {
-    font-size: 0.84rem;
+    font-size: 0.88rem;
     color: var(--color-accent);
     font-weight: 600;
     display: block;
-    margin-bottom: 1px;
+    margin-bottom: 4px;
 }
 
 .bullet-compact {
     list-style: none;
     padding-left: 0;
-    margin-top: 2px;
+    margin-top: 6px;
 }
 
 .bullet-compact li {
     position: relative;
-    padding-left: 10px;
-    font-size: 0.84rem; /* Readability first detail bullets (11.8px) */
+    padding-left: 14px;
+    font-size: 0.88rem; /* Highly legible body-size bullets */
     color: var(--color-text-dark);
-    margin-bottom: 2px;
-    line-height: 1.34;
+    margin-bottom: 8px; /* Comfortable spacing */
+    line-height: 1.5;
 }
 
 .bullet-compact li:last-child {
@@ -402,16 +401,16 @@ body {
     position: absolute;
     left: 0;
     color: var(--color-accent-2);
-    font-size: 0.7rem;
-    top: -1px;
+    font-size: 0.72rem;
+    top: 0px;
 }
 
-/* Condensed Projects Grid */
+/* Looser Projects Grid */
 .projects-grid-compact {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 6px;
-    margin-top: 2px;
+    gap: 12px; /* Comfortable grid gap */
+    margin-top: 8px;
 }
 
 .project-item-compact.span-2 {
@@ -420,16 +419,16 @@ body {
 
 .project-item-compact {
     border: 1px solid var(--color-border-subtle);
-    padding: 5px 8px;
-    border-radius: 4px;
+    padding: 10px 14px; /* Spacious padding */
+    border-radius: 6px;
     background: #fcfdfd;
 }
 
 .project-item-compact h4 {
-    font-size: 0.84rem;
+    font-size: 0.88rem;
     font-weight: 700;
     color: var(--color-text-dark);
-    margin-bottom: 1px;
+    margin-bottom: 3px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -453,9 +452,9 @@ body {
 }
 
 .project-item-compact p {
-    font-size: 0.78rem;
+    font-size: 0.84rem;
     color: var(--color-text-muted);
-    line-height: 1.25;
+    line-height: 1.45;
 }
 
 /* ==========================================================================
@@ -468,14 +467,14 @@ body {
         color: #000000 !important;
         /* Inherit global 14px root scale for exact pixel parity between screen and print */
         width: 100% !important;
-        height: 100% !important;
+        height: auto !important;
         margin: 0 !important;
         padding: 0 !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
     }
 
-    /* Target physical A4 exactly */
+    /* Target physical A4 */
     @page {
         size: A4 portrait;
         margin: 0 !important; /* Managed exactly by our .cv-sheet padding */
@@ -490,11 +489,11 @@ body {
         border-radius: 0 !important;
         margin: 0 !important;
         width: 100% !important;
-        height: 100% !important;
-        padding: 0.7cm 0.6cm !important; /* Exact parity with screen layout padding */
+        height: auto !important; /* Allow expanding height */
+        padding: 1.2cm 1.0cm !important; /* Match loose premium margins */
         background: #ffffff !important;
         position: relative !important;
-        overflow: hidden !important;
+        overflow: visible !important; /* Allow multi-page overflow */
     }
 
     /* Force high-contrast gray scales */
