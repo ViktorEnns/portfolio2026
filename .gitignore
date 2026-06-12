@@ -19,3 +19,6 @@ Desktop.ini
 !.dev.vars.example
 .env*
 !.env.example
+
+# Large media files
+assets/sometimes/knife sharpen VID_20200628_140320.mp4

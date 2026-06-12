@@ -1,419 +1,1076 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en" data-theme="light" data-lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viktor Enns | Senior Product Strategist & AI Architect</title>
-    <meta name="description" content="Portfolio und Lebenslauf von Viktor Enns - Senior Product Strategist & AI Architect. Experte für benutzerzentriertes Design, KI-gestützte Entwicklung und datengetriebene UX.">
-    
-    <!-- Premium Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
-    
-    <!-- CSS Stylesheet -->
+
+    <!-- SEO Best Practices -->
+    <title>Viktor Enns — Senior Product Strategist & AI Architect</title>
+    <meta name="title" content="Viktor Enns — Senior Product Strategist & AI Architect">
+    <meta name="description" content="Viktor Enns — Co-founder & CPO of Marble Music Match, Founder of Comedy OS. Bridging human-centered design with advanced AI-coding workflows in Germany.">
+    <meta name="keywords" content="Viktor Enns, Marble Music Match, Comedy OS, Product CPO, AI Architect, UX Research, Design Strategy, Saarbrücken">
+    <meta name="author" content="Viktor Enns">
+    <meta name="robots" content="index, follow">
+
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://viktorenns.dev/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/logo.png">
+
+    <!-- Style sheets -->
     <link rel="stylesheet" href="styles.css">
     
-    <!-- QR Code Generator Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+      (function(){
+        // PERSIST THEME PREFERENCE
+        var savedTheme = localStorage.getItem('theme');
+        var systemTheme = (window.matchMedia && matchMedia('(prefers-color-scheme:dark)').matches) ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme || systemTheme);
+        
+        // PERSIST LANGUAGE PREFERENCE
+        var savedLang = localStorage.getItem('lang') || 'en';
+        document.documentElement.setAttribute('data-lang', savedLang);
+      })();
+    </script>
 </head>
 <body>
+    <!-- Technical Design Blueprint Grid Layer -->
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <!-- Cursor Follow soft lighting -->
+    <div class="cursor-light" aria-hidden="true"></div>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress"></div>
+
+    <!-- Top Navigation Header -->
+    <nav class="top-nav" aria-label="Primary">
+        <a href="#top" class="brand glass glass--pill" aria-label="Viktor Enns — back to top" id="nav-brand">
+            <img src="assets/logo.png" alt="Viktor Enns Logo" class="brand-logo">
+        </a>
+
+        <a href="#currently-building" class="status-pill glass glass--pill" role="status" aria-live="polite" id="nav-status" style="text-decoration: none; cursor: pointer;">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span class="status-text lang-en">Currently — building <em>Marble Music Match</em> &amp; <em>Comedy OS</em></span>
+            <span class="status-text lang-de">Derzeit — Entwicklung von <em>Marble Music Match</em> &amp; <em>Comedy OS</em></span>
+        </a>
+
+        <div class="controls glass glass--pill">
+            <!-- Language Toggle Switch -->
+            <label class="lang-toggle-switch" aria-label="Toggle language EN DE">
+                <input type="checkbox" id="lang-toggle">
+                <span class="lang-slider">
+                    <span class="lang-slider-en">EN</span>
+                    <span class="lang-slider-de">DE</span>
+                </span>
+            </label>
+            <!-- Theme Toggle Switch -->
+            <label class="toggle-switch" aria-label="Toggle dark mode">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </nav>
+
+    <!-- Main Content wrapper -->
+    <main id="main-content">
+
+        <!-- ========== HERO SECTION ========== -->
+        <section class="hero" id="top">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="hero-meta-top">
+                        <span class="eyebrow" id="eyebrow-hero">
+                            <span class="eyebrow-num">01</span>
+                            <span class="eyebrow-line"></span>
+                            <span class="lang-en">Index — 2026</span>
+                            <span class="lang-de">Index — 2026</span>
+                        </span>
+                    </div>
 
 
-    <!-- Main Content Container -->
-    <div class="portfolio-container">
-        
-        <!-- SIDEBAR / METADATA COLUMN -->
-        <aside class="sidebar">
-            <div class="portrait-container" id="profile-portrait-box">
-                <img src="assets/viktor_enns.jpg" alt="Viktor Enns Portrait" class="profile-img">
-            </div>
+                    <div class="hero-headline-wrap">
+                        <h1 class="hero-name" aria-label="Viktor Enns">
+                            <span class="word" data-word="Viktor">
+                                <span class="char">V</span><span class="char">i</span><span class="char">k</span><span class="char">t</span><span class="char">o</span><span class="char">r</span>
+                            </span>
+                            <span class="word" data-word="Enns">
+                                <span class="char">E</span><span class="char">n</span><span class="char">n</span><span class="char">s</span>
+                            </span>
+                        </h1>
+                    </div>
 
-            <div class="sidebar-section contact-info">
-                <h2>Kontakt</h2>
-                <ul class="contact-list">
-                    <li>
-                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                        <a href="tel:+4915782114367">+49 (0) 1578 2114367</a>
-                    </li>
-                    <li>
-                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                        <a href="mailto:biguxenergy@gmail.com">biguxenergy@gmail.com</a>
-                    </li>
+                    <p class="hero-tagline">
+                        <span class="lang-en"><span class="serif">Strategic UX</span> &amp; <span class="serif">Research Operations</span>. Bridging human-centered design with advanced AI-coding workflows.</span>
+                        <span class="lang-de"><span class="serif">Strategische UX</span> &amp; <span class="serif">Research Operations</span>. Verbindung von nutzerzentriertem Design mit fortschrittlichen KI-Coding-Workflows.</span>
+                    </p>
 
-                    <li>
-                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                        <span>Saarbrücken, DE</span>
-                    </li>
-                </ul>
-            </div>
+                    <div class="hero-meta-bottom">
+                        <div class="hero-meta-item">
+                            <span class="kicker lang-en">Role</span>
+                            <span class="kicker lang-de">Rolle</span>
+                            <span class="lang-en">CPO &amp; AI Architect</span>
+                            <span class="lang-de">CPO &amp; KI-Architekt</span>
+                        </div>
+                        <div class="hero-meta-item">
+                            <span class="kicker lang-en">Where</span>
+                            <span class="kicker lang-de">Ort</span>
+                            <span class="lang-en">Saarbrücken, Germany</span>
+                            <span class="lang-de">Saarbrücken, Deutschland</span>
+                        </div>
+                        <div class="hero-meta-item">
+                            <span class="kicker lang-en">Since</span>
+                            <span class="kicker lang-de">Seit</span>
+                            <span>2011</span>
+                        </div>
+                    </div>
+                </div>
 
-            <!-- Print and CV Export Actions (Screen Only) -->
-            <div class="sidebar-section print-actions no-print">
-                <h2>Drucken & Export</h2>
-                <div class="print-buttons-group">
-                    <button id="print-portfolio-btn" class="btn-primary">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-                        Portfolio drucken (PDF)
-                    </button>
-                    <a href="cv.html" class="btn-secondary">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                        Kompakte A4-Druckversion
-                    </a>
+                <!-- Right Column: Staggered Asymmetrical Architectural Portrait Grid -->
+                <div class="hero-portrait-container" aria-hidden="true">
+                    <div class="portrait-frame portrait-frame--large" data-tag="[VIK_P.01]">
+                        <img src="assets/portrait.jpg" alt="Viktor Enns Portrait">
+                    </div>
+                    <div class="portrait-frame portrait-frame--medium" data-tag="[VIK_P.02]">
+                        <img src="assets/sometimes/viktor PXL_20260410_142503407.jpg" alt="Viktor Enns Photo">
+                    </div>
+                    <div class="portrait-frame portrait-frame--small" data-tag="[VIK_P.03]">
+                        <img src="assets/sometimes/viktor PXL_20260515_202002574.jpg" alt="Viktor Enns Portrait Details">
+                    </div>
+                </div>
+
+                <div class="scroll-cue" aria-hidden="true">
+                    <span class="scroll-cue-line"></span>
+                    <span class="scroll-cue-label lang-en">Scroll</span>
+                    <span class="scroll-cue-label lang-de">Scrollen</span>
                 </div>
             </div>
+        </section>
 
-            <!-- Dynamic QR Code & Links -->
-            <div class="sidebar-section qr-section">
-                <h2>Scannen & Folgen</h2>
-                <div class="qr-container-wrapper">
-                    <div id="qrcode" class="qrcode-box"></div>
+        <!-- ========== MANIFESTO SECTION ========== -->
+        <section class="manifesto" id="manifesto">
+            <span class="eyebrow" id="eyebrow-manifesto">
+                <span class="eyebrow-num">02</span>
+                <span class="eyebrow-line"></span>
+                <span class="lang-en">Philosophy</span>
+                <span class="lang-de">Philosophie</span>
+            </span>
+
+            <p class="manifesto-text">
+                <span class="lang-en">I believe in building products that <em class="serif">eliminate friction</em>. By merging deep behavioral research with rigorous system architecture, we protect capital and launch MVPs <span class="accent">at lightspeed</span>.</span>
+                <span class="lang-de">Ich glaube daran, Produkte zu bauen, die <em class="serif">Reibung eliminieren</em>. Durch die Verschmelzung von tiefgehender Verhaltensforschung mit rigoroser Systemarchitektur schützen wir Kapital und bringen MVPs <span class="accent">in Lichtgeschwindigkeit</span> auf den Markt.</span>
+            </p>
+
+            <div class="manifesto-sig">
+                <span class="sig-line"></span>
+                <span class="lang-en">Viktor, CPO &amp; AI Product Developer.</span>
+                <span class="lang-de">Viktor, CPO &amp; KI-Produktentwickler.</span>
+            </div>
+        </section>
+
+        <!-- ========== CURRENTLY BUILDING SECTION ========== -->
+        <section class="currently-building" id="currently-building">
+            <span class="eyebrow" id="eyebrow-currently-building">
+                <span class="eyebrow-num">03</span>
+                <span class="eyebrow-line"></span>
+                <span class="lang-en">Currently Building — Active Focus</span>
+                <span class="lang-de">Derzeit in Entwicklung — Aktueller Fokus</span>
+            </span>
+
+            <div class="currently-building-header">
+                <h2 class="serif section-title">
+                    <span class="lang-en">Currently Building:</span>
+                    <span class="lang-de">Aktuelle Projekte:</span>
+                </h2>
+                <p class="muted section-sub lang-en">Building high-fidelity products at lightspeed. I bridge user research operations directly to clean technical prototypes. Click below to explore staging prototypes and read full case studies on Medium.</p>
+                <p class="muted section-sub lang-de">Entwicklung von High-Fidelity-Produkten in Lichtgeschwindigkeit. Ich schlage die Brücke von Research Operations direkt zu sauberen technischen Prototypen. Entdecken Sie Staging-Prototypen und lesen Sie vollständige Fallstudien auf Medium.</p>
+            </div>
+
+            <div class="currently-cards-container">
+                <!-- Card 1: Marble Music Match -->
+                <div class="currently-card" style="--card-glow-color: rgba(65, 158, 209, 0.25);">
+                    <div class="currently-card-visual">
+                        <div class="sometimes-card-photo-wrap">
+                            <div class="sometimes-card-carousel">
+                                <div class="carousel-slide">
+                                    <img src="assets/placeholder_marble_app.png" alt="Marble Music Match Mobile UI Mockup" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/placeholder_marble_producer.png" alt="Music Producer in Recording Studio" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="carousel-badge glass glass--pill"><span>1 / 2</span></div>
+                        </div>
+                    </div>
+                    <div class="currently-card-info">
+                        <span class="currently-card-kicker">01 / ECOSYSTEM DESIGN</span>
+                        <h3 class="currently-card-title">Marble Music Match</h3>
+                        <p class="currently-card-desc lang-en">
+                            A music collaboration platform engineered to bridge the "Satisfaction Gap" (where 32% of users quit competitor apps due to execution errors and bot fatigue). Designed with <strong>"Invisible UX"</strong> workflows like metadata-infused intelligent file naming, allowing producers to drag stems directly into their DAW with zero administrative friction.
+                        </p>
+                        <p class="currently-card-desc lang-de">
+                            Eine Musik-Kollaborationsplattform, die entwickelt wurde, um die „Zufriedenheitslücke“ zu schließen (bei der 32 % der Nutzer Konkurrenz-Apps wegen technischer Reibung verlassen). Konzipiert mit <strong>„Invisible UX“</strong>-Workflows wie einer intelligenten Datei-Benennung, damit Produzenten Stems ohne administrativen Aufwand direkt in ihre DAW ziehen können.
+                        </p>
+                        <div class="currently-card-actions">
+                            <a href="https://marbledesignsystem2026.biguxenergy.workers.dev/" target="_blank" rel="noopener" class="proj-btn proj-btn-primary">
+                                <span class="lang-en">Marble Design System Guide ↗</span>
+                                <span class="lang-de">Marble Design System Guide ↗</span>
+                            </a>
+                            <a href="https://medium.com/@viktorenns/marble-music-match-invisible-ux" target="_blank" rel="noopener" class="proj-btn proj-btn-secondary">
+                                <span class="lang-en">Medium Case Study ↗</span>
+                                <span class="lang-de">Medium Fallstudie ↗</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <p class="qr-description">Scannen Sie den QR-Code, um mein vollständiges Profil, alle Socials und Projektdateien online einzusehen.</p>
+
+                <!-- Card 2: Comedy OS -->
+                <div class="currently-card" style="--card-glow-color: rgba(8, 67, 116, 0.25);">
+                    <div class="currently-card-visual">
+                        <div class="sometimes-card-photo-wrap">
+                            <div class="sometimes-card-carousel">
+                                <div class="carousel-slide">
+                                    <img src="assets/placeholder_comedy_app.png" alt="Comedy OS Semantic Search Dashboard Mockup" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/placeholder_comedy_stage.png" alt="Comedy Microphone on Stage" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/placeholder_comedy_medium.png" alt="Killing the Tag Medium Article Showcase" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="carousel-badge glass glass--pill"><span>1 / 3</span></div>
+                        </div>
+                    </div>
+                    <div class="currently-card-info">
+                        <span class="currently-card-kicker">02 / KNOWLEDGE INFRASTRUCTURE</span>
+                        <h3 class="currently-card-title">Comedy OS</h3>
+                        <p class="currently-card-desc lang-en">
+                            A zero-friction performance intelligence workspace for stand-up comedians. Avoids manual administrative "homework" by replacing traditional tags and folders with an AI-driven <strong>"Invisible Librarian" Semantic Vector Search</strong>. Uses progressive disclosure and silent behavioral tracking to guide users naturally away from legacy filing habits.
+                        </p>
+                        <p class="currently-card-desc lang-de">
+                            Ein reibungsloser Workspace für Stand-up-Comedians. Vermeidet manuellen Aufwand durch Ersetzen traditioneller Tags und Ordner durch eine KI-gestützte <strong>semantische Vektorsuche („Invisible Librarian“)</strong>. Nutzt Progressive Disclosure, um Nutzer sanft von alten Ablagegewohnheiten wegzuführen.
+                        </p>
+                        <div class="currently-card-actions">
+                            <a href="https://aistudio.google.com/comedy-research-agent" target="_blank" rel="noopener" class="proj-btn proj-btn-primary">
+                                <span class="lang-en">AI Research Agent ↗</span>
+                                <span class="lang-de">KI Research Agent ↗</span>
+                            </a>
+                            <a href="https://medium.com/@viktorenns/killing-the-tag-designing-invisible-organization-for-comedy-os-8bdc027000e4" target="_blank" rel="noopener" class="proj-btn proj-btn-secondary">
+                                <span class="lang-en">Medium Case Study ↗</span>
+                                <span class="lang-de">Medium Fallstudie ↗</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== SELECTED WORK SECTION ========== -->
+        <section class="work-pin" id="work" aria-label="Selected work">
+            <div class="work-sticky">
+                <div class="work-track">
+                    <div class="work-intro">
+                        <span class="eyebrow">
+                            <span class="eyebrow-num">04</span>
+                            <span class="eyebrow-line"></span>
+                            <span class="lang-en">Selected Work</span>
+                            <span class="lang-de">Ausgewählte Arbeiten</span>
+                        </span>
+                        <h2 class="work-headline">
+                            <span class="lang-en">What I build.<br><span class="serif">High-fidelity execution.</span></span>
+                            <span class="lang-de">Was ich baue.<br><span class="serif">High-Fidelity-Ausführung.</span></span>
+                        </h2>
+                        <p class="work-sub lang-en">Linking fast, pre-validated technical frameworks directly to development pipelines. Explore my product architectures below.</p>
+                        <p class="work-sub lang-de">Direkte Anbindung schneller, vorvalidierter technischer Frameworks an Entwicklungspipelines. Entdecken Sie meine Produkt-Architekturen unten.</p>
+                        <div class="work-arrow" aria-hidden="true">
+                            <span>↓</span>
+                        </div>
+                    </div>
+
+                    <!-- CARD 1: Marble Music Match -->
+                    <article class="work-card" style="--card-accent: #084374;">
+                        <header class="work-card-head">
+                            <span class="work-num">01</span>
+                            <span class="work-period lang-en">2025 — Now</span>
+                            <span class="work-period lang-de">2025 — Jetzt</span>
+                        </header>
+                        <div>
+                            <h3 class="work-name">Marble Music Match</h3>
+                            <p class="work-role lang-en">Co-Founder &amp; CPO</p>
+                            <p class="work-role lang-de">Mitgründer &amp; CPO</p>
+                            <p class="work-desc lang-en">
+                                Managed startup runway by establishing strict data validation. Engineered an ultra-lean MVP pipeline utilizing Cursor, Claude, and Firebase to bypass traditional alignment overhead.
+                            </p>
+                            <p class="work-desc lang-de">
+                                Sicherung der Startup-Runway durch Etablierung strikter Datenvalidierung. Entwicklung einer ultra-schlanken MVP-Pipeline mit Cursor, Claude und Firebase zur Umgehung traditioneller Abstimmungs-Overheads.
+                            </p>
+                        </div>
+                        <span class="work-link lang-en">Active Staging <span class="arrow">↗</span></span>
+                        <span class="work-link lang-de">Aktives Staging <span class="arrow">↗</span></span>
+                    </article>
+
+                    <!-- CARD 2: Comedy OS -->
+                    <article class="work-card" style="--card-accent: #419ED1;">
+                        <header class="work-card-head">
+                            <span class="work-num">02</span>
+                            <span class="work-period lang-en">2025 — Now</span>
+                            <span class="work-period lang-de">2025 — Jetzt</span>
+                        </header>
+                        <div>
+                            <h3 class="work-name">Comedy OS</h3>
+                            <p class="work-role lang-en">Founder &amp; AI Product Developer</p>
+                            <p class="work-role lang-de">Gründer &amp; KI-Produktentwickler</p>
+                            <p class="work-desc lang-en">
+                                Designed and coded a zero-friction perfomance workspace for comedians. Avoided tag-fatigue by replacing folders with an AI-driven "Invisible Librarian" Semantic Vector Search.
+                            </p>
+                            <p class="work-desc lang-de">
+                                Konzeption und Programmierung eines reibungslosen Performance-Workspaces für Comedians. Vermeidung von Tag-Müdigkeit durch Ersetzung von Ordnern durch eine KI-gestützte semantische Vektorsuche („Invisible Librarian“).
+                            </p>
+                        </div>
+                        <span class="work-link lang-en">Active Staging <span class="arrow">↗</span></span>
+                        <span class="work-link lang-de">Aktives Staging <span class="arrow">↗</span></span>
+                    </article>
+
+                    <!-- CARD 3: Energy4U -->
+                    <article class="work-card" style="--card-accent: #DE203C;">
+                        <header class="work-card-head">
+                            <span class="work-num">03</span>
+                            <span class="work-period">2024 — 2025</span>
+                        </header>
+                        <div>
+                            <h3 class="work-name">Energy4U</h3>
+                            <p class="work-role lang-en">Product Design Consultant</p>
+                            <p class="work-role lang-de">Berater für Produktdesign</p>
+                            <p class="work-desc lang-en">
+                                Navigated low-maturity enterprise environments. Coded frontend UI patterns directly, ensuring developer-ready components and eliminating friction in complex SAP environments.
+                            </p>
+                            <p class="work-desc lang-de">
+                                Navigation in Enterprise-Umgebungen mit geringem Reifegrad. Direkte Programmierung von Frontend-UI-Patterns zur Bereitstellung entwicklerfertiger Komponenten und Eliminierung von Reibung in komplexen SAP-Landschaften.
+                            </p>
+                        </div>
+                        <span class="work-link lang-en">Enterprise Staging <span class="arrow">↗</span></span>
+                        <span class="work-link lang-de">Enterprise Staging <span class="arrow">↗</span></span>
+                    </article>
+
+                    <!-- CARD 4: Dalay Zigarren -->
+                    <article class="work-card" style="--card-accent: #084374;">
+                        <header class="work-card-head">
+                            <span class="work-num">04</span>
+                            <span class="work-period">2011 — 2022</span>
+                        </header>
+                        <div>
+                            <h3 class="work-name">Dalay Zigarren</h3>
+                            <p class="work-role lang-en">Lead Product Strategist</p>
+                            <p class="work-role lang-de">Leitender Produktstratege</p>
+                            <p class="work-desc lang-en">
+                                Spearheaded ecommerce launches and omnichannel digital transformation with a €0 marketing budget. Shifted core target age from 65 to 35, quadrupled average order value.
+                            </p>
+                            <p class="work-desc lang-de">
+                                Federführung bei E-Commerce-Launches und Omnichannel-Digitalisierung mit 0 € Marketingbudget. Verjüngung des Kern-Zielgruppenalters von 65 auf 35 Jahre, Vervierfachung des durchschnittlichen Bestellwerts.
+                            </p>
+                        </div>
+                        <span class="work-link lang-en">Past Chapter <span class="arrow">↗</span></span>
+                        <span class="work-link lang-de">Vergangenes Kapitel <span class="arrow">↗</span></span>
+                    </article>
+
+                    <!-- CARD 5: Viktor Enns Fotografie & Branding -->
+                    <article class="work-card" style="--card-accent: #419ED1;">
+                        <header class="work-card-head">
+                            <span class="work-num">05</span>
+                            <span class="work-period">2011 — 2022</span>
+                        </header>
+                        <div>
+                            <h3 class="work-name">Viktor Enns Fotografie &amp; Branding</h3>
+                            <p class="work-role lang-en">Founder &amp; Creative Director</p>
+                            <p class="work-role lang-de">Gründer &amp; Creative Director</p>
+                            <p class="work-desc lang-en">
+                                International Portraiture &amp; Branding Agency. Founded and managed an agency for premium portrait photography and branding. Helped portrait beginners look like heroes within minutes as a posing specialist for men and women. "If you feel insecure being in front of the camera you are in the right hands with me." Guided luxury brands and award-winning chefs to elevate their product communications to the elite status their customers expect.
+                            </p>
+                            <p class="work-desc lang-de">
+                                Internationale Agentur für Porträt &amp; Branding. Gründung und Leitung einer Agentur für Premium-Porträtfotografie und Branding. Unterstützung von Porträt-Anfängern, innerhalb weniger Minuten wie Helden auszusehen – als Posing-Spezialist für Männer und Frauen. „Wenn Sie sich vor der Kamera unsicher fühlen, sind Sie bei mir in den besten Händen.“ Begleitung von Luxusmarken und preisgekrönten Köchen bei der Aufwertung ihrer Produktkommunikation auf das von ihren Kunden erwartete Statusniveau.
+                            </p>
+                        </div>
+                        <span class="work-link lang-en">Visual Legacy <span class="arrow">↗</span></span>
+                        <span class="work-link lang-de">Visuelles Erbe <span class="arrow">↗</span></span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== MARQUEE SECTION ========== -->
+        <section class="marquee" aria-hidden="true">
+            <div class="marquee-track">
+                <!-- EN -->
+                <span class="lang-en">Zero-Friction UX</span><span class="m-dot lang-en"></span>
+                <span class="lang-en">AI Architecture</span><span class="m-dot lang-en"></span>
+                <span class="lang-en">Marble Music Match</span><span class="m-dot lang-en"></span>
+                <span class="lang-en">Comedy OS</span><span class="m-dot lang-en"></span>
+                <span class="lang-en">15+ Years Experience</span><span class="m-dot lang-en"></span>
+                <span class="lang-en">Data-Driven Strategy</span><span class="m-dot lang-en"></span>
                 
-                <div class="print-only socials-list-print">
-                    <div class="print-social-item"><strong>LinkedIn:</strong> linkedin.com/in/uxviktorenns/</div>
-                    <div class="print-social-item"><strong>Medium:</strong> medium.com/@viktorenns</div>
-                    <div class="print-social-item"><strong>Behance:</strong> behance.net/viktorenns</div>
-                </div>
+                <!-- DE -->
+                <span class="lang-de">Reibungslose UX</span><span class="m-dot lang-de"></span>
+                <span class="lang-de">KI-Architektur</span><span class="m-dot lang-de"></span>
+                <span class="lang-de">Marble Music Match</span><span class="m-dot lang-de"></span>
+                <span class="lang-de">Comedy OS</span><span class="m-dot lang-de"></span>
+                <span class="lang-de">15+ Jahre Erfahrung</span><span class="m-dot lang-de"></span>
+                <span class="lang-de">Datengestützte Strategie</span><span class="m-dot lang-de"></span>
+
+                <!-- Duplicate Loop EN -->
+                <span class="lang-en">Zero-Friction UX</span><span class="m-dot lang-en"></span>
+                <span class="lang-en">AI Architecture</span><span class="m-dot lang-en"></span>
+                <span class="lang-en">Marble Music Match</span><span class="m-dot lang-en"></span>
+                <span class="lang-en">Comedy OS</span><span class="m-dot lang-en"></span>
+                <span class="lang-en">15+ Years Experience</span><span class="m-dot lang-en"></span>
+                <span class="lang-en">Data-Driven Strategy</span><span class="m-dot lang-en"></span>
+
+                <!-- Duplicate Loop DE -->
+                <span class="lang-de">Reibungslose UX</span><span class="m-dot lang-de"></span>
+                <span class="lang-de">KI-Architektur</span><span class="m-dot lang-de"></span>
+                <span class="lang-de">Marble Music Match</span><span class="m-dot lang-de"></span>
+                <span class="lang-de">Comedy OS</span><span class="m-dot lang-de"></span>
+                <span class="lang-de">15+ Jahre Erfahrung</span><span class="m-dot lang-de"></span>
+                <span class="lang-de">Datengestützte Strategie</span><span class="m-dot lang-de"></span>
+            </div>
+        </section>
+
+        <!-- ========== PAST PROFESSIONS SECTION ========== -->
+        <section class="past-professions" id="past-professions">
+            <span class="eyebrow" id="eyebrow-past-professions">
+                <span class="eyebrow-num">05</span>
+                <span class="eyebrow-line"></span>
+                <span class="lang-en">Roots — I Used to Do This For a Living</span>
+                <span class="lang-de">Wurzeln — Das habe ich früher beruflich gemacht</span>
+            </span>
+
+            <div class="past-professions-header">
+                <h2 class="serif section-title">
+                    <span class="lang-en">I used to do this for a living:</span>
+                    <span class="lang-de">Damit habe ich früher mein Geld verdient:</span>
+                </h2>
             </div>
 
-            <!-- Social Media Handles (Interactive view) -->
-            <div class="sidebar-section social-handles no-print">
-                <h2>Social Media</h2>
-                <ul class="socials-list">
-                    <li>
-                        <a href="https://www.linkedin.com/in/uxviktorenns/" target="_blank">
-                            <span class="social-icon">in</span>
-                            <div class="social-details">
-                                <span class="platform">LinkedIn</span>
-                                <span class="handle">@uxviktorenns</span>
+            <div class="past-cards-container">
+                <!-- Card 1: Photography -->
+                <div class="past-card">
+                    <div class="past-card-visual-wrap">
+                        <div class="sometimes-card-photo-wrap">
+                            <div class="sometimes-card-carousel">
+                                <div class="carousel-slide">
+                                    <img src="assets/placeholder_weddings.png" alt="Wedding photography" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/placeholder_events.png" alt="Event photography" loading="lazy">
+                                </div>
                             </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://medium.com/@viktorenns" target="_blank">
-                            <span class="social-icon">M</span>
-                            <div class="social-details">
-                                <span class="platform">Medium (UX)</span>
-                                <span class="handle">@viktorenns</span>
+                            <div class="carousel-badge glass glass--pill"><span>1 / 2</span></div>
+                        </div>
+                    </div>
+                    <div class="past-card-text-box">
+                        <span class="past-card-kicker">01 / PHOTOGRAPHY</span>
+                        <h3 class="past-card-heading">
+                            <span class="lang-en">Wedding & Event Photography</span>
+                            <span class="lang-de">Hochzeit- & Eventfotografie</span>
+                        </h3>
+                        <p class="past-card-description">
+                            <span class="lang-en">I photographed weddings and events, which gave me an intimate understanding of deadlines, pressure, and the critical importance of being on time.</span>
+                            <span class="lang-de">Fotografie von Hochzeiten und Events — dadurch habe ich ein tiefes Verständnis für Deadlines und die kritische Bedeutung von absoluter Pünktlichkeit gewonnen.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 2: Audio Engineering -->
+                <div class="past-card">
+                    <div class="past-card-visual-wrap">
+                        <div class="sometimes-card-photo-wrap">
+                            <div class="sometimes-card-carousel">
+                                <div class="carousel-slide">
+                                    <img src="assets/placeholder_audio.png" alt="Audio mixing console" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/placeholder_recording.png" alt="Studio microphone" loading="lazy">
+                                </div>
                             </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.behance.net/viktorenns" target="_blank">
-                            <span class="social-icon">Bē</span>
-                            <div class="social-details">
-                                <span class="platform">Behance (Photo)</span>
-                                <span class="handle">viktorenns</span>
+                            <div class="carousel-badge glass glass--pill"><span>1 / 2</span></div>
+                        </div>
+                    </div>
+                    <div class="past-card-text-box">
+                        <span class="past-card-kicker">02 / AUDIO ENGINEERING</span>
+                        <h3 class="past-card-heading">
+                            <span class="lang-en">Live & Studio Audio Technology</span>
+                            <span class="lang-de">Live- & Studio-Tontechnik</span>
+                        </h3>
+                        <p class="past-card-description">
+                            <span class="lang-en">Toured with musicians as an audio technician and recorded music in studios, developing a deep understanding of the extreme pressure of live performances.</span>
+                            <span class="lang-de">Tourneen mit Musikern als Tontechniker und Musikaufnahmen im Studio — daher kenne ich den enormen Druck und die Anforderungen von Live-Auftritten im Detail.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 3: Podcasting & Marketing -->
+                <div class="past-card">
+                    <div class="past-card-visual-wrap">
+                        <div class="sometimes-card-photo-wrap">
+                            <div class="sometimes-card-carousel">
+                                <div class="carousel-slide">
+                                    <img src="assets/placeholder_podcast.png" alt="Podcast microphone with whiskey and cigar" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/placeholder_cigars.png" alt="Cigars and luxury branding" loading="lazy">
+                                </div>
                             </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://instagram.com/viktorenns" target="_blank">
-                            <span class="social-icon">IG</span>
-                            <div class="social-details">
-                                <span class="platform">Instagram</span>
-                                <span class="handle">@viktorenns</span>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
+                            <div class="carousel-badge glass glass--pill"><span>1 / 2</span></div>
+                        </div>
+                    </div>
+                    <div class="past-card-text-box">
+                        <span class="past-card-kicker">03 / REGULATED MARKETING</span>
+                        <h3 class="past-card-heading">
+                            <span class="lang-en">Podcast Production & Luxury Marketing</span>
+                            <span class="lang-de">Podcast-Produktion & Luxus-Marketing</span>
+                        </h3>
+                        <p class="past-card-description">
+                            <span class="lang-en">Built and promoted a podcast in a highly regulated market (luxury alcohol and limited edition cigars), mastering the art of marketing a difficult and sensitive product.</span>
+                            <span class="lang-de">Aufbau und Vermarktung eines Podcasts in einem stark regulierten Markt (Premium-Alkohol und limitierte Zigarren) — so habe ich gelernt, hochsensible und anspruchsvolle Produkte erfolgreich zu vermarkten.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== "SOMETIMES VIKTOR..." SECTION ========== -->
+        <section class="life" id="life">
+            <span class="eyebrow" id="eyebrow-sometimes">
+                <span class="eyebrow-num">06</span>
+                <span class="eyebrow-line"></span>
+                <span class="lang-en">Off the Clock — Sometimes...</span>
+                <span class="lang-de">Nach Feierabend — Manchmal...</span>
+            </span>
+
+            <div style="margin-bottom: 40px; max-width: 600px;">
+                <h2 class="serif" style="font-size: 2.2rem; font-weight: 500; margin-bottom: 12px;">
+                    <span class="lang-en">I used to take portraits of people for a living. Now I don't (so much).</span>
+                    <span class="lang-de">Ich habe früher meinen Lebensunterhalt mit Porträtfotografie verdient. Heute nicht mehr (so oft).</span>
+                </h2>
+                <p class="muted lang-en">Instead, my design brain lives in the details of the everyday human experience. Here is a little flair about how I see the world and what keeps me excited off the clock.</p>
+                <p class="muted lang-de">Stattdessen lebt mein Design-Denken in den Details des alltäglichen menschlichen Erlebens. Hier ist ein kleiner Einblick, wie ich die Welt sehe und was mich nach Feierabend begeistert.</p>
             </div>
 
-            <!-- Education -->
-            <div class="sidebar-section education-section" id="education-box">
-                <h2>Ausbildung</h2>
-                <div class="edu-item">
-                    <span class="date">2023</span>
-                    <h4>UX / UI Design Zertifikat</h4>
-                    <p class="school">Ironhack Berlin</p>
-                    <p class="details">Abschluss als Jahrgangsbester. Leitung aller 4 großen Praxisprojekte.</p>
-                </div>
-                <div class="edu-item">
-                    <span class="date">2013 – 2014</span>
-                    <h4>Kulturwissenschaften & Anglistik</h4>
-                    <p class="school">Universität des Saarlandes</p>
-                    <p class="details">Fokus: British Cultural Studies & Bildwissenschaften.</p>
-                </div>
-            </div>
-        </aside>
+            <!-- MASONRY / CARD GRID POPULATED BY SOMETIMES BITS & BILDER -->
+            <div class="sometimes-grid">
 
-        <!-- MAIN CONTENT COLUMN -->
-        <main class="main-content">
-            
-            <!-- Header Block -->
-            <header class="portfolio-header">
-                <h1>Viktor Enns</h1>
-                <p class="tagline">Senior Product Strategist & AI Architect</p>
-                
-                <div class="profile-summary">
-                    <p>Krisenerprobter Product Strategist und AI Architect mit über 15 Jahren Erfahrung in der Skalierung von Umsätzen, der Optimierung operativer Effizienz und der Leitung technischer Architekturen. Ich verbinde nutzerzentriertes Design mit fortschrittlichen AI-Coding-Workflows (React, TypeScript, Firebase) und eliminiere den üblichen funktionsübergreifenden Abstimmungsaufwand, um die Time-to-Market massiv zu beschleunigen. Durch die Kombination von tiefgreifender verhaltenspsychologischer Problemlösungskompetenz und rigoroser Systemarchitektur übersetze ich komplexe Geschäftsziele in skalierbare Produkte und schütze gleichzeitig Investorenkapital durch datengetriebene UX-Forschung.</p>
-                </div>
-            </header>
-
-            <!-- Experience Timeline -->
-            <section class="portfolio-section experience-section">
-                <h2 class="section-title">Berufserfahrung</h2>
-                <div class="timeline">
-                    
-                    <!-- Job 1 -->
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <div>
-                                <h3>Co-Founder & Chief Product Officer (CPO)</h3>
-                                <span class="company">Marble Music Match | Saarbrücken / Remote</span>
-                            </div>
-                            <span class="duration">11.2025 – Heute</span>
-                        </div>
-                        <ul class="bullet-list">
-                            <li><strong>Strategischer Kapitalschutz:</strong> Sicherung des Startup-Runways durch Veto gegen risikoreichen Social-Media-Pivot ("Tinder & Instagram für Musiker"), untermauert durch Wettbewerbsanalysen und qualitative Nutzertests.</li>
-                            <li><strong>Stakeholder-Management:</strong> Etablierung empirischer Frameworks statt Bauchgefühl-Entscheidungen, indem das Management-Team direkt in Nutzertests integriert und Vorbehalte konstruktiv aufgelöst wurden.</li>
-                            <li><strong>AI-Driven MVP Pipeline:</strong> Entwicklung einer agilen MVP-Entwicklungspipeline unter Einsatz von Cursor, Antigravity und Firebase. Drastische Reduzierung der Time-to-Market durch Bereitstellung validierter technischer Frameworks.</li>
-                        </ul>
-                    </div>
-
-                    <!-- Job 2 -->
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <div>
-                                <h3>Founder & AI Product Developer</h3>
-                                <span class="company">Comedy OS | Austin, TX Hub / Remote</span>
-                            </div>
-                            <span class="duration">03.2025 – Heute</span>
-                        </div>
-                        <ul class="bullet-list">
-                            <li><strong>Geofenced Go-to-Market:</strong> Umsetzung einer lokalisierten Netzwerkeffekt-Strategie mit High-Touch Concierge-Onboarding zur Identifikation von Produktivitäts-Engpässen.</li>
-                            <li><strong>AI Research Infrastructure:</strong> Konzeption und Entwicklung eines KI-gestützten Research-Assistenten mit React-Frontend und Gemini-Backend zur Erfassung qualitativer Daten ohne Befragungsmüdigkeit.</li>
-                        </ul>
-                    </div>
-
-                    <!-- Job 3 -->
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <div>
-                                <h3>Product Design Consultant</h3>
-                                <span class="company">Energy4U | Remote</span>
-                            </div>
-                            <span class="duration">09.2024 – 02.2025</span>
-                        </div>
-                        <ul class="bullet-list">
-                            <li><strong>Enterprise-Optimierung:</strong> UX-Design und strategische Produktberatung im komplexen SAP-Enterprise-Umfeld. Autonome Initiierung und erfolgreicher Pitch struktureller Verbesserungen auf C-Level.</li>
-                            <li><strong>Engineering Alignment:</strong> Überbrückung der Handoff-Reibung durch aktive Frontend-Entwicklung (TypeScript, HTML, CSS) und Gewährleistung der Skalierbarkeit.</li>
-                        </ul>
-                    </div>
-
-                    <!-- Job 4 -->
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <div>
-                                <h3>Lead Product Strategist</h3>
-                                <span class="company">Dalay Zigarren | International</span>
-                            </div>
-                            <span class="duration">04.2015 – 11.2022</span>
-                        </div>
-                        <ul class="bullet-list">
-                            <li><strong>Digitale Transformation (Zero-Budget):</strong> Aufbau des E-Commerce-Kanals ohne Paid Marketing. Verjüngung der Kernzielgruppe von 65 auf 35 Jahre und Stabilisierung der gesamten Finanzstruktur.</li>
-                            <li><strong>Umsatzsteigerung:</strong> Vervierfachung des durchschnittlichen Bestellwerts (von 25 € auf über 100 €) und Steigerung der täglichen Transaktionen um 300 % durch Omnichannel-UX-Optimierungen.</li>
-                            <li><strong>Global Sourcing & Operations:</strong> Leitung von Eigenmarken-Rebrandings in der Dominikanischen Republik und Koordination physischer High-End Marken-Events mit Global Players (z.B. Davidoff, LVMH, Scandinavian Tobacco).</li>
-                            <li><strong>Krisenlogistik & Restrukturierung:</strong> Aufbau alternativer Überland-Lieferwege aus Asien während der COVID-Lieferkettenkrise zur Margensicherung. Konsolidierung des Sortiments um 50 % unproduktiver SKUs basierend auf Datenanalysen.</li>
-                        </ul>
-                    </div>
-
-                </div>
-            </section>
-
-            <!-- Skills & Badges -->
-            <section class="portfolio-section skills-section">
-                <div class="skills-grid">
-                    
-                    <!-- Tech Stack -->
-                    <div class="skills-column">
-                        <h2 class="section-title">Tech Stack & Tools</h2>
-                        <div class="badge-group">
-                            <span class="badge badge-tech">React</span>
-                            <span class="badge badge-tech">TypeScript</span>
-                            <span class="badge badge-tech">Flutter (Dart)</span>
-                            <span class="badge badge-tech">HTML5 & CSS3</span>
-                            <span class="badge badge-tech">Firebase</span>
-                            <span class="badge badge-tech">Cloudflare (Pages/Workers)</span>
-                            <span class="badge badge-tech">Google Cloud (GCP)</span>
-                            <span class="badge badge-tech">Tailwind CSS</span>
-                            <span class="badge badge-tech">Gemini & Claude API</span>
-                            <span class="badge badge-tech">n8n Automation</span>
-                            <span class="badge badge-tech">Figma (Variables/Auto-Layout)</span>
-                            <span class="badge badge-tech">Android Studio</span>
-                            <span class="badge badge-tech">Adobe Photoshop (Experte)</span>
-                            <span class="badge badge-tech">Premiere & Lightroom</span>
-                            <span class="badge badge-tech">Git / GitHub</span>
-                        </div>
-                    </div>
-
-                    <!-- Methods / Competencies -->
-                    <div class="skills-column" id="competencies-box">
-                        <h2 class="section-title">Strategien & Methoden</h2>
-                        <div class="badge-group">
-                            <span class="badge badge-method">Blameless Behavioral Troubleshooting</span>
-                            <span class="badge badge-method">AI System Debugging</span>
-                            <span class="badge badge-method">Multi-Agent-Architekturen</span>
-                            <span class="badge badge-method">Qualitative User Interviews</span>
-                            <span class="badge badge-method">Omnichannel Service Design</span>
-                            <span class="badge badge-method">Global Supply Sourcing</span>
-                            <span class="badge badge-method">Product Rebranding</span>
-                            <span class="badge badge-method">SKU Rationalization</span>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
-            <!-- PROJECTS SHOWCASE -->
-            <section class="portfolio-section projects-section" id="projects-container">
-                
-                <!-- UX Projects Sub-Grid -->
-                <div class="projects-focus-block" id="ux-focus-block">
-                    <h2 class="section-title focus-title">UX & AI Portfolio (Medium)</h2>
-                    <div class="projects-grid">
+                <!-- 01 / FAUCETS -->
+                <div class="sometimes-card" onclick="openLightbox('[&quot;faucet PXL_20240712_095731442.jpg&quot;, &quot;faucet PXL_20241102_145643138.jpg&quot;, &quot;faucet PXL_20260416_122446647.mp4&quot;, &quot;faucet normal PXL_20260529_182818229.jpg&quot;]', 'Dark UX', 'Dark UX', 'Faucets', 'Wasserhähne', 'Very often I get upset by boss-level difficulty water faucets in public restrooms. They are the absolute definition of dark UX. Guess how this faucet works...', 'Sehr oft ärgere ich mich über Wasserhähne mit Bossgegner-Schwierigkeitsgrad in öffentlichen Toiletten. Sie sind die absolute Definition von Dark UX. Rate mal, wie dieser Wasserhahn funktioniert...', '01 / FAUCETS')" role="button" aria-label="Open preview for Faucets">
+                    <div class="sometimes-card-photo-wrap">
                         
-                        <!-- UX Project 1 -->
-                        <div class="project-card">
-                            <div class="project-header">
-                                <h3>Building a QR code generator with AI</h3>
-                                <span class="project-tag">AI Product</span>
-                            </div>
-                            <p>Konzeption und Entwicklung von "Qrispy", einem intelligenten und ästhetisch anspruchsvollen QR-Code-Generator für komplexe URLs, Überweisungsdaten und Adressformate.</p>
-                            <a href="https://medium.com/@viktorenns" target="_blank" class="project-link no-print">
-                                Artikel auf Medium lesen 
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
-                            </a>
+                        <div class="sometimes-card-carousel">
+                            <div class="carousel-slide"><img src="assets/sometimes/faucet PXL_20240712_095731442.jpg" alt="Faucets" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/faucet PXL_20241102_145643138.jpg" alt="Faucets" loading="lazy"></div><div class="carousel-slide"><video src="assets/sometimes/faucet PXL_20260416_122446647.mp4" autoplay muted loop playsinline></video></div><div class="carousel-slide"><img src="assets/sometimes/faucet normal PXL_20260529_182818229.jpg" alt="Faucets" loading="lazy"></div>
                         </div>
-
-                        <!-- UX Project 2 -->
-                        <div class="project-card">
-                            <div class="project-header">
-                                <h3>Invisible Organization for Comedy OS</h3>
-                                <span class="project-tag">UX Strategy</span>
-                            </div>
-                            <p>Lösung der klassischen Nutzer-Organisationsmüdigkeit durch die Implementierung von semantischer Suche und Progressive Disclosure im Comedy OS.</p>
-                            <a href="https://medium.com/@viktorenns" target="_blank" class="project-link no-print">
-                                Artikel auf Medium lesen 
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
-                            </a>
-                        </div>
-
-                        <!-- UX Project 3 -->
-                        <div class="project-card">
-                            <div class="project-header">
-                                <h3>Samurai Video with Whisk & Veo</h3>
-                                <span class="project-tag">AI Design Research</span>
-                            </div>
-                            <p>Ein experimentelles KI-Designprojekt, das statische Studioporträts mithilfe hochentwickelter Google Labs Generative-Video-Modelle in kinematografische Sequenzen übersetzt.</p>
-                            <a href="https://medium.com/@viktorenns" target="_blank" class="project-link no-print">
-                                Artikel auf Medium lesen 
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
-                            </a>
-                        </div>
-
-                        <!-- UX Project 4 -->
-                        <div class="project-card">
-                            <div class="project-header">
-                                <h3>Visual Brand Identity for Shop Chef</h3>
-                                <span class="project-tag">Brand Design</span>
-                            </div>
-                            <p>Entwicklung der gesamten visuellen Markenidentität und Systemdesign-Leitlinien für einen KI-gestützten E-Commerce Einkaufs- und Kochanstifter.</p>
-                            <a href="https://medium.com/@viktorenns" target="_blank" class="project-link no-print">
-                                Artikel auf Medium lesen 
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
-                            </a>
-                        </div>
-
-                        <!-- UX Project 5 -->
-                        <div class="project-card">
-                            <div class="project-header">
-                                <h3>Marble Design System</h3>
-                                <span class="project-tag">Design System</span>
-                            </div>
-                            <p>Entwicklung eines plattformübergreifenden, tokenbasierten Design-Systems für die Musik-Plattform "Marble Music Match". Fokus auf Figma-to-Code Übergaben, mobile & Web-Komponenten und Konsistenz.</p>
-                            <a href="https://medium.com/@viktorenns" target="_blank" class="project-link no-print">
-                                Artikel auf Medium lesen 
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
-                            </a>
-                        </div>
-
+                        <div class="carousel-badge glass glass--pill"><span>1 / 4</span></div>
                     </div>
+                    <span class="sometimes-tag">
+                        <span class="lang-en">Dark UX</span>
+                        <span class="lang-de">Dark UX</span>
+                    </span>
+                    <p class="sometimes-text">
+                        <span class="lang-en">“Very often I get upset by boss-level difficulty water faucets in public restrooms. They are the absolute definition of dark UX. Guess how this faucet works...”</span>
+                        <span class="lang-de">„Sehr oft ärgere ich mich über Wasserhähne mit Bossgegner-Schwierigkeitsgrad in öffentlichen Toiletten. Sie sind die absolute Definition von Dark UX. Rate mal, wie dieser Wasserhahn funktioniert...“</span>
+                    </p>
+                    <span class="sometimes-num">
+                        <span class="lang-en">01 / FAUCETS</span>
+                        <span class="lang-de">01 / WASSERHÄHNE</span>
+                    </span>
                 </div>
-
-                <!-- Photography Projects Sub-Grid -->
-                <div class="projects-focus-block" id="photo-focus-block">
-                    <h2 class="section-title focus-title">Fotografie & Art Direction (Behance)</h2>
-                    <div class="projects-grid">
+                <!-- 02 / HARDWARE -->
+                <div class="sometimes-card" onclick="openLightbox('[&quot;dram PXL_20260506_180835151.jpg&quot;, &quot;dram PXL_20260506_181702952.jpg&quot;, &quot;dram PXL_20260506_200308592.jpg&quot;]', 'Optimization', 'Optimierung', 'DRAM Configuration', 'DRAM-Konfiguration', 'Sometimes I configure DRAM timings because faster is better or something like that.', 'Manchmal konfiguriere ich DRAM-Timings, weil schneller besser ist oder so ähnlich.', '02 / HARDWARE')" role="button" aria-label="Open preview for Hardware">
+                    <div class="sometimes-card-photo-wrap">
                         
-                        <!-- Photo Project 1 -->
-                        <div class="project-card photo-card">
-                            <div class="project-header">
-                                <h3>Confessions of a Cigar Photographer</h3>
-                                <span class="project-tag tag-photo">Commercial Photo</span>
-                            </div>
-                            <p>Werbe- und Produktfotografie für High-End Genussprodukte. Fokus auf Materialität, Rauchästhetik und extreme Makroretusche.</p>
-                            <a href="https://www.behance.net/viktorenns" target="_blank" class="project-link no-print">
-                                Showcase auf Behance 
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
-                            </a>
+                        <div class="sometimes-card-carousel">
+                            <div class="carousel-slide"><img src="assets/sometimes/dram PXL_20260506_180835151.jpg" alt="Hardware" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/dram PXL_20260506_181702952.jpg" alt="Hardware" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/dram PXL_20260506_200308592.jpg" alt="Hardware" loading="lazy"></div>
                         </div>
-
-                        <!-- Photo Project 2 -->
-                        <div class="project-card photo-card">
-                            <div class="project-header">
-                                <h3>Klaus Erforts Maisacker</h3>
-                                <span class="project-tag tag-photo">Gourmet & Editorial</span>
-                            </div>
-                            <p>Kulinarische Reportage und Porträts für den renommierten Restaurantführer Gault Millau beim 3-Sterne-Koch Klaus Erfort.</p>
-                            <a href="https://www.behance.net/viktorenns" target="_blank" class="project-link no-print">
-                                Showcase auf Behance 
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
-                            </a>
-                        </div>
-
-                        <!-- Photo Project 3 -->
-                        <div class="project-card photo-card">
-                            <div class="project-header">
-                                <h3>Lamar - Bespoke Portraiture</h3>
-                                <span class="project-tag tag-photo">Fine Art Portrait</span>
-                            </div>
-                            <p>Konzeptionelle Porträtfotografie mit Fokus auf dramatische, reduzierte Lichtführung und psychologische Tiefe.</p>
-                            <a href="https://www.behance.net/viktorenns" target="_blank" class="project-link no-print">
-                                Showcase auf Behance 
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
-                            </a>
-                        </div>
-
-                        <!-- Photo Project 4 -->
-                        <div class="project-card photo-card">
-                            <div class="project-header">
-                                <h3>Zigarrenabend im Spiegelpalais</h3>
-                                <span class="project-tag tag-photo">Event Art Direction</span>
-                            </div>
-                            <p>Art Direction und atmosphärische Bildbegleitung eines Premium-Events im Spiegelpalais (Kunz Theatre) für exklusive B2B-Markenpartner.</p>
-                            <a href="https://www.behance.net/viktorenns" target="_blank" class="project-link no-print">
-                                Showcase auf Behance 
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
-                            </a>
-                        </div>
-
+                        <div class="carousel-badge glass glass--pill"><span>1 / 3</span></div>
                     </div>
+                    <span class="sometimes-tag">
+                        <span class="lang-en">Optimization</span>
+                        <span class="lang-de">Optimierung</span>
+                    </span>
+                    <p class="sometimes-text">
+                        <span class="lang-en">“Sometimes I configure DRAM timings because faster is better or something like that.”</span>
+                        <span class="lang-de">„Manchmal konfiguriere ich DRAM-Timings, weil schneller besser ist oder so ähnlich.“</span>
+                    </p>
+                    <span class="sometimes-num">
+                        <span class="lang-en">02 / HARDWARE</span>
+                        <span class="lang-de">02 / DRAM-KONFIGURATION</span>
+                    </span>
                 </div>
+                <!-- 03 / PC BUILDING -->
+                <div class="sometimes-card" onclick="openLightbox('[&quot;build pc PXL_20260506_182742058.jpg&quot;, &quot;build pc PXL_20260515_104725295.jpg&quot;, &quot;pc part PSU corsair PXL_20260507_120705271.jpg&quot;, &quot;pc part strange PXL_20260515_134304258.jpg&quot;]', 'Hardware Surgery', 'Hardware-Chirurgie', 'Custom PC Building', 'Individueller PC-Bau', 'Sometimes I take PCs apart and put them back together. Sometimes I build them from scratch. What does this ASUS controller do? No one knows.', 'Manchmal nehme ich PCs auseinander und baue sie wieder zusammen. Manchmal baue ich sie von Grund auf neu. Was macht dieser ASUS-Controller? Niemand weiß es.', '03 / PC BUILDING')" role="button" aria-label="Open preview for PC Building">
+                    <div class="sometimes-card-photo-wrap">
+                        
+                        <div class="sometimes-card-carousel">
+                            <div class="carousel-slide"><img src="assets/sometimes/build pc PXL_20260506_182742058.jpg" alt="PC Building" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/build pc PXL_20260515_104725295.jpg" alt="PC Building" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/pc part PSU corsair PXL_20260507_120705271.jpg" alt="PC Building" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/pc part strange PXL_20260515_134304258.jpg" alt="PC Building" loading="lazy"></div>
+                        </div>
+                        <div class="carousel-badge glass glass--pill"><span>1 / 4</span></div>
+                    </div>
+                    <span class="sometimes-tag">
+                        <span class="lang-en">Hardware Surgery</span>
+                        <span class="lang-de">Hardware-Chirurgie</span>
+                    </span>
+                    <p class="sometimes-text">
+                        <span class="lang-en">“Sometimes I take PCs apart and put them back together. Sometimes I build them from scratch. What does this ASUS controller do? No one knows.”</span>
+                        <span class="lang-de">„Manchmal nehme ich PCs auseinander und baue sie wieder zusammen. Manchmal baue ich sie von Grund auf neu. Was macht dieser ASUS-Controller? Niemand weiß es.“</span>
+                    </p>
+                    <span class="sometimes-num">
+                        <span class="lang-en">03 / PC BUILDING</span>
+                        <span class="lang-de">03 / INDIVIDUELLER PC-BAU</span>
+                    </span>
+                </div>
+                <!-- 04 / ESPRESSO -->
+                <div class="sometimes-card" onclick="openLightbox('[&quot;espresso machine wires PXL_20260527_135352752.jpg&quot;, &quot;coffee PXL_20230602_134344928.jpg&quot;, &quot;coffee PXL_20260416_115731357.jpg&quot;]', 'Engineering', 'Ingenieurwesen', 'Espresso Machine Wires', 'Kaffeemaschinen-Wartung', 'Sometimes I take apart my espresso machine and put it back together.', 'Manchmal nehme ich meine Espressomaschine auseinander und baue sie wieder zusammen.', '04 / ESPRESSO')" role="button" aria-label="Open preview for Espresso">
+                    <div class="sometimes-card-photo-wrap">
+                        
+                        <div class="sometimes-card-carousel">
+                            <div class="carousel-slide"><img src="assets/sometimes/espresso machine wires PXL_20260527_135352752.jpg" alt="Espresso" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/coffee PXL_20230602_134344928.jpg" alt="Espresso" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/coffee PXL_20260416_115731357.jpg" alt="Espresso" loading="lazy"></div>
+                        </div>
+                        <div class="carousel-badge glass glass--pill"><span>1 / 3</span></div>
+                    </div>
+                    <span class="sometimes-tag">
+                        <span class="lang-en">Engineering</span>
+                        <span class="lang-de">Ingenieurwesen</span>
+                    </span>
+                    <p class="sometimes-text">
+                        <span class="lang-en">“Sometimes I take apart my espresso machine and put it back together.”</span>
+                        <span class="lang-de">„Manchmal nehme ich meine Espressomaschine auseinander und baue sie wieder zusammen.“</span>
+                    </p>
+                    <span class="sometimes-num">
+                        <span class="lang-en">04 / ESPRESSO</span>
+                        <span class="lang-de">04 / KAFFEEMASCHINEN-WARTUNG</span>
+                    </span>
+                </div>
+                <!-- 05 / PORTUGAL -->
+                <div class="sometimes-card" onclick="openLightbox('[&quot;azulejos PXL_20250422_144137898.jpg&quot;, &quot;azulejos PXL_20250422_144303103.jpg&quot;, &quot;azulejos PXL_20250422_144411370.jpg&quot;, &quot;azulejos PXL_20250422_150751128.jpg&quot;]', 'Aesthetics', 'Ästhetik', 'Portuguese Tiles', 'Portugiesische Fliesen', 'Sometimes I look at tiles (azuleju).', 'Manchmal schaue ich mir Fliesen (Azulejos) an.', '05 / PORTUGAL')" role="button" aria-label="Open preview for Portugal">
+                    <div class="sometimes-card-photo-wrap">
+                        
+                        <div class="sometimes-card-carousel">
+                            <div class="carousel-slide"><img src="assets/sometimes/azulejos PXL_20250422_144137898.jpg" alt="Portugal" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/azulejos PXL_20250422_144303103.jpg" alt="Portugal" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/azulejos PXL_20250422_144411370.jpg" alt="Portugal" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/azulejos PXL_20250422_150751128.jpg" alt="Portugal" loading="lazy"></div>
+                        </div>
+                        <div class="carousel-badge glass glass--pill"><span>1 / 4</span></div>
+                    </div>
+                    <span class="sometimes-tag">
+                        <span class="lang-en">Aesthetics</span>
+                        <span class="lang-de">Ästhetik</span>
+                    </span>
+                    <p class="sometimes-text">
+                        <span class="lang-en">“Sometimes I look at tiles (azuleju).”</span>
+                        <span class="lang-de">„Manchmal schaue ich mir Fliesen (Azulejos) an.“</span>
+                    </p>
+                    <span class="sometimes-num">
+                        <span class="lang-en">05 / PORTUGAL</span>
+                        <span class="lang-de">05 / PORTUGIESISCHE FLIESEN</span>
+                    </span>
+                </div>
+                <!-- 06 / LIGHT QUALITY -->
+                <div class="sometimes-card" onclick="openLightbox('[&quot;hand PXL_20250419_202254174.jpg&quot;, &quot;light PXL_20250111_130135962.jpg&quot;, &quot;light PXL_20250131_112855299.jpg&quot;, &quot;light PXL_20260225_122648924.jpg&quot;, &quot;light PXL_20260422_172857435.MP~2.jpg&quot;]', 'Light Quality', 'Lichtqualität', 'Judging Light Quality', 'Lichtqualität beurteilen', 'Sometimes I use my hand to judge the quality of light so I can take a better picture.', 'Manchmal benutze ich meine Hand, um die Qualität des Lichts zu beurteilen, damit ich ein besseres Foto machen kann.', '06 / LIGHT QUALITY')" role="button" aria-label="Open preview for Light Quality">
+                    <div class="sometimes-card-photo-wrap">
+                        
+                        <div class="sometimes-card-carousel">
+                            <div class="carousel-slide"><img src="assets/sometimes/hand PXL_20250419_202254174.jpg" alt="Light Quality" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/light PXL_20250111_130135962.jpg" alt="Light Quality" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/light PXL_20250131_112855299.jpg" alt="Light Quality" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/light PXL_20260225_122648924.jpg" alt="Light Quality" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/light PXL_20260422_172857435.MP~2.jpg" alt="Light Quality" loading="lazy"></div>
+                        </div>
+                        <div class="carousel-badge glass glass--pill"><span>1 / 5</span></div>
+                    </div>
+                    <span class="sometimes-tag">
+                        <span class="lang-en">Light Quality</span>
+                        <span class="lang-de">Lichtqualität</span>
+                    </span>
+                    <p class="sometimes-text">
+                        <span class="lang-en">“Sometimes I use my hand to judge the quality of light so I can take a better picture.”</span>
+                        <span class="lang-de">„Manchmal benutze ich meine Hand, um die Qualität des Lichts zu beurteilen, damit ich ein besseres Foto machen kann.“</span>
+                    </p>
+                    <span class="sometimes-num">
+                        <span class="lang-en">06 / LIGHT QUALITY</span>
+                        <span class="lang-de">06 / LICHTQUALITÄT BEURTEILEN</span>
+                    </span>
+                </div>
+                <!-- 07 / ŚLIMAK -->
+                <div class="sometimes-card" onclick="openLightbox('[&quot;slimak PXL_20240420_090938869.jpg&quot;, &quot;slimak PXL_20250418_212337733.jpg&quot;]', 'Snail Meme', 'Schnecken-Meme', 'Ślimak (Slugs)', 'Ślimak (Nacktschnecken)', 'Ślimak. (Slugs I sometimes find and photograph. A reference to the legendary Polish &lt;a href=&quot;https://www.youtube.com/watch?v=A3nFhLpxlXk&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&quot;Ślimak, ślimak, pokaż rogi&quot;&lt;/a&gt; nursery rhyme and meme culture.)', 'Ślimak. (Nacktschnecken, die ich manchmal finde und fotografiere. Eine Anspielung auf das legendäre polnische Kinderlied und Meme &lt;a href=&quot;https://www.youtube.com/watch?v=A3nFhLpxlXk&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;„Ślimak, ślimak, pokaż rogi“&lt;/a&gt;.)', '07 / ŚLIMAK')" role="button" aria-label="Open preview for Ślimak">
+                    <div class="sometimes-card-photo-wrap">
+                        
+                        <div class="sometimes-card-carousel">
+                            <div class="carousel-slide"><img src="assets/sometimes/slimak PXL_20240420_090938869.jpg" alt="Ślimak" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/slimak PXL_20250418_212337733.jpg" alt="Ślimak" loading="lazy"></div>
+                        </div>
+                        <div class="carousel-badge glass glass--pill"><span>1 / 2</span></div>
+                    </div>
+                    <span class="sometimes-tag">
+                        <span class="lang-en">Snail Meme</span>
+                        <span class="lang-de">Schnecken-Meme</span>
+                    </span>
+                    <p class="sometimes-text">
+                        <span class="lang-en">“Ślimak. (Slugs I sometimes find and photograph. A reference to the legendary Polish <a href="https://www.youtube.com/watch?v=A3nFhLpxlXk" target="_blank" rel="noopener">"Ślimak, ślimak, pokaż rogi"</a> nursery rhyme and meme culture.)”</span>
+                        <span class="lang-de">„Ślimak. (Nacktschnecken, die ich manchmal finde und fotografiere. Eine Anspielung auf das legendäre polnische Kinderlied und Meme <a href="https://www.youtube.com/watch?v=A3nFhLpxlXk" target="_blank" rel="noopener">„Ślimak, ślimak, pokaż rogi“</a>.)“</span>
+                    </p>
+                    <span class="sometimes-num">
+                        <span class="lang-en">07 / ŚLIMAK</span>
+                        <span class="lang-de">07 / ŚLIMAK (NACKTSCHNECKEN)</span>
+                    </span>
+                </div>
+                <!-- 08 / PATTERNS -->
+                <div class="sometimes-card" onclick="openLightbox('[&quot;spiral PXL_20240927_144248242.jpg&quot;]', 'Geometry', 'Geometrie', 'Natural Spirals', 'Natürliche Spiralen', 'Sometimes I get excited when I find a spiral.', 'Manchmal freue ich mich über eine Spirale, die ich finde.', '08 / PATTERNS')" role="button" aria-label="Open preview for Patterns">
+                    <div class="sometimes-card-photo-wrap">
+                        <img src="assets/sometimes/spiral PXL_20240927_144248242.jpg" alt="Patterns" loading="lazy">
+                    </div>
+                    <span class="sometimes-tag">
+                        <span class="lang-en">Geometry</span>
+                        <span class="lang-de">Geometrie</span>
+                    </span>
+                    <p class="sometimes-text">
+                        <span class="lang-en">“Sometimes I get excited when I find a spiral.”</span>
+                        <span class="lang-de">„Manchmal freue ich mich über eine Spirale, die ich finde.“</span>
+                    </p>
+                    <span class="sometimes-num">
+                        <span class="lang-en">08 / PATTERNS</span>
+                        <span class="lang-de">08 / NATÜRLICHE SPIRALEN</span>
+                    </span>
+                </div>
+                <!-- 09 / INDUSTRIAL DESIGN -->
+                <div class="sometimes-card" onclick="openLightbox('[&quot;cosmetics PXL_20240914_141526470.jpg&quot;]', 'Packaging Analysis', 'Verpackungsanalyse', 'Cosmetics Design Analysis', 'Kosmetik-Verpackungsanalyse', 'Sometimes I analyse cosmetics packaging and usually learn a lot.', 'Manchmal analysiere ich Kosmetikverpackungen und lerne dabei meistens eine Menge.', '09 / INDUSTRIAL DESIGN')" role="button" aria-label="Open preview for Industrial Design">
+                    <div class="sometimes-card-photo-wrap">
+                        <img src="assets/sometimes/cosmetics PXL_20240914_141526470.jpg" alt="Industrial Design" loading="lazy">
+                    </div>
+                    <span class="sometimes-tag">
+                        <span class="lang-en">Packaging Analysis</span>
+                        <span class="lang-de">Verpackungsanalyse</span>
+                    </span>
+                    <p class="sometimes-text">
+                        <span class="lang-en">“Sometimes I analyse cosmetics packaging and usually learn a lot.”</span>
+                        <span class="lang-de">„Manchmal analysiere ich Kosmetikverpackungen und lerne dabei meistens eine Menge.“</span>
+                    </p>
+                    <span class="sometimes-num">
+                        <span class="lang-en">09 / INDUSTRIAL DESIGN</span>
+                        <span class="lang-de">09 / KOSMETIK-VERPACKUNGSANALYSE</span>
+                    </span>
+                </div>
+                <!-- 10 / DECAY -->
+                <div class="sometimes-card" onclick="openLightbox('[&quot;feet PXL_20240713_104823104.jpg&quot;, &quot;feet .jpg&quot;]', 'Perspective', 'Perspektive', 'Texture Under Feet', 'Texturen unter den Füßen', 'Sometimes I get excited by what is under my feet.', 'Manchmal fasziniert mich, was unter meinen Füßen liegt.', '10 / DECAY')" role="button" aria-label="Open preview for Decay">
+                    <div class="sometimes-card-photo-wrap">
+                        
+                        <div class="sometimes-card-carousel">
+                            <div class="carousel-slide"><img src="assets/sometimes/feet PXL_20240713_104823104.jpg" alt="Decay" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/feet .jpg" alt="Decay" loading="lazy"></div>
+                        </div>
+                        <div class="carousel-badge glass glass--pill"><span>1 / 2</span></div>
+                    </div>
+                    <span class="sometimes-tag">
+                        <span class="lang-en">Perspective</span>
+                        <span class="lang-de">Perspektive</span>
+                    </span>
+                    <p class="sometimes-text">
+                        <span class="lang-en">“Sometimes I get excited by what is under my feet.”</span>
+                        <span class="lang-de">„Manchmal fasziniert mich, was unter meinen Füßen liegt.“</span>
+                    </p>
+                    <span class="sometimes-num">
+                        <span class="lang-en">10 / DECAY</span>
+                        <span class="lang-de">10 / TEXTUREN UNTER DEN FÜSSEN</span>
+                    </span>
+                </div>
+                <!-- 11 / CEILINGS -->
+                <div class="sometimes-card" onclick="openLightbox('[&quot;above head PXL_20240421_133100212.jpg&quot;]', 'Atmosphere', 'Atmosphäre', 'Aesthetics Above Head', 'Ästhetik über dem Kopf', 'Sometimes I get excited by what is above my head.', 'Manchmal fasziniert mich, was über meinem Kopf ist.', '11 / CEILINGS')" role="button" aria-label="Open preview for Ceilings">
+                    <div class="sometimes-card-photo-wrap">
+                        <img src="assets/sometimes/above head PXL_20240421_133100212.jpg" alt="Ceilings" loading="lazy">
+                    </div>
+                    <span class="sometimes-tag">
+                        <span class="lang-en">Atmosphere</span>
+                        <span class="lang-de">Atmosphäre</span>
+                    </span>
+                    <p class="sometimes-text">
+                        <span class="lang-en">“Sometimes I get excited by what is above my head.”</span>
+                        <span class="lang-de">„Manchmal fasziniert mich, was über meinem Kopf ist.“</span>
+                    </p>
+                    <span class="sometimes-num">
+                        <span class="lang-en">11 / CEILINGS</span>
+                        <span class="lang-de">11 / ÄSTHETIK ÜBER DEM KOPF</span>
+                    </span>
+                </div>
+                <!-- 12 / GEOMETRIC -->
+                <div class="sometimes-card" onclick="openLightbox('[&quot;angles PXL_20240624_183608403.jpg&quot;, &quot;angles PXL_20240712_134158207.jpg&quot;, &quot;angles louvre PXL_20230930_155943459.jpg&quot;, &quot;strange angle_312d05b1-b9de-46c9-8400-10772c9b551a_PXL_20240612_152635543.jpg&quot;]', 'Composition', 'Komposition', 'Architectural Angles', 'Architektonische Winkel', 'Sometimes I get excited about angles.', 'Manchmal begeistere ich mich für Winkel.', '12 / GEOMETRIC')" role="button" aria-label="Open preview for Geometric">
+                    <div class="sometimes-card-photo-wrap">
+                        
+                        <div class="sometimes-card-carousel">
+                            <div class="carousel-slide"><img src="assets/sometimes/angles PXL_20240624_183608403.jpg" alt="Geometric" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/angles PXL_20240712_134158207.jpg" alt="Geometric" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/angles louvre PXL_20230930_155943459.jpg" alt="Geometric" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/strange angle_312d05b1-b9de-46c9-8400-10772c9b551a_PXL_20240612_152635543.jpg" alt="Geometric" loading="lazy"></div>
+                        </div>
+                        <div class="carousel-badge glass glass--pill"><span>1 / 4</span></div>
+                    </div>
+                    <span class="sometimes-tag">
+                        <span class="lang-en">Composition</span>
+                        <span class="lang-de">Komposition</span>
+                    </span>
+                    <p class="sometimes-text">
+                        <span class="lang-en">“Sometimes I get excited about angles.”</span>
+                        <span class="lang-de">„Manchmal begeistere ich mich für Winkel.“</span>
+                    </p>
+                    <span class="sometimes-num">
+                        <span class="lang-en">12 / GEOMETRIC</span>
+                        <span class="lang-de">12 / ARCHITEKTONISCHE WINKEL</span>
+                    </span>
+                </div>
+                <!-- 13 / RELAXATION -->
+                <div class="sometimes-card" onclick="openLightbox('[&quot;hat PXL_20240418_120354688.jpg&quot;, &quot;hat PXL_20240714_085555096.jpg&quot;, &quot;hat sangria PXL_20240422_110423934.jpg&quot;, &quot;hat silly PXL_20230602_135351295.jpg&quot;, &quot;hat silly PXL_20230617_152332217.jpg&quot;, &quot;wine PXL_20260412_182102634.jpg&quot;]', 'Lifestyle', 'Lifestyle', 'Sangria & Hat', 'Sangria & Hut', 'Sometimes I wear a hat and drink sangria.', 'Manchmal trage ich einen Hut und trinke Sangria.', '13 / RELAXATION')" role="button" aria-label="Open preview for Relaxation">
+                    <div class="sometimes-card-photo-wrap">
+                        
+                        <div class="sometimes-card-carousel">
+                            <div class="carousel-slide"><img src="assets/sometimes/hat PXL_20240418_120354688.jpg" alt="Relaxation" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/hat PXL_20240714_085555096.jpg" alt="Relaxation" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/hat sangria PXL_20240422_110423934.jpg" alt="Relaxation" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/hat silly PXL_20230602_135351295.jpg" alt="Relaxation" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/hat silly PXL_20230617_152332217.jpg" alt="Relaxation" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/wine PXL_20260412_182102634.jpg" alt="Relaxation" loading="lazy"></div>
+                        </div>
+                        <div class="carousel-badge glass glass--pill"><span>1 / 6</span></div>
+                    </div>
+                    <span class="sometimes-tag">
+                        <span class="lang-en">Lifestyle</span>
+                        <span class="lang-de">Lifestyle</span>
+                    </span>
+                    <p class="sometimes-text">
+                        <span class="lang-en">“Sometimes I wear a hat and drink sangria.”</span>
+                        <span class="lang-de">„Manchmal trage ich einen Hut und trinke Sangria.“</span>
+                    </p>
+                    <span class="sometimes-num">
+                        <span class="lang-en">13 / RELAXATION</span>
+                        <span class="lang-de">13 / SANGRIA & HUT</span>
+                    </span>
+                </div>
+                <!-- 14 / GAMING -->
+                <div class="sometimes-card" onclick="openLightbox('[&quot;sketch logos PXL_20240601_194146144.jpg&quot;, &quot;sketch logos PXL_20240601_194154105.jpg&quot;, &quot;sketch ui PXL_20240216_123301581.jpg&quot;]', 'Sketching', 'Skizzieren', 'Game UI Sketching', 'Spiel-UI Skizzieren', 'Sometimes I sketch UI for games.', 'Manchmal skizziere ich Benutzeroberflächen für Spiele.', '14 / GAMING')" role="button" aria-label="Open preview for Gaming">
+                    <div class="sometimes-card-photo-wrap">
+                        
+                        <div class="sometimes-card-carousel">
+                            <div class="carousel-slide"><img src="assets/sometimes/sketch logos PXL_20240601_194146144.jpg" alt="Gaming" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/sketch logos PXL_20240601_194154105.jpg" alt="Gaming" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/sketch ui PXL_20240216_123301581.jpg" alt="Gaming" loading="lazy"></div>
+                        </div>
+                        <div class="carousel-badge glass glass--pill"><span>1 / 3</span></div>
+                    </div>
+                    <span class="sometimes-tag">
+                        <span class="lang-en">Sketching</span>
+                        <span class="lang-de">Skizzieren</span>
+                    </span>
+                    <p class="sometimes-text">
+                        <span class="lang-en">“Sometimes I sketch UI for games.”</span>
+                        <span class="lang-de">„Manchmal skizziere ich Benutzeroberflächen für Spiele.“</span>
+                    </p>
+                    <span class="sometimes-num">
+                        <span class="lang-en">14 / GAMING</span>
+                        <span class="lang-de">14 / SPIEL-UI SKIZZIEREN</span>
+                    </span>
+                </div>
+                <!-- 15 / SENSORY -->
+                <div class="sometimes-card" onclick="openLightbox('[&quot;rare things bourbon PXL_20231222_190516920.jpg&quot;]', 'Curiosity', 'Neugier', 'Rare Flavors Exploration', 'Seltene Aromen-Erkundung', 'Sometimes I try very rare stuff.', 'Manchmal probiere ich sehr seltene Dinge aus.', '15 / SENSORY')" role="button" aria-label="Open preview for Sensory">
+                    <div class="sometimes-card-photo-wrap">
+                        <img src="assets/sometimes/rare things bourbon PXL_20231222_190516920.jpg" alt="Sensory" loading="lazy">
+                    </div>
+                    <span class="sometimes-tag">
+                        <span class="lang-en">Curiosity</span>
+                        <span class="lang-de">Neugier</span>
+                    </span>
+                    <p class="sometimes-text">
+                        <span class="lang-en">“Sometimes I try very rare stuff.”</span>
+                        <span class="lang-de">„Manchmal probiere ich sehr seltene Dinge aus.“</span>
+                    </p>
+                    <span class="sometimes-num">
+                        <span class="lang-en">15 / SENSORY</span>
+                        <span class="lang-de">15 / SELTENE AROMEN-ERKUNDUNG</span>
+                    </span>
+                </div>
+                <!-- 16 / PRODUCTION -->
+                <div class="sometimes-card" onclick="openLightbox('[&quot;merch PXL_20231106_192535121.jpg&quot;]', 'Testing', 'Austesten', 'Merchandise Prototype', 'Merchandise-Prototyping', 'Sometimes I create merch and test how it will look.', 'Manchmal entwerfe ich Merch und teste, wie es aussehen wird.', '16 / PRODUCTION')" role="button" aria-label="Open preview for Production">
+                    <div class="sometimes-card-photo-wrap">
+                        <img src="assets/sometimes/merch PXL_20231106_192535121.jpg" alt="Production" loading="lazy">
+                    </div>
+                    <span class="sometimes-tag">
+                        <span class="lang-en">Testing</span>
+                        <span class="lang-de">Austesten</span>
+                    </span>
+                    <p class="sometimes-text">
+                        <span class="lang-en">“Sometimes I create merch and test how it will look.”</span>
+                        <span class="lang-de">„Manchmal entwerfe ich Merch und teste, wie es aussehen wird.“</span>
+                    </p>
+                    <span class="sometimes-num">
+                        <span class="lang-en">16 / PRODUCTION</span>
+                        <span class="lang-de">16 / MERCHANDISE-PROTOTYPING</span>
+                    </span>
+                </div>
+                <!-- 17 / UX CRITIQUE -->
+                <div class="sometimes-card" onclick="openLightbox('[&quot;bad design choices PXL_20260426_084720787.jpg&quot;]', 'Humor', 'Humor', 'Strange Design Chuckles', 'Kuriose Design-Schmunzler', 'Sometimes I chuckle about strange design choices.', 'Manchmal schmunzle ich über seltsame Designentscheidungen.', '17 / UX CRITIQUE')" role="button" aria-label="Open preview for UX Critique">
+                    <div class="sometimes-card-photo-wrap">
+                        <img src="assets/sometimes/bad design choices PXL_20260426_084720787.jpg" alt="UX Critique" loading="lazy">
+                    </div>
+                    <span class="sometimes-tag">
+                        <span class="lang-en">Humor</span>
+                        <span class="lang-de">Humor</span>
+                    </span>
+                    <p class="sometimes-text">
+                        <span class="lang-en">“Sometimes I chuckle about strange design choices.”</span>
+                        <span class="lang-de">„Manchmal schmunzle ich über seltsame Designentscheidungen.“</span>
+                    </p>
+                    <span class="sometimes-num">
+                        <span class="lang-en">17 / UX CRITIQUE</span>
+                        <span class="lang-de">17 / KURIOSE DESIGN-SCHMUNZLER</span>
+                    </span>
+                </div>
+                <!-- 18 / HEURISTICS -->
+                <div class="sometimes-card" onclick="openLightbox('[&quot;bad ui Screenshot_20240430-100134.png&quot;]', 'UX Rant', 'UX-Rant', 'UI Design Confusion', 'UI-Design-Verwirrung', 'Sometimes I get confused about UI design decisions.', 'Manchmal verwirren mich UI-Designentscheidungen.', '18 / HEURISTICS')" role="button" aria-label="Open preview for Heuristics">
+                    <div class="sometimes-card-photo-wrap">
+                        <img src="assets/sometimes/bad ui Screenshot_20240430-100134.png" alt="Heuristics" loading="lazy">
+                    </div>
+                    <span class="sometimes-tag">
+                        <span class="lang-en">UX Rant</span>
+                        <span class="lang-de">UX-Rant</span>
+                    </span>
+                    <p class="sometimes-text">
+                        <span class="lang-en">“Sometimes I get confused about UI design decisions.”</span>
+                        <span class="lang-de">„Manchmal verwirren mich UI-Designentscheidungen.“</span>
+                    </p>
+                    <span class="sometimes-num">
+                        <span class="lang-en">18 / HEURISTICS</span>
+                        <span class="lang-de">18 / UI-DESIGN-VERWIRRUNG</span>
+                    </span>
+                </div>
+                <!-- 19 / KNIVES RESTORATION -->
+                <div class="sometimes-card" onclick="openLightbox('[&quot;knife broken PXL_20201104_105131865.jpg&quot;, &quot;knife broken PXL_20201114_101330667.jpg&quot;, &quot;knife fixed IMG_20200903_133005.jpg&quot;, &quot;knife fixed PXL_20201105_113816408.jpg&quot;]', 'Craftsmanship', 'Handwerk', 'Japanese Knife Restoration', 'Japanische Messer-Restaurierung', 'Sometimes I buy broken knives from Japan and fix them up.', 'Manchmal kaufe ich beschädigte Messer aus Japan und restauriere sie.', '19 / KNIVES RESTORATION')" role="button" aria-label="Open preview for Knives Restoration">
+                    <div class="sometimes-card-photo-wrap">
+                        
+                        <div class="sometimes-card-carousel">
+                            <div class="carousel-slide"><img src="assets/sometimes/knife broken PXL_20201104_105131865.jpg" alt="Knives Restoration" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/knife broken PXL_20201114_101330667.jpg" alt="Knives Restoration" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/knife fixed IMG_20200903_133005.jpg" alt="Knives Restoration" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/knife fixed PXL_20201105_113816408.jpg" alt="Knives Restoration" loading="lazy"></div>
+                        </div>
+                        <div class="carousel-badge glass glass--pill"><span>1 / 4</span></div>
+                    </div>
+                    <span class="sometimes-tag">
+                        <span class="lang-en">Craftsmanship</span>
+                        <span class="lang-de">Handwerk</span>
+                    </span>
+                    <p class="sometimes-text">
+                        <span class="lang-en">“Sometimes I buy broken knives from Japan and fix them up.”</span>
+                        <span class="lang-de">„Manchmal kaufe ich beschädigte Messer aus Japan und restauriere sie.“</span>
+                    </p>
+                    <span class="sometimes-num">
+                        <span class="lang-en">19 / KNIVES RESTORATION</span>
+                        <span class="lang-de">19 / JAPANISCHE MESSER-RESTAURIERUNG</span>
+                    </span>
+                </div>
+                <!-- 20 / KNIVES SHARPENING -->
+                <div class="sometimes-card" onclick="openLightbox('[&quot;knife sharpen VID_20200628_140320.mp4&quot;, &quot;viktor sharpen knives pro IMG_20200513_014653_619.jpg&quot;, &quot;knives PXL_20241230_131928413.jpg&quot;]', 'Precision', 'Präzision', 'Knife Sharpening', 'Messerschärfen', 'Sometimes I sharpen knives like a pro.', 'Manchmal schärfe ich Messer wie ein Profi.', '20 / KNIVES SHARPENING')" role="button" aria-label="Open preview for Knives Sharpening">
+                    <div class="sometimes-card-photo-wrap">
+                        
+                        <div class="sometimes-card-carousel">
+                            <div class="carousel-slide"><video src="assets/sometimes/knife sharpen VID_20200628_140320.mp4" autoplay muted loop playsinline></video></div><div class="carousel-slide"><img src="assets/sometimes/viktor sharpen knives pro IMG_20200513_014653_619.jpg" alt="Knives Sharpening" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/knives PXL_20241230_131928413.jpg" alt="Knives Sharpening" loading="lazy"></div>
+                        </div>
+                        <div class="carousel-badge glass glass--pill"><span>1 / 3</span></div>
+                    </div>
+                    <span class="sometimes-tag">
+                        <span class="lang-en">Precision</span>
+                        <span class="lang-de">Präzision</span>
+                    </span>
+                    <p class="sometimes-text">
+                        <span class="lang-en">“Sometimes I sharpen knives like a pro.”</span>
+                        <span class="lang-de">„Manchmal schärfe ich Messer wie ein Profi.“</span>
+                    </p>
+                    <span class="sometimes-num">
+                        <span class="lang-en">20 / KNIVES SHARPENING</span>
+                        <span class="lang-de">20 / MESSERSCHÄRFEN</span>
+                    </span>
+                </div>
+                <!-- 21 / PORTUGUESE COOKING -->
+                <div class="sometimes-card" onclick="openLightbox('[&quot;cooking portuguese dish PXL_20260111_164143721.jpg&quot;, &quot;viktor dinner PXL_20260529_181800538.jpg&quot;, &quot;viktor dinner PXL_20260529_181807237.jpg&quot;]', 'Culinary', 'Kulinarik', 'Portuguese Cooking', 'Portugiesische Küche', 'Sometimes I cook Portuguese dishes.', 'Manchmal koche ich portugiesische Gerichte.', '21 / PORTUGUESE COOKING')" role="button" aria-label="Open preview for Portuguese Cooking">
+                    <div class="sometimes-card-photo-wrap">
+                        
+                        <div class="sometimes-card-carousel">
+                            <div class="carousel-slide"><img src="assets/sometimes/cooking portuguese dish PXL_20260111_164143721.jpg" alt="Portuguese Cooking" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/viktor dinner PXL_20260529_181800538.jpg" alt="Portuguese Cooking" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/viktor dinner PXL_20260529_181807237.jpg" alt="Portuguese Cooking" loading="lazy"></div>
+                        </div>
+                        <div class="carousel-badge glass glass--pill"><span>1 / 3</span></div>
+                    </div>
+                    <span class="sometimes-tag">
+                        <span class="lang-en">Culinary</span>
+                        <span class="lang-de">Kulinarik</span>
+                    </span>
+                    <p class="sometimes-text">
+                        <span class="lang-en">“Sometimes I cook Portuguese dishes.”</span>
+                        <span class="lang-de">„Manchmal koche ich portugiesische Gerichte.“</span>
+                    </p>
+                    <span class="sometimes-num">
+                        <span class="lang-en">21 / PORTUGUESE COOKING</span>
+                        <span class="lang-de">21 / PORTUGIESISCHE KÜCHE</span>
+                    </span>
+                </div>
+            </div>
+        </section>
 
-            </section>
-        </main>
+        <!-- ========== CONTACT SECTION ========== -->
+        <section class="contact" id="contact">
+            <span class="eyebrow" id="eyebrow-contact">
+                <span class="eyebrow-num">07</span>
+                <span class="eyebrow-line"></span>
+                <span class="lang-en">Contact</span>
+                <span class="lang-de">Kontakt</span>
+            </span>
+
+            <h2 class="contact-headline">
+                <span class="lang-en">Let's build<br><span class="serif">something frictionless.</span></span>
+                <span class="lang-de">Lass uns bauen,<br><span class="serif">was reibungslos läuft.</span></span>
+            </h2>
+
+            <a href="mailto:biguxenergy@gmail.com" class="contact-email" id="contact-email-link">
+                <span class="contact-email-text">biguxenergy@gmail.com</span>
+                <span class="contact-email-arrow">→</span>
+            </a>
+
+            <p class="contact-sub">
+                <span class="lang-en">Want to discuss <strong>AI pipelines</strong>, <strong>product strategy</strong>, or DRAM timings? You know where to find me.</span>
+                <span class="lang-de">Lust auf Fachsimpeleien über <strong>KI-Pipelines</strong>, <strong>Produktstrategie</strong> oder DRAM-Timings? Du weißt, wo du mich findest.</span>
+            </p>
+        </section>
+
+        <!-- ========== FOOTER SECTION ========== -->
+        <footer class="footer">
+            <div class="footer-row">
+                <div class="footer-meta">
+                    <img src="assets/logo.png" alt="Viktor Enns Logo" class="brand-logo footer-logo">
+                    <span class="footer-loc lang-en">Saarbrücken, Germany</span>
+                    <span class="footer-loc lang-de">Saarbrücken, Deutschland</span>
+                </div>
+                <div class="footer-links">
+                    <a href="https://linkedin.com/in/viktorenns" target="_blank" rel="noopener">LinkedIn <span class="arrow">↗</span></a>
+                    <a href="https://medium.com/@viktorenns" target="_blank" rel="noopener">Medium <span class="arrow">↗</span></a>
+                    <a href="https://www.behance.net/viktorenns" target="_blank" rel="noopener">Behance <span class="arrow">↗</span></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="lang-en">© 2026 Viktor Enns. Coded in partnership with Antigravity.</span>
+                <span class="lang-de">© 2026 Viktor Enns. Programmiert in Partnerschaft mit Antigravity.</span>
+                <span class="footer-version lang-en">v1.0 — editorial</span>
+                <span class="footer-version lang-de">v1.0 — Redaktionell</span>
+            </div>
+        </footer>
+
+    </main>
+
+    
+    <!-- Lightroom Lightbox Overlay Modal -->
+    <div id="lightbox-modal" class="lightbox" aria-hidden="true" role="dialog">
+        <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close preview">✕</button>
         
+        <!-- Premium Glassmorphic Dossier Navigation Controls -->
+        <button class="lightbox-nav lightbox-nav--prev" onclick="prevLightboxMedia()" aria-label="Previous card">‹</button>
+        <button class="lightbox-nav lightbox-nav--next" onclick="nextLightboxMedia()" aria-label="Next card">›</button>
+
+        <div class="lightbox-content glass">
+            <div class="lightbox-media-wrap" id="lightbox-media-container">
+                <!-- Media loaded dynamically -->
+            </div>
+            <div class="lightbox-info">
+                <span class="lightbox-tag" id="lightbox-tag">Tag</span>
+                <h3 class="lightbox-title serif" id="lightbox-title">Title</h3>
+                <div class="lightbox-desc">
+                    <p class="lang-en" id="lightbox-text-en">English description</p>
+                    <p class="lang-de" id="lightbox-text-de">German description</p>
+                </div>
+                <span class="lightbox-num" id="lightbox-num">01 / FAUCETS</span>
+            </div>
+        </div>
     </div>
 
-    <!-- Print Footer -->
-    <footer class="print-footer print-only">
-        <p>Viktor Enns — Senior Product Strategist & AI Architect | Saarbrücken | +49 (0) 1578 2114367 | biguxenergy@gmail.com</p>
-    </footer>
-
-    <!-- JS Application Scripts -->
-    <script src="app.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

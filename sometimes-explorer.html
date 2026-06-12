@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sometimes Cards Visual Planner & Explorer</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: #000;
+            color: #fff;
+            padding: 40px var(--gutter);
+        }
+        .explorer-layout {
+            display: grid;
+            grid-template-columns: 480px 1fr;
+            gap: 40px;
+            margin-top: 30px;
+            align-items: start;
+        }
+        .sidebar {
+            position: sticky;
+            top: 40px;
+            height: calc(100vh - 80px);
+            overflow-y: auto;
+            padding-right: 15px;
+        }
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 16px;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+            padding: 10px;
+            border-radius: var(--radius);
+            background: var(--bg-deep);
+            border: 1px solid var(--rule);
+        }
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+            border-color: var(--accent);
+        }
+        .gallery-item.selected {
+            border-color: var(--accent-2);
+            box-shadow: 0 0 12px var(--accent-2);
+        }
+        .gallery-item img, .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .gallery-item-name {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: rgba(0,0,0,0.7);
+            font-family: var(--mono);
+            font-size: 8px;
+            padding: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .planner-card-selector {
+            margin-bottom: 24px;
+            padding: 16px;
+            border-radius: var(--radius);
+            border: 1px solid var(--rule);
+            background: var(--bg-raised);
+            transition: all 0.3s ease;
+        }
+        .planner-card-selector.active {
+            border-color: var(--accent);
+            box-shadow: 0 0 10px rgba(77,144,255,0.15);
+        }
+        .planner-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .planner-select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            background: #111;
+            border: 1px solid var(--rule);
+            color: #fff;
+            font-family: var(--mono);
+            font-size: 11px;
+            cursor: pointer;
+        }
+        .live-preview-box {
+            margin-top: 15px;
+            width: 100%;
+            aspect-ratio: 1.5;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            background: #111;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .preview-img, .preview-vid {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(8px) brightness(0.6);
+            transition: all 0.5s ease;
+        }
+        .live-preview-box:hover .preview-img, .live-preview-box:hover .preview-vid {
+            filter: blur(0px) brightness(0.9) scale(1.05);
+        }
+        .preview-content {
+            position: absolute;
+            inset: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 2;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 20%, rgba(0,0,0,0.85) 100%);
+        }
+        .preview-tag {
+            font-family: var(--mono);
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+        }
+        .preview-text {
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 1.4;
+            color: #fff;
+        }
+        .preview-num {
+            font-family: var(--mono);
+            font-size: 10px;
+            color: var(--muted);
+            margin-top: 8px;
+        }
+        .controls-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--rule);
+            padding-bottom: 20px;
+        }
+        .btn {
+            padding: 12px 24px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: #000;
+        }
+        .btn-primary:hover {
+            background: #fff;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid var(--rule);
+            color: #fff;
+            margin-left: 10px;
+        }
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.15);
+        }
+        .export-output {
+            width: 100%;
+            height: 120px;
+            background: #111;
+            border: 1px solid var(--rule);
+            border-radius: 8px;
+            padding: 12px;
+            font-family: var(--mono);
+            font-size: 10px;
+            color: #ccc;
+            margin-top: 15px;
+            resize: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls-header">
+        <div>
+            <h1 class="serif" style="font-size: 2.2rem; font-style: italic; font-weight: 500; margin-bottom: 4px;">Sometimes Cards Visual Planner</h1>
+            <p class="muted">Visual planning utility to map your Bilder to the 18 "sometimes" cards with real-time liquid glass responsive preview.</p>
+        </div>
+        <div style="display:flex;">
+            <button class="btn btn-primary" onclick="generateHTML()">Generate Final index.html</button>
+            <button class="btn btn-secondary" onclick="exportMapping()">Export JSON</button>
+        </div>
+    </div>
+
+    <div class="explorer-layout">
+        <div class="sidebar">
+            <h3 style="margin-bottom: 15px; font-size: 14px; font-family: var(--mono); text-transform: uppercase; color: var(--accent-2);">18 Sometimes Cards</h3>
+            <div id="card-selectors-container"></div>
+        </div>
+
+        <div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 15px;">
+                <h3 style="font-size: 14px; font-family: var(--mono); text-transform: uppercase; color: var(--accent);">Available Bilder Folder (61 Images)</h3>
+                <span class="muted" style="font-size: 11px;">Click an image to assign it to the active card on the left</span>
+            </div>
+            <div class="image-gallery" id="gallery-container"></div>
+            
+            <h3 style="margin-top: 30px; font-size: 14px; font-family: var(--mono); text-transform: uppercase; color: var(--accent-3);">JSON Config Output</h3>
+            <textarea class="export-output" id="export-box" readonly placeholder="Mappings JSON will appear here..."></textarea>
+        </div>
+    </div>
+
+    <script>
+        const imageFiles = ["PXL_20230227_082840691.jpg", "PXL_20230602_134344928.jpg", "PXL_20230602_135351295.jpg", "PXL_20230617_152332217.jpg", "PXL_20230930_155943459.jpg", "PXL_20231106_192535121.jpg", "PXL_20231222_190516920.jpg", "PXL_20240216_123301581.jpg", "PXL_20240418_120354688.jpg", "PXL_20240420_090938869.jpg", "PXL_20240421_133100212.jpg", "PXL_20240422_110423934.jpg", "PXL_20240601_194146144.jpg", "PXL_20240601_194154105.jpg", "PXL_20240624_183608403.jpg", "PXL_20240712_095731442.jpg", "PXL_20240712_134158207.jpg", "PXL_20240713_104823104.jpg", "PXL_20240714_085555096.jpg", "PXL_20240714_222600836.jpg", "PXL_20240914_141526470.jpg", "PXL_20240927_144248242.jpg", "PXL_20241102_145643138.jpg", "PXL_20250111_130135962.jpg", "PXL_20250131_112855299.jpg", "PXL_20250419_202254174.jpg", "PXL_20250422_144137898.jpg", "PXL_20250422_144303103.jpg", "PXL_20250422_144411370.jpg", "PXL_20250422_150751128.jpg", "PXL_20251003_132407543.jpg", "PXL_20251101_112927491.jpg", "PXL_20251101_121739477.jpg", "PXL_20251101_122200737.jpg", "PXL_20251116_175701547.jpg", "PXL_20251223_121805070.jpg", "PXL_20260225_122648924.jpg", "PXL_20260410_142503407.jpg", "PXL_20260410_143043569.jpg", "PXL_20260412_182102634.jpg", "PXL_20260416_115716982.jpg", "PXL_20260416_115723618.jpg", "PXL_20260416_115731357.jpg", "PXL_20260416_122446647.mp4", "PXL_20260422_172857435.MP~2.jpg", "PXL_20260425_132404523.jpg", "PXL_20260426_084720787.jpg", "PXL_20260506_180835151.jpg", "PXL_20260506_181702952.jpg", "PXL_20260506_182742058.jpg", "PXL_20260506_200308592.jpg", "PXL_20260507_120705271.jpg", "PXL_20260515_104725295.jpg", "PXL_20260515_134304258.jpg", "PXL_20260515_172957149.jpg", "PXL_20260515_173416430.jpg", "PXL_20260515_202002574.jpg", "PXL_20260527_135352752.jpg", "Screenshot_20240430-100134.png", "original_312d05b1-b9de-46c9-8400-10772c9b551a_PXL_20240612_152635543.jpg", "slimak PXL_20250418_212337733.jpg"];
+        const preSelected = {"1": "PXL_20260416_115723618.jpg", "2": "PXL_20251101_112927491.jpg", "3": "PXL_20251116_175701547.jpg", "4": "PXL_20250422_144137898.jpg", "5": "PXL_20240420_090938869.jpg", "6": "PXL_20260527_135352752.jpg", "7": "slimak PXL_20250418_212337733.jpg", "8": "PXL_20250422_144303103.jpg", "9": "PXL_20260225_122648924.jpg", "10": "PXL_20260506_181702952.jpg", "11": "PXL_20260506_180835151.jpg", "12": "PXL_20260506_182742058.jpg", "13": "PXL_20240714_222600836.jpg", "14": "Screenshot_20240430-100134.png", "15": "PXL_20260515_134304258.jpg", "16": "PXL_20260515_104725295.jpg", "17": "original_312d05b1-b9de-46c9-8400-10772c9b551a_PXL_20240612_152635543.jpg", "18": "PXL_20251223_121805070.jpg"};
+        const cardsData = [{"num": "1", "tag": "Dark UX", "title": "Faucets", "text_en": "Very often I get upset by boss-level difficulty water faucets in public restrooms. They are the absolute definition of dark UX. Guess how this faucet works...", "text_de": "Sehr oft \u00e4rgere ich mich \u00fcber Wasserh\u00e4hne mit Bossgegner-Schwierigkeitsgrad in \u00f6ffentlichen Toiletten. Sie sind die absolute Definition von Dark UX. Rate mal, wie dieser Wasserhahn funktioniert..."}, {"num": "2", "tag": "Optimization", "title": "Hardware", "text_en": "Sometimes I configure DRAM timings because faster is better or something like that.", "text_de": "Manchmal konfiguriere ich DRAM-Timings, weil schneller besser ist oder so \u00e4hnlich."}, {"num": "3", "tag": "Hardware Surgery", "title": "PC Building", "text_en": "Sometimes I take PCs apart and put them back together. Sometimes I build them from scratch. What does this ASUS controller do? No one knows.", "text_de": "Manchmal nehme ich PCs auseinander und baue sie wieder zusammen. Manchmal baue ich sie von Grund auf neu. Was macht dieser ASUS-Controller? Niemand wei\u00df es."}, {"num": "4", "tag": "Engineering", "title": "Caffeine", "text_en": "Sometimes I take apart my espresso machine and put it back together.", "text_de": "Manchmal nehme ich meine Espressomaschine auseinander und baue sie wieder zusammen."}, {"num": "5", "tag": "Aesthetics", "title": "Portugal", "text_en": "Sometimes I look at tiles (azuleju).", "text_de": "Manchmal schaue ich mir Fliesen (Azulejos) an."}, {"num": "6", "tag": "Light Quality", "title": "Craft", "text_en": "Sometimes I use my hand to judge the quality of light so i can take a better picture.", "text_de": "Manchmal benutze ich meine Hand, um die Qualit\u00e4t des Lichts zu beurteilen, damit ich ein besseres Foto machen kann."}, {"num": "7", "tag": "Pastries", "title": "Pastries", "text_en": "Slimak. (Cinnamon rolls, rolls, and perfect edible spirals.)", "text_de": "Slimak. (Zimtschnecken, Br\u00f6tchen und perfekte essbare Spiralen.)"}, {"num": "8", "tag": "Geometry", "title": "Patterns", "text_en": "Sometimes I get excited when I find a spiral.", "text_de": "Manchmal freue ich mich \u00fcber eine Spirale, die ich finde."}, {"num": "9", "tag": "Packaging Analysis", "title": "Industrial Design", "text_en": "Sometimes I analyse cosmetics packaging and usually learn a lot.", "text_de": "Manchmal analysiere ich Kosmetikverpackungen und lerne dabei meistens eine Menge."}, {"num": "10", "tag": "Perspective", "title": "Decay", "text_en": "Sometimes I get excited by what is under my feet.", "text_de": "Manchmal fasziniert mich, was unter meinen F\u00fc\u00dfen liegt."}, {"num": "11", "tag": "Atmosphere", "title": "Ceilings", "text_en": "Sometimes I get excited by what is above my head.", "text_de": "Manchmal fasziniert mich, was \u00fcber meinem Kopf ist."}, {"num": "12", "tag": "Composition", "title": "Geometric", "text_en": "Sometimes I get excited about angles.", "text_de": "Manchmal begeistere ich mich f\u00fcr Winkel."}, {"num": "13", "tag": "Lifestyle", "title": "Relaxation", "text_en": "Sometimes I wear a hat and drink sangria.", "text_de": "Manchmal trage ich einen Hut und trinke Sangria."}, {"num": "14", "tag": "Sketching", "title": "Gaming", "text_en": "Sometimes I sketch UI for games.", "text_de": "Manchmal skizziere ich Benutzeroberfl\u00e4chen f\u00fcr Spiele."}, {"num": "15", "tag": "Curiosity", "title": "Sensory", "text_en": "Sometimes I try very rare stuff.", "text_de": "Manchmal probiere ich sehr seltene Dinge aus."}, {"num": "16", "tag": "Testing", "title": "Production", "text_en": "Sometimes I create merch and test how it will look.", "text_de": "Manchmal entwerfe ich Merch und teste, wie es aussehen wird."}, {"num": "17", "tag": "Humor", "title": "UX Critique", "text_en": "Sometimes I chuckle about strange design choices.", "text_de": "Manchmal schmunzle ich \u00fcber seltsame Designentscheidungen."}, {"num": "18", "tag": "UX Rant", "title": "Heuristics", "text_en": "Sometimes I get confused about UI design decisions.", "text_de": "Manchmal verwirren mich UI-Designentscheidungen."}];
+
+        let activeCardNum = "1";
+        const currentMapping = {...preSelected};
+
+        // Initialize selectors and gallery
+        const cardContainer = document.getElementById("card-selectors-container");
+        const galleryContainer = document.getElementById("gallery-container");
+        const exportBox = document.getElementById("export-box");
+
+        function init() {
+            // Render selectors
+            cardsData.forEach(card => {
+                const initialImg = currentMapping[card.num] || "";
+                const isVideo = initialImg.toLowerCase().endswith('.mp4');
+                const selector = document.createElement("div");
+                selector.className = `planner-card-selector ${card.num === activeCardNum ? 'active' : ''}`;
+                selector.id = `card-sel-${card.num}`;
+                selector.onclick = () => setActiveCard(card.num);
+
+                selector.innerHTML = `
+                    <div class="planner-title-row">
+                        <span style="font-family: var(--mono); font-size: 11px; color: var(--muted);">CARD ${card.num.padStart(2, '0')}</span>
+                        <span class="preview-tag">${card.tag}</span>
+                    </div>
+                    <select class="planner-select" id="select-for-${card.num}" onchange="selectChanged('${card.num}', this.value)">
+                        <option value="">-- No Image / Text Only --</option>
+                        ${imageFiles.map(img => `<option value="${img}" ${img === initialImg ? 'selected' : ''}>${img}</option>`).join('')}
+                    </select>
+                    
+                    <div class="live-preview-box" id="preview-box-${card.num}">
+                        ${initialImg ? (isVideo ? `<video src="assets/sometimes/${initialImg}" class="preview-vid" autoplay muted loop playsinline></video>` : `<img src="assets/sometimes/${initialImg}" class="preview-img">`) : ''}
+                        <div class="preview-content">
+                            <span class="preview-tag">${card.tag}</span>
+                            <div>
+                                <p class="preview-text">${card.text_en}</p>
+                                <span class="preview-num">${card.num.padStart(2, '0')} / ${card.title.toUpperCase()}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                cardContainer.appendChild(selector);
+            });
+
+            // Render gallery
+            imageFiles.forEach(file => {
+                const item = document.createElement("div");
+                item.className = "gallery-item";
+                item.id = `gallery-item-${file.replace(/[^a-zA-Z0-9]/g, '_')}`;
+                item.onclick = () => selectImageFromGallery(file);
+
+                const isVideo = file.toLowerCase().endsWith('.mp4');
+                if (isVideo) {
+                    item.innerHTML = `
+                        <video src="assets/sometimes/${file}" autoplay muted loop playsinline></video>
+                        <div class="gallery-item-name">${file}</div>
+                    `;
+                } else {
+                    item.innerHTML = `
+                        <img src="assets/sometimes/${file}" alt="${file}">
+                        <div class="gallery-item-name">${file}</div>
+                    `;
+                }
+                galleryContainer.appendChild(item);
+            });
+
+            updateGallerySelectionStyles();
+            exportMapping();
+        }
+
+        function setActiveCard(num) {
+            document.querySelectorAll(".planner-card-selector").forEach(el => el.classList.remove("active"));
+            const sel = document.getElementById(`card-sel-${num}`);
+            if (sel) sel.classList.add("active");
+            activeCardNum = num;
+            updateGallerySelectionStyles();
+        }
+
+        function selectImageFromGallery(file) {
+            const activeSelect = document.getElementById(`select-for-${activeCardNum}`);
+            if (activeSelect) {
+                activeSelect.value = file;
+                selectChanged(activeCardNum, file);
+            }
+        }
+
+        function selectChanged(cardNum, file) {
+            currentMapping[cardNum] = file;
+            updateCardPreview(cardNum, file);
+            updateGallerySelectionStyles();
+            exportMapping();
+        }
+
+        function updateCardPreview(cardNum, file) {
+            const box = document.getElementById(`preview-box-${cardNum}`);
+            if (!box) return;
+            
+            // clear old img/video
+            const oldImg = box.querySelector(".preview-img");
+            if (oldImg) oldImg.remove();
+            const oldVid = box.querySelector(".preview-vid");
+            if (oldVid) oldVid.remove();
+
+            if (file) {
+                const isVideo = file.toLowerCase().endsWith('.mp4');
+                if (isVideo) {
+                    const vid = document.createElement("video");
+                    vid.src = `assets/sometimes/${file}`;
+                    vid.className = "preview-vid";
+                    vid.autoplay = true;
+                    vid.muted = true;
+                    vid.loop = true;
+                    vid.playsInline = true;
+                    box.insertBefore(vid, box.firstChild);
+                } else {
+                    const img = document.createElement("img");
+                    img.src = `assets/sometimes/${file}`;
+                    img.className = "preview-img";
+                    box.insertBefore(img, box.firstChild);
+                }
+            }
+        }
+
+        function updateGallerySelectionStyles() {
+            document.querySelectorAll(".gallery-item").forEach(item => item.classList.remove("selected"));
+            
+            // highlight the image assigned to the active card
+            const currentImg = currentMapping[activeCardNum];
+            if (currentImg) {
+                const galleryId = `gallery-item-${currentImg.replace(/[^a-zA-Z0-9]/g, '_')}`;
+                const item = document.getElementById(galleryId);
+                if (item) item.classList.add("selected");
+            }
+        }
+
+        function exportMapping() {
+            exportBox.value = JSON.stringify(currentMapping, null, 4);
+        }
+
+        function generateHTML() {
+            // send the mapping config to the backend using fetch or just alert
+            const mappingData = JSON.stringify(currentMapping);
+            exportBox.value = mappingData;
+            
+            // Trigger python backend script to write file!
+            fetch("/apply-mapping", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: mappingData
+            }).then(res => {
+                alert("Mapped! Running automated write to index.html using Python script. Check console.");
+            }).catch(err => {
+                // Fallback direct instructions
+                alert("Click OK to copy the configuration JSON to clipboard, then let the Antigravity assistant write the changes!");
+                navigator.clipboard.writeText(mappingData);
+            });
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>
