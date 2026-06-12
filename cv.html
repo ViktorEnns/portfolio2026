@@ -10,33 +10,51 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
-    
-    <!-- Dedicated CV Stylesheet -->
+        <!-- Dedicated CV Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="cv-styles.css">
+    
+    <script>
+      (function(){
+        // PERSIST THEME PREFERENCE
+        var savedTheme = localStorage.getItem('theme');
+        document.documentElement.setAttribute('data-theme', savedTheme || 'dark');
+      })();
+    </script>
     
     <!-- QR Code Generator Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
-<body>
+<body class="cv-page-body">
+    <!-- Technical Design Blueprint Grid Layer -->
+    <div class="bg-grid" aria-hidden="true"></div>
     
-    <!-- Screen-Only Nav Bar -->
-    <nav class="screen-nav no-print">
-        <a href="index.html" class="nav-back">
+    <!-- Top Navigation Header -->
+    <nav class="cv-nav no-print" aria-label="Primary">
+        <a href="index.html" class="cv-nav-back">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
             Zurück zum Digital-Portfolio
         </a>
-        <button id="print-cv-btn" class="print-action-btn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-            Jetzt drucken / PDF speichern
-        </button>
-        <a href="Lebenslauf_Viktor_Enns.pdf" download="Lebenslauf_Viktor_Enns.pdf" class="print-action-btn" style="margin-left: 10px;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-            PDF herunterladen
-        </a>
+
+        <div class="cv-nav-controls">
+            <button id="print-cv-btn" class="cv-btn cv-btn-secondary">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Drucken / PDF speichern
+            </button>
+            <a href="Lebenslauf_Viktor_Enns.pdf" download="Lebenslauf_Viktor_Enns.pdf" class="cv-btn cv-btn-primary">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                PDF herunterladen
+            </a>
+            <!-- Theme Toggle Switch -->
+            <label class="toggle-switch" aria-label="Toggle dark mode" style="margin-left: 8px;">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider"></span>
+            </label>
+        </div>
     </nav>
 
     <!-- Main CV Sheet -->
-    <div class="cv-sheet">
+    <div class="cv-container">">
         
         <!-- HEADER BLOCK -->
         <header class="cv-header">
@@ -275,9 +293,23 @@
 
             // Print Action
             const printBtn = document.getElementById('print-cv-btn');
-            printBtn.addEventListener('click', () => {
-                window.print();
-            });
+            if (printBtn) {
+                printBtn.addEventListener('click', () => {
+                    window.print();
+                });
+            }
+
+            // Theme Toggle Logic
+            const themeToggle = document.getElementById('theme-toggle');
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (themeToggle) {
+                themeToggle.checked = currentTheme === 'dark';
+                themeToggle.addEventListener('change', () => {
+                    const newTheme = themeToggle.checked ? 'dark' : 'light';
+                    document.documentElement.setAttribute('data-theme', newTheme);
+                    localStorage.setItem('theme', newTheme);
+                });
+            }
         });
     </script>
 </body>
