@@ -16,7 +16,8 @@
     <link rel="canonical" href="https://viktorenns.dev/">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="icon" type="image/png" href="assets/logo-light.png" media="(prefers-color-scheme: dark)">
+    <link rel="icon" type="image/png" href="assets/logo-dark.png" media="(prefers-color-scheme: light)">
 
     <!-- Style sheets -->
     <link rel="stylesheet" href="styles.css">
@@ -228,16 +229,16 @@
                 <!-- Card 2: Comedy OS -->
                 <div class="currently-card" style="--card-glow-color: rgba(8, 67, 116, 0.25);">
                     <div class="currently-card-visual">
-                        <div class="sometimes-card-photo-wrap">
+                        <div class="sometimes-card-photo-wrap" onclick="openLightbox('[&quot;comedy_os_notes.png&quot;, &quot;comedy_os_setlist.png&quot;, &quot;comedy_os_workbench.png&quot;]', 'Previews', 'Vorschau', 'Comedy OS UI Previews', 'Comedy OS UI-Vorschau', 'Current state of the Comedy OS user interface, showing the Notes view, the Setlist Builder, and the Repertoire Dashboard.', 'Aktueller Stand der Comedy OS Benutzeroberfläche, bestehend aus der Notizen-Ansicht, dem Setlist-Builder und dem Repertoire-Dashboard.', 'COMEDY OS PREVIEWS')" style="cursor: pointer;">
                             <div class="sometimes-card-carousel">
                                 <div class="carousel-slide">
-                                    <img src="assets/placeholder_comedy_app.png" alt="Comedy OS Semantic Search Dashboard Mockup" loading="lazy">
+                                    <img src="assets/sometimes/comedy_os_notes.png" alt="Comedy OS Notes View - Current UI State" loading="lazy">
                                 </div>
                                 <div class="carousel-slide">
-                                    <img src="assets/placeholder_comedy_stage.png" alt="Comedy Microphone on Stage" loading="lazy">
+                                    <img src="assets/sometimes/comedy_os_setlist.png" alt="Comedy OS Setlist Builder View - Current UI State" loading="lazy">
                                 </div>
                                 <div class="carousel-slide">
-                                    <img src="assets/placeholder_comedy_medium.png" alt="Killing the Tag Medium Article Showcase" loading="lazy">
+                                    <img src="assets/sometimes/comedy_os_workbench.png" alt="Comedy OS Repertoire Dashboard - Current UI State" loading="lazy">
                                 </div>
                             </div>
                             <div class="carousel-badge glass glass--pill"><span>1 / 3</span></div>
@@ -515,10 +516,14 @@
                         <div class="sometimes-card-photo-wrap">
                             <div class="sometimes-card-carousel">
                                 <div class="carousel-slide">
-                                    <img src="assets/placeholder_podcast.png" alt="Podcast microphone with whiskey and cigar" loading="lazy">
+                                    <a href="https://www.youtube.com/watch?v=Y5P8ho5wSPM" target="_blank" rel="noopener" aria-label="Watch La Trattoria del Postillione on YouTube">
+                                        <img src="assets/sometimes/dalay_video_1.jpg" alt="La Trattoria del Postillione mit Cammaroto Interview" loading="lazy">
+                                    </a>
                                 </div>
                                 <div class="carousel-slide">
-                                    <img src="assets/placeholder_cigars.png" alt="Cigars and luxury branding" loading="lazy">
+                                    <a href="https://www.youtube.com/watch?v=yXmfM0DgX68" target="_blank" rel="noopener" aria-label="Watch Going Home Local Hero on YouTube">
+                                        <img src="assets/sometimes/dalay_video_2.jpg" alt="Going Home Local Hero - Viktor Enns" loading="lazy">
+                                    </a>
                                 </div>
                             </div>
                             <div class="carousel-badge glass glass--pill"><span>1 / 2</span></div>
@@ -531,9 +536,23 @@
                             <span class="lang-de">Podcast-Produktion & Luxus-Marketing</span>
                         </h3>
                         <p class="past-card-description">
-                            <span class="lang-en">Built and promoted a podcast in a highly regulated market (luxury alcohol and limited edition cigars), mastering the art of marketing a difficult and sensitive product.</span>
-                            <span class="lang-de">Aufbau und Vermarktung eines Podcasts in einem stark regulierten Markt (Premium-Alkohol und limitierte Zigarren) — so habe ich gelernt, hochsensible und anspruchsvolle Produkte erfolgreich zu vermarkten.</span>
+                            <span class="lang-en">Built and promoted a podcast in a highly regulated market (luxury alcohol and limited edition cigars), mastering the art of marketing a difficult and sensitive product. Video productions include:</span>
+                            <span class="lang-de">Aufbau und Vermarktung eines Podcasts in einem stark regulierten Markt (Premium-Alkohol und limitierte Zigarren) — so habe ich gelernt, hochsensible und anspruchsvolle Produkte erfolgreich zu vermarkten. Zu den Videoproduktionen gehören:</span>
                         </p>
+                        <ul class="past-card-links" style="list-style: none; padding: 0; margin: 16px 0 0 0; display: flex; flex-direction: column; gap: 10px;">
+                            <li>
+                                <a href="https://www.youtube.com/watch?v=Y5P8ho5wSPM" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; color: var(--accent); text-decoration: none; font-size: 0.88rem; transition: color 0.3s var(--ease); font-weight: 600;" onmouseover="this.style.color='#FFFFFF'" onmouseout="this.style.color='var(--accent)'">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink: 0;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                                    <span>La Trattoria del Postillione mit Cammaroto Interview ↗</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com/watch?v=yXmfM0DgX68" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; color: var(--accent); text-decoration: none; font-size: 0.88rem; transition: color 0.3s var(--ease); font-weight: 600;" onmouseover="this.style.color='#FFFFFF'" onmouseout="this.style.color='var(--accent)'">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink: 0;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                                    <span>Going Home Local Hero by Leon Gossen - Viktor Enns [MusicVideo] ↗</span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -835,13 +854,9 @@
                     </span>
                 </div>
                 <!-- 14 / GAMING -->
-                <div class="sometimes-card" onclick="openLightbox('[&quot;sketch logos PXL_20240601_194146144.jpg&quot;, &quot;sketch logos PXL_20240601_194154105.jpg&quot;, &quot;sketch ui PXL_20240216_123301581.jpg&quot;]', 'Sketching', 'Skizzieren', 'Game UI Sketching', 'Spiel-UI Skizzieren', 'Sometimes I sketch UI for games.', 'Manchmal skizziere ich Benutzeroberflächen für Spiele.', '14 / GAMING')" role="button" aria-label="Open preview for Gaming">
+                <div class="sometimes-card" onclick="openLightbox('[&quot;sketch ui PXL_20240216_123301581.jpg&quot;]', 'Sketching', 'Skizzieren', 'Game UI Sketching', 'Spiel-UI Skizzieren', 'Sometimes I sketch UI for games.', 'Manchmal skizziere ich Benutzeroberflächen für Spiele.', '14 / GAMING')" role="button" aria-label="Open preview for Gaming">
                     <div class="sometimes-card-photo-wrap">
-                        
-                        <div class="sometimes-card-carousel">
-                            <div class="carousel-slide"><img src="assets/sometimes/sketch logos PXL_20240601_194146144.jpg" alt="Gaming" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/sketch logos PXL_20240601_194154105.jpg" alt="Gaming" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/sketch ui PXL_20240216_123301581.jpg" alt="Gaming" loading="lazy"></div>
-                        </div>
-                        <div class="carousel-badge glass glass--pill"><span>1 / 3</span></div>
+                        <img src="assets/sometimes/sketch ui PXL_20240216_123301581.jpg" alt="Gaming UI Sketch" loading="lazy">
                     </div>
                     <span class="sometimes-tag">
                         <span class="lang-en">Sketching</span>
@@ -856,8 +871,29 @@
                         <span class="lang-de">14 / SPIEL-UI SKIZZIEREN</span>
                     </span>
                 </div>
-                <!-- 15 / SENSORY -->
-                <div class="sometimes-card" onclick="openLightbox('[&quot;rare things bourbon PXL_20231222_190516920.jpg&quot;]', 'Curiosity', 'Neugier', 'Rare Flavors Exploration', 'Seltene Aromen-Erkundung', 'Sometimes I try very rare stuff.', 'Manchmal probiere ich sehr seltene Dinge aus.', '15 / SENSORY')" role="button" aria-label="Open preview for Sensory">
+                <!-- 15 / LOGO DESIGN -->
+                <div class="sometimes-card" onclick="openLightbox('[&quot;sketch logos PXL_20240601_194146144.jpg&quot;, &quot;sketch logos PXL_20240601_194154105.jpg&quot;]', 'Sketching', 'Skizzieren', 'Logo Design', 'Logo-Design', 'sometimes i draw logos for projects', 'manchmal zeichne ich logos für projekte', '15 / LOGO DESIGN')" role="button" aria-label="Open preview for Logo Design">
+                    <div class="sometimes-card-photo-wrap">
+                        <div class="sometimes-card-carousel">
+                            <div class="carousel-slide"><img src="assets/sometimes/sketch logos PXL_20240601_194146144.jpg" alt="Logo Design" loading="lazy"></div><div class="carousel-slide"><img src="assets/sometimes/sketch logos PXL_20240601_194154105.jpg" alt="Logo Design" loading="lazy"></div>
+                        </div>
+                        <div class="carousel-badge glass glass--pill"><span>1 / 2</span></div>
+                    </div>
+                    <span class="sometimes-tag">
+                        <span class="lang-en">Sketching</span>
+                        <span class="lang-de">Skizzieren</span>
+                    </span>
+                    <p class="sometimes-text">
+                        <span class="lang-en">“sometimes i draw logos for projects”</span>
+                        <span class="lang-de">„manchmal zeichne ich logos für projekte“</span>
+                    </p>
+                    <span class="sometimes-num">
+                        <span class="lang-en">15 / LOGO DESIGN</span>
+                        <span class="lang-de">15 / LOGO-DESIGN</span>
+                    </span>
+                </div>
+                <!-- 16 / SENSORY -->
+                <div class="sometimes-card" onclick="openLightbox('[&quot;rare things bourbon PXL_20231222_190516920.jpg&quot;]', 'Curiosity', 'Neugier', 'Rare Flavors Exploration', 'Seltene Aromen-Erkundung', 'Sometimes I try very rare stuff.', 'Manchmal probiere ich sehr seltene Dinge aus.', '16 / SENSORY')" role="button" aria-label="Open preview for Sensory">
                     <div class="sometimes-card-photo-wrap">
                         <img src="assets/sometimes/rare things bourbon PXL_20231222_190516920.jpg" alt="Sensory" loading="lazy">
                     </div>
@@ -870,12 +906,12 @@
                         <span class="lang-de">„Manchmal probiere ich sehr seltene Dinge aus.“</span>
                     </p>
                     <span class="sometimes-num">
-                        <span class="lang-en">15 / SENSORY</span>
-                        <span class="lang-de">15 / SELTENE AROMEN-ERKUNDUNG</span>
+                        <span class="lang-en">16 / SENSORY</span>
+                        <span class="lang-de">16 / SELTENE AROMEN-ERKUNDUNG</span>
                     </span>
                 </div>
-                <!-- 16 / PRODUCTION -->
-                <div class="sometimes-card" onclick="openLightbox('[&quot;merch PXL_20231106_192535121.jpg&quot;]', 'Testing', 'Austesten', 'Merchandise Prototype', 'Merchandise-Prototyping', 'Sometimes I create merch and test how it will look.', 'Manchmal entwerfe ich Merch und teste, wie es aussehen wird.', '16 / PRODUCTION')" role="button" aria-label="Open preview for Production">
+                <!-- 17 / PRODUCTION -->
+                <div class="sometimes-card" onclick="openLightbox('[&quot;merch PXL_20231106_192535121.jpg&quot;]', 'Testing', 'Austesten', 'Merchandise Prototype', 'Merchandise-Prototyping', 'Sometimes I create merch and test how it will look.', 'Manchmal entwerfe ich Merch und teste, wie es aussehen wird.', '17 / PRODUCTION')" role="button" aria-label="Open preview for Production">
                     <div class="sometimes-card-photo-wrap">
                         <img src="assets/sometimes/merch PXL_20231106_192535121.jpg" alt="Production" loading="lazy">
                     </div>
@@ -888,12 +924,12 @@
                         <span class="lang-de">„Manchmal entwerfe ich Merch und teste, wie es aussehen wird.“</span>
                     </p>
                     <span class="sometimes-num">
-                        <span class="lang-en">16 / PRODUCTION</span>
-                        <span class="lang-de">16 / MERCHANDISE-PROTOTYPING</span>
+                        <span class="lang-en">17 / PRODUCTION</span>
+                        <span class="lang-de">17 / MERCHANDISE-PROTOTYPING</span>
                     </span>
                 </div>
-                <!-- 17 / UX CRITIQUE -->
-                <div class="sometimes-card" onclick="openLightbox('[&quot;bad design choices PXL_20260426_084720787.jpg&quot;]', 'Humor', 'Humor', 'Strange Design Chuckles', 'Kuriose Design-Schmunzler', 'Sometimes I chuckle about strange design choices.', 'Manchmal schmunzle ich über seltsame Designentscheidungen.', '17 / UX CRITIQUE')" role="button" aria-label="Open preview for UX Critique">
+                <!-- 18 / UX CRITIQUE -->
+                <div class="sometimes-card" onclick="openLightbox('[&quot;bad design choices PXL_20260426_084720787.jpg&quot;]', 'Humor', 'Humor', 'Strange Design Chuckles', 'Kuriose Design-Schmunzler', 'Sometimes I chuckle about strange design choices.', 'Manchmal schmunzle ich über seltsame Designentscheidungen.', '18 / UX CRITIQUE')" role="button" aria-label="Open preview for UX Critique">
                     <div class="sometimes-card-photo-wrap">
                         <img src="assets/sometimes/bad design choices PXL_20260426_084720787.jpg" alt="UX Critique" loading="lazy">
                     </div>
@@ -906,12 +942,12 @@
                         <span class="lang-de">„Manchmal schmunzle ich über seltsame Designentscheidungen.“</span>
                     </p>
                     <span class="sometimes-num">
-                        <span class="lang-en">17 / UX CRITIQUE</span>
-                        <span class="lang-de">17 / KURIOSE DESIGN-SCHMUNZLER</span>
+                        <span class="lang-en">18 / UX CRITIQUE</span>
+                        <span class="lang-de">18 / KURIOSE DESIGN-SCHMUNZLER</span>
                     </span>
                 </div>
-                <!-- 18 / HEURISTICS -->
-                <div class="sometimes-card" onclick="openLightbox('[&quot;bad ui Screenshot_20240430-100134.png&quot;]', 'UX Rant', 'UX-Rant', 'UI Design Confusion', 'UI-Design-Verwirrung', 'Sometimes I get confused about UI design decisions.', 'Manchmal verwirren mich UI-Designentscheidungen.', '18 / HEURISTICS')" role="button" aria-label="Open preview for Heuristics">
+                <!-- 19 / HEURISTICS -->
+                <div class="sometimes-card" onclick="openLightbox('[&quot;bad ui Screenshot_20240430-100134.png&quot;]', 'UX Rant', 'UX-Rant', 'UI Design Confusion', 'UI-Design-Verwirrung', 'Sometimes I get confused about UI design decisions.', 'Manchmal verwirren mich UI-Designentscheidungen.', '19 / HEURISTICS')" role="button" aria-label="Open preview for Heuristics">
                     <div class="sometimes-card-photo-wrap">
                         <img src="assets/sometimes/bad ui Screenshot_20240430-100134.png" alt="Heuristics" loading="lazy">
                     </div>
@@ -924,12 +960,12 @@
                         <span class="lang-de">„Manchmal verwirren mich UI-Designentscheidungen.“</span>
                     </p>
                     <span class="sometimes-num">
-                        <span class="lang-en">18 / HEURISTICS</span>
-                        <span class="lang-de">18 / UI-DESIGN-VERWIRRUNG</span>
+                        <span class="lang-en">19 / HEURISTICS</span>
+                        <span class="lang-de">19 / UI-DESIGN-VERWIRRUNG</span>
                     </span>
                 </div>
-                <!-- 19 / KNIVES RESTORATION -->
-                <div class="sometimes-card" onclick="openLightbox('[&quot;knife broken PXL_20201104_105131865.jpg&quot;, &quot;knife broken PXL_20201114_101330667.jpg&quot;, &quot;knife fixed IMG_20200903_133005.jpg&quot;, &quot;knife fixed PXL_20201105_113816408.jpg&quot;]', 'Craftsmanship', 'Handwerk', 'Japanese Knife Restoration', 'Japanische Messer-Restaurierung', 'Sometimes I buy broken knives from Japan and fix them up.', 'Manchmal kaufe ich beschädigte Messer aus Japan und restauriere sie.', '19 / KNIVES RESTORATION')" role="button" aria-label="Open preview for Knives Restoration">
+                <!-- 20 / KNIVES RESTORATION -->
+                <div class="sometimes-card" onclick="openLightbox('[&quot;knife broken PXL_20201104_105131865.jpg&quot;, &quot;knife broken PXL_20201114_101330667.jpg&quot;, &quot;knife fixed IMG_20200903_133005.jpg&quot;, &quot;knife fixed PXL_20201105_113816408.jpg&quot;]', 'Craftsmanship', 'Handwerk', 'Japanese Knife Restoration', 'Japanische Messer-Restaurierung', 'Sometimes I buy broken knives from Japan and fix them up.', 'Manchmal kaufe ich beschädigte Messer aus Japan und restauriere sie.', '20 / KNIVES RESTORATION')" role="button" aria-label="Open preview for Knives Restoration">
                     <div class="sometimes-card-photo-wrap">
                         
                         <div class="sometimes-card-carousel">
@@ -946,12 +982,12 @@
                         <span class="lang-de">„Manchmal kaufe ich beschädigte Messer aus Japan und restauriere sie.“</span>
                     </p>
                     <span class="sometimes-num">
-                        <span class="lang-en">19 / KNIVES RESTORATION</span>
-                        <span class="lang-de">19 / JAPANISCHE MESSER-RESTAURIERUNG</span>
+                        <span class="lang-en">20 / KNIVES RESTORATION</span>
+                        <span class="lang-de">20 / JAPANISCHE MESSER-RESTAURIERUNG</span>
                     </span>
                 </div>
-                <!-- 20 / KNIVES SHARPENING -->
-                <div class="sometimes-card" onclick="openLightbox('[&quot;knife sharpen VID_20200628_140320.mp4&quot;, &quot;viktor sharpen knives pro IMG_20200513_014653_619.jpg&quot;, &quot;knives PXL_20241230_131928413.jpg&quot;]', 'Precision', 'Präzision', 'Knife Sharpening', 'Messerschärfen', 'Sometimes I sharpen knives like a pro.', 'Manchmal schärfe ich Messer wie ein Profi.', '20 / KNIVES SHARPENING')" role="button" aria-label="Open preview for Knives Sharpening">
+                <!-- 21 / KNIVES SHARPENING -->
+                <div class="sometimes-card" onclick="openLightbox('[&quot;knife sharpen VID_20200628_140320.mp4&quot;, &quot;viktor sharpen knives pro IMG_20200513_014653_619.jpg&quot;, &quot;knives PXL_20241230_131928413.jpg&quot;]', 'Precision', 'Präzision', 'Knife Sharpening', 'Messerschärfen', 'Sometimes I sharpen knives like a pro.', 'Manchmal schärfe ich Messer wie ein Profi.', '21 / KNIVES SHARPENING')" role="button" aria-label="Open preview for Knives Sharpening">
                     <div class="sometimes-card-photo-wrap">
                         
                         <div class="sometimes-card-carousel">
@@ -968,12 +1004,12 @@
                         <span class="lang-de">„Manchmal schärfe ich Messer wie ein Profi.“</span>
                     </p>
                     <span class="sometimes-num">
-                        <span class="lang-en">20 / KNIVES SHARPENING</span>
-                        <span class="lang-de">20 / MESSERSCHÄRFEN</span>
+                        <span class="lang-en">21 / KNIVES SHARPENING</span>
+                        <span class="lang-de">21 / MESSERSCHÄRFEN</span>
                     </span>
                 </div>
-                <!-- 21 / PORTUGUESE COOKING -->
-                <div class="sometimes-card" onclick="openLightbox('[&quot;cooking portuguese dish PXL_20260111_164143721.jpg&quot;, &quot;viktor dinner PXL_20260529_181800538.jpg&quot;, &quot;viktor dinner PXL_20260529_181807237.jpg&quot;]', 'Culinary', 'Kulinarik', 'Portuguese Cooking', 'Portugiesische Küche', 'Sometimes I cook Portuguese dishes.', 'Manchmal koche ich portugiesische Gerichte.', '21 / PORTUGUESE COOKING')" role="button" aria-label="Open preview for Portuguese Cooking">
+                <!-- 22 / PORTUGUESE COOKING -->
+                <div class="sometimes-card" onclick="openLightbox('[&quot;cooking portuguese dish PXL_20260111_164143721.jpg&quot;, &quot;viktor dinner PXL_20260529_181800538.jpg&quot;, &quot;viktor dinner PXL_20260529_181807237.jpg&quot;]', 'Culinary', 'Kulinarik', 'Portuguese Cooking', 'Portugiesische Küche', 'Sometimes I cook Portuguese dishes.', 'Manchmal koche ich portugiesische Gerichte.', '22 / PORTUGUESE COOKING')" role="button" aria-label="Open preview for Portuguese Cooking">
                     <div class="sometimes-card-photo-wrap">
                         
                         <div class="sometimes-card-carousel">
@@ -990,8 +1026,8 @@
                         <span class="lang-de">„Manchmal koche ich portugiesische Gerichte.“</span>
                     </p>
                     <span class="sometimes-num">
-                        <span class="lang-en">21 / PORTUGUESE COOKING</span>
-                        <span class="lang-de">21 / PORTUGIESISCHE KÜCHE</span>
+                        <span class="lang-en">22 / PORTUGUESE COOKING</span>
+                        <span class="lang-de">22 / PORTUGIESISCHE KÜCHE</span>
                     </span>
                 </div>
             </div>
