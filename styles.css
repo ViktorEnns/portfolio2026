@@ -1542,5 +1542,345 @@ body.loaded .scroll-cue { opacity: 1; }
     transform: translateY(-2px);
 }
 
+/* =============================================================
+   App Mastery Cards Section
+   ============================================================= */
+.app-mastery {
+    border-top: 1px solid var(--rule);
+    padding: clamp(80px, 12vh, 160px) var(--gutter);
+    max-width: var(--max);
+    margin: 0 auto;
+}
+.app-mastery-header {
+    margin-bottom: clamp(40px, 6vh, 80px);
+    max-width: 720px;
+}
+.app-mastery-header .section-title {
+    font-size: clamp(2.2rem, 4vw, 4.2rem);
+    line-height: 1.05;
+    letter-spacing: -.03em;
+    font-weight: 800;
+    margin-top: 12px;
+    margin-bottom: 20px;
+    color: var(--ink);
+}
+.app-mastery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+@media (min-width: 768px) {
+    .app-mastery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (min-width: 1200px) {
+    .app-mastery-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
 
+.app-card {
+    position: relative;
+    background: var(--bg-raised);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: clamp(24px, 3vw, 36px) clamp(20px, 2.5vw, 28px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(20px, 3vh, 28px);
+    overflow: hidden;
+    transition: transform 0.4s var(--ease), border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+    box-shadow: 0 4px 20px -10px rgba(8, 67, 116, 0.04);
+}
+.app-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, var(--app-glow), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s var(--ease);
+    pointer-events: none;
+    z-index: 1;
+}
+.app-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--app-accent);
+    box-shadow: 0 20px 40px -20px rgba(8, 67, 116, 0.12);
+}
+.app-card:hover::before {
+    opacity: 1;
+}
 
+.app-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+}
+.app-logos {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.app-logo-svg {
+    transition: transform 0.3s var(--ease);
+    display: block;
+}
+.app-card:hover .app-logos .app-logo-svg {
+    transform: scale(1.1) rotate(2deg);
+}
+.app-card:hover .app-logos .app-logo-svg:nth-child(2) {
+    transform: scale(1.1) rotate(-4deg) translateX(-2px);
+}
+.app-card:hover .app-logos .app-logo-svg:nth-child(3) {
+    transform: scale(1.1) rotate(3deg) translateX(-4px);
+}
+.app-hours {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--app-accent);
+    background: color-mix(in srgb, var(--app-accent) 10%, transparent);
+    padding: 6px 12px;
+    border-radius: 6px;
+    letter-spacing: -0.01em;
+}
+
+.app-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 2;
+}
+.app-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+}
+.app-role {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--app-accent);
+    margin-bottom: 2px;
+    border-bottom: 1px dashed var(--rule);
+    padding-bottom: 6px;
+    width: fit-content;
+}
+.app-desc {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+}
+
+/* =============================================================
+   Video Games Section
+   ============================================================= */
+.gaming {
+    border-top: 1px solid var(--rule);
+    padding: clamp(80px, 12vh, 160px) var(--gutter);
+    max-width: var(--max);
+    margin: 0 auto;
+}
+.gaming-header {
+    margin-bottom: clamp(40px, 6vh, 80px);
+    max-width: 720px;
+}
+.gaming-header .section-title {
+    font-size: clamp(2.2rem, 4vw, 4.2rem);
+    line-height: 1.05;
+    letter-spacing: -.03em;
+    font-weight: 800;
+    margin-top: 12px;
+    margin-bottom: 20px;
+    color: var(--ink);
+}
+.gaming-featured-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+@media (min-width: 900px) {
+    .gaming-featured-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+}
+
+.gaming-card {
+    background: var(--bg-raised);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 20px -10px rgba(8, 67, 116, 0.04);
+    transition: transform 0.4s var(--ease), border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+@media (min-width: 550px) {
+    .gaming-card {
+        flex-direction: row;
+    }
+}
+.gaming-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent-2);
+    box-shadow: 0 20px 40px -20px rgba(8, 67, 116, 0.12);
+}
+.gaming-poster-wrap {
+    width: 100%;
+    aspect-ratio: 2/3;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+    background: var(--bg-deep);
+}
+@media (min-width: 550px) {
+    .gaming-poster-wrap {
+        width: 160px;
+        height: auto;
+        aspect-ratio: auto;
+    }
+}
+.gaming-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease);
+    display: block;
+}
+.gaming-card:hover .gaming-poster {
+    transform: scale(1.06);
+}
+
+.gaming-content {
+    padding: clamp(20px, 3.5vw, 28px);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    justify-content: center;
+    flex-grow: 1;
+}
+.gaming-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.gaming-title {
+    font-size: clamp(1.15rem, 1.6vw, 1.35rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+}
+.gaming-appid {
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    font-weight: 700;
+    color: var(--muted);
+    border: 1px solid var(--rule);
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: var(--bg-deep);
+}
+.gaming-desc {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
+}
+.gaming-bullets {
+    margin-top: 4px;
+    border-top: 1px dashed var(--rule);
+    padding-top: 10px;
+}
+.gaming-bullet {
+    display: block;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    color: var(--muted);
+}
+
+.gaming-favorites-header {
+    margin-top: clamp(60px, 8vh, 100px);
+    margin-bottom: clamp(24px, 4vh, 40px);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 16px;
+}
+.gaming-favorites-title {
+    font-size: clamp(1.4rem, 2vw, 2rem);
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.gaming-favorites-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+@media (min-width: 550px) {
+    .gaming-favorites-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (min-width: 900px) {
+    .gaming-favorites-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+    }
+}
+
+.fav-game-card {
+    background: var(--bg-raised);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s var(--ease), border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+    box-shadow: 0 2px 10px -5px rgba(8, 67, 116, 0.04);
+}
+.fav-game-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-2);
+    box-shadow: 0 15px 30px -15px rgba(8, 67, 116, 0.1);
+}
+.fav-game-header-wrap {
+    width: 100%;
+    aspect-ratio: 460/215;
+    overflow: hidden;
+    background: var(--bg-deep);
+}
+.fav-game-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s var(--ease);
+    display: block;
+}
+.fav-game-card:hover .fav-game-img {
+    transform: scale(1.05);
+}
+.fav-game-info {
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: center;
+}
+.fav-game-name {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+}
+.fav-game-tag {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: var(--muted);
+}
