@@ -20,6 +20,8 @@
 
     <!-- Style sheets -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Amicro Micro-Transitions (isolated & easily removable) -->
+    <link rel="stylesheet" href="amicro-transitions.css">
     
     <script>
       (function(){
@@ -188,79 +190,210 @@
             </div>
 
             <div class="currently-cards-container">
-                <!-- Card 1: Marble Music Match -->
-                <div class="currently-card" style="--card-glow-color: rgba(65, 158, 209, 0.25);">
-                    <div class="currently-card-visual">
-                        <div class="sometimes-card-photo-wrap">
-                            <div class="sometimes-card-carousel">
-                                <div class="carousel-slide">
-                                    <img src="assets/placeholder_marble_app.png" alt="Marble Music Match Mobile UI Mockup" loading="lazy">
+                <!-- ==================== PRIMARY STANDALONE CARD: Comedy OS ==================== -->
+                <div class="currently-card currently-card--primary" style="--card-glow-color: rgba(19, 66, 105, 0.25);">
+                    <div class="currently-card-hero">
+                        <div class="currently-card-visual">
+                            <div class="sometimes-card-photo-wrap">
+                                <div class="sometimes-card-carousel">
+                                    <div class="carousel-slide">
+                                        <img src="assets/placeholder_comedy_app.png" alt="Comedy OS Semantic Search Dashboard Mockup" loading="lazy">
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="assets/placeholder_comedy_stage.png" alt="Comedy Microphone on Stage" loading="lazy">
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="assets/placeholder_comedy_medium.png" alt="Killing the Tag Medium Article Showcase" loading="lazy">
+                                    </div>
                                 </div>
-                                <div class="carousel-slide">
-                                    <img src="assets/placeholder_marble_producer.png" alt="Music Producer in Recording Studio" loading="lazy">
-                                </div>
+                                <div class="carousel-badge glass glass--pill"><span>1 / 3</span></div>
                             </div>
-                            <div class="carousel-badge glass glass--pill"><span>1 / 2</span></div>
+                        </div>
+
+                        <div class="currently-card-info">
+                            <span class="currently-card-kicker">01 / KNOWLEDGE INFRASTRUCTURE</span>
+                            <h3 class="currently-card-title">Comedy OS</h3>
+                            <p class="currently-card-desc lang-en">
+                                A zero-friction performance intelligence workspace for stand-up comedians. Avoids manual administrative "homework" by replacing traditional tags and folders with an AI-driven <strong>"Invisible Librarian" Semantic Vector Search</strong>. Uses progressive disclosure and silent behavioral tracking to guide users naturally away from legacy filing habits.
+                            </p>
+                            <p class="currently-card-desc lang-de">
+                                Ein reibungsloser Workspace für Stand-up-Comedians. Vermeidet manuellen Aufwand durch Ersetzen traditioneller Tags und Ordner durch eine KI-gestützte <strong>semantische Vektorsuche („Invisible Librarian“)</strong>. Nutzt Progressive Disclosure, um Nutzer sanft von alten Ablagegewohnheiten wegzuführen.
+                            </p>
                         </div>
                     </div>
-                    <div class="currently-card-info">
-                        <span class="currently-card-kicker">01 / ECOSYSTEM DESIGN</span>
-                        <h3 class="currently-card-title">Marble Music Match</h3>
-                        <p class="currently-card-desc lang-en">
-                            A music collaboration platform engineered to bridge the "Satisfaction Gap" (where 32% of users quit competitor apps due to execution errors and bot fatigue). Designed with <strong>"Invisible UX"</strong> workflows like metadata-infused intelligent file naming, allowing producers to drag stems directly into their DAW with zero administrative friction.
-                        </p>
-                        <p class="currently-card-desc lang-de">
-                            Eine Musik-Kollaborationsplattform, die entwickelt wurde, um die „Zufriedenheitslücke“ zu schließen (bei der 32 % der Nutzer Konkurrenz-Apps wegen technischer Reibung verlassen). Konzipiert mit <strong>„Invisible UX“</strong>-Workflows wie einer intelligenten Datei-Benennung, damit Produzenten Stems ohne administrativen Aufwand direkt in ihre DAW ziehen können.
-                        </p>
-                        <div class="currently-card-actions">
-                            <a href="https://marbledesignsystem2026.biguxenergy.workers.dev/" target="_blank" rel="noopener" class="proj-btn proj-btn-primary">
-                                <span class="lang-en">Marble Design System Guide ↗</span>
-                                <span class="lang-de">Marble Design System Guide ↗</span>
-                            </a>
-                            <a href="https://medium.com/@viktorenns/marble-music-match-invisible-ux" target="_blank" rel="noopener" class="proj-btn proj-btn-secondary">
-                                <span class="lang-en">Medium Case Study ↗</span>
-                                <span class="lang-de">Medium Fallstudie ↗</span>
-                            </a>
+
+                    <!-- Destination Breakdown Sections with Text Reveal Buttons -->
+                    <div class="comedy-destinations">
+                        <!-- Destination 1: Notation Syntax -->
+                        <div class="destination-card">
+                            <div class="destination-card-top">
+                                <span class="destination-badge">01.1 / SPECIFICATION</span>
+                                <h4 class="destination-card-title lang-en">Notation Syntax (V1.1)</h4>
+                                <h4 class="destination-card-title lang-de">Notationssyntax (V1.1)</h4>
+                                <p class="destination-card-desc lang-en">
+                                    Full syntax reference and performance tagging grammar engineered for rapid live stand-up transcription.
+                                </p>
+                                <p class="destination-card-desc lang-de">
+                                    Vollständige Syntax-Referenz und Performance-Tagging-Grammatik für die schnelle Live-Set-Transkription.
+                                </p>
+                            </div>
+                            <div class="destination-card-action">
+                                <a href="comedy-os-notation.html" class="text-reveal-btn text-reveal-btn--primary">
+                                    <span class="btn-arrow-wrap" aria-hidden="true">
+                                        <svg class="btn-arrow-icon" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                        </svg>
+                                    </span>
+                                    <span class="btn-text-mask">
+                                        <span class="btn-text-track lang-en">
+                                            <span class="btn-text-item">Notation System V1.1</span>
+                                            <span class="btn-text-item">Notation System V1.1</span>
+                                        </span>
+                                        <span class="btn-text-track lang-de">
+                                            <span class="btn-text-item">Notationssystem V1.1</span>
+                                            <span class="btn-text-item">Notationssystem V1.1</span>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Destination 2: AI Research Agent -->
+                        <div class="destination-card">
+                            <div class="destination-card-top">
+                                <span class="destination-badge">01.2 / PROTOTYPE</span>
+                                <h4 class="destination-card-title lang-en">AI Research Agent</h4>
+                                <h4 class="destination-card-title lang-de">KI Research Agent</h4>
+                                <p class="destination-card-desc lang-en">
+                                    Interactive Gemini-powered prototype in Google AI Studio trained on premise generation and comedic set mechanics.
+                                </p>
+                                <p class="destination-card-desc lang-de">
+                                    Interaktiver Gemini-Prototyp in Google AI Studio für Prämissen-Generierung und Witzmechaniken.
+                                </p>
+                            </div>
+                            <div class="destination-card-action">
+                                <a href="https://aistudio.google.com/comedy-research-agent" target="_blank" rel="noopener" class="text-reveal-btn">
+                                    <span class="btn-arrow-wrap" aria-hidden="true">
+                                        <svg class="btn-arrow-icon" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                        </svg>
+                                    </span>
+                                    <span class="btn-text-mask">
+                                        <span class="btn-text-track lang-en">
+                                            <span class="btn-text-item">AI Research Agent</span>
+                                            <span class="btn-text-item">AI Research Agent</span>
+                                        </span>
+                                        <span class="btn-text-track lang-de">
+                                            <span class="btn-text-item">KI Research Agent</span>
+                                            <span class="btn-text-item">KI Research Agent</span>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Destination 3: Medium Case Study -->
+                        <div class="destination-card">
+                            <div class="destination-card-top">
+                                <span class="destination-badge">01.3 / CASE STUDY</span>
+                                <h4 class="destination-card-title lang-en">Architectural Essay</h4>
+                                <h4 class="destination-card-title lang-de">Architektur-Essay</h4>
+                                <p class="destination-card-desc lang-en">
+                                    Read "Killing the Tag" on Medium — how we eliminated manual folder hierarchy via an Invisible Librarian vector search.
+                                </p>
+                                <p class="destination-card-desc lang-de">
+                                    Lesen Sie „Killing the Tag“ auf Medium — wie wir Ordnerhierarchien durch Vektorsuche eliminiert haben.
+                                </p>
+                            </div>
+                            <div class="destination-card-action">
+                                <a href="https://medium.com/@viktorenns/killing-the-tag-designing-invisible-organization-for-comedy-os-8bdc027000e4" target="_blank" rel="noopener" class="text-reveal-btn">
+                                    <span class="btn-arrow-wrap" aria-hidden="true">
+                                        <svg class="btn-arrow-icon" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                        </svg>
+                                    </span>
+                                    <span class="btn-text-mask">
+                                        <span class="btn-text-track lang-en">
+                                            <span class="btn-text-item">Medium Case Study</span>
+                                            <span class="btn-text-item">Medium Case Study</span>
+                                        </span>
+                                        <span class="btn-text-track lang-de">
+                                            <span class="btn-text-item">Medium Fallstudie</span>
+                                            <span class="btn-text-item">Medium Fallstudie</span>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 2: Comedy OS -->
-                <div class="currently-card" style="--card-glow-color: rgba(8, 67, 116, 0.25);">
-                    <div class="currently-card-visual">
-                        <div class="sometimes-card-photo-wrap">
-                            <div class="sometimes-card-carousel">
-                                <div class="carousel-slide">
-                                    <img src="assets/placeholder_comedy_app.png" alt="Comedy OS Semantic Search Dashboard Mockup" loading="lazy">
+                <!-- ==================== CARD 2: Marble Music Match ==================== -->
+                <div class="currently-card" style="--card-glow-color: rgba(79, 154, 195, 0.25);">
+                    <div class="currently-card-hero">
+                        <div class="currently-card-visual">
+                            <div class="sometimes-card-photo-wrap">
+                                <div class="sometimes-card-carousel">
+                                    <div class="carousel-slide">
+                                        <img src="assets/placeholder_marble_app.png" alt="Marble Music Match Mobile UI Mockup" loading="lazy">
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="assets/placeholder_marble_producer.png" alt="Music Producer in Recording Studio" loading="lazy">
+                                    </div>
                                 </div>
-                                <div class="carousel-slide">
-                                    <img src="assets/placeholder_comedy_stage.png" alt="Comedy Microphone on Stage" loading="lazy">
-                                </div>
-                                <div class="carousel-slide">
-                                    <img src="assets/placeholder_comedy_medium.png" alt="Killing the Tag Medium Article Showcase" loading="lazy">
-                                </div>
+                                <div class="carousel-badge glass glass--pill"><span>1 / 2</span></div>
                             </div>
-                            <div class="carousel-badge glass glass--pill"><span>1 / 3</span></div>
                         </div>
-                    </div>
-                    <div class="currently-card-info">
-                        <span class="currently-card-kicker">02 / KNOWLEDGE INFRASTRUCTURE</span>
-                        <h3 class="currently-card-title">Comedy OS</h3>
-                        <p class="currently-card-desc lang-en">
-                            A zero-friction performance intelligence workspace for stand-up comedians. Avoids manual administrative "homework" by replacing traditional tags and folders with an AI-driven <strong>"Invisible Librarian" Semantic Vector Search</strong>. Uses progressive disclosure and silent behavioral tracking to guide users naturally away from legacy filing habits.
-                        </p>
-                        <p class="currently-card-desc lang-de">
-                            Ein reibungsloser Workspace für Stand-up-Comedians. Vermeidet manuellen Aufwand durch Ersetzen traditioneller Tags und Ordner durch eine KI-gestützte <strong>semantische Vektorsuche („Invisible Librarian“)</strong>. Nutzt Progressive Disclosure, um Nutzer sanft von alten Ablagegewohnheiten wegzuführen.
-                        </p>
-                        <div class="currently-card-actions">
-                            <a href="https://aistudio.google.com/comedy-research-agent" target="_blank" rel="noopener" class="proj-btn proj-btn-primary">
-                                <span class="lang-en">AI Research Agent ↗</span>
-                                <span class="lang-de">KI Research Agent ↗</span>
-                            </a>
-                            <a href="https://medium.com/@viktorenns/killing-the-tag-designing-invisible-organization-for-comedy-os-8bdc027000e4" target="_blank" rel="noopener" class="proj-btn proj-btn-secondary">
-                                <span class="lang-en">Medium Case Study ↗</span>
-                                <span class="lang-de">Medium Fallstudie ↗</span>
-                            </a>
+                        <div class="currently-card-info">
+                            <span class="currently-card-kicker">02 / ECOSYSTEM DESIGN</span>
+                            <h3 class="currently-card-title">Marble Music Match</h3>
+                            <p class="currently-card-desc lang-en">
+                                A music collaboration platform engineered to bridge the "Satisfaction Gap" (where 32% of users quit competitor apps due to execution errors and bot fatigue). Designed with <strong>"Invisible UX"</strong> workflows like metadata-infused intelligent file naming, allowing producers to drag stems directly into their DAW with zero administrative friction.
+                            </p>
+                            <p class="currently-card-desc lang-de">
+                                Eine Musik-Kollaborationsplattform, die entwickelt wurde, um die „Zufriedenheitslücke“ zu schließen (bei der 32 % der Nutzer Konkurrenz-Apps wegen technischer Reibung verlassen). Konzipiert mit <strong>„Invisible UX“</strong>-Workflows wie einer intelligenten Datei-Benennung, damit Produzenten Stems ohne administrativen Aufwand direkt in ihre DAW ziehen können.
+                            </p>
+                            <div class="currently-card-actions" style="border-top: none; padding-top: 0;">
+                                <a href="https://marbledesignsystem2026.biguxenergy.workers.dev/" target="_blank" rel="noopener" class="text-reveal-btn text-reveal-btn--primary">
+                                    <span class="btn-arrow-wrap" aria-hidden="true">
+                                        <svg class="btn-arrow-icon" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                        </svg>
+                                    </span>
+                                    <span class="btn-text-mask">
+                                        <span class="btn-text-track lang-en">
+                                            <span class="btn-text-item">Marble Design System Guide</span>
+                                            <span class="btn-text-item">Marble Design System Guide</span>
+                                        </span>
+                                        <span class="btn-text-track lang-de">
+                                            <span class="btn-text-item">Marble Design System Guide</span>
+                                            <span class="btn-text-item">Marble Design System Guide</span>
+                                        </span>
+                                    </span>
+                                </a>
+                                <a href="https://medium.com/@viktorenns/marble-music-match-invisible-ux" target="_blank" rel="noopener" class="text-reveal-btn">
+                                    <span class="btn-arrow-wrap" aria-hidden="true">
+                                        <svg class="btn-arrow-icon" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                        </svg>
+                                    </span>
+                                    <span class="btn-text-mask">
+                                        <span class="btn-text-track lang-en">
+                                            <span class="btn-text-item">Medium Case Study</span>
+                                            <span class="btn-text-item">Medium Case Study</span>
+                                        </span>
+                                        <span class="btn-text-track lang-de">
+                                            <span class="btn-text-item">Medium Fallstudie</span>
+                                            <span class="btn-text-item">Medium Fallstudie</span>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -290,7 +423,7 @@
                     </div>
 
                     <!-- CARD 1: Marble Music Match -->
-                    <article class="work-card" style="--card-accent: #084374;">
+                    <article class="work-card" style="--card-accent: #134269;">
                         <header class="work-card-head">
                             <span class="work-num">01</span>
                             <span class="work-period lang-en">2025 — Now</span>
@@ -312,7 +445,7 @@
                     </article>
 
                     <!-- CARD 2: Comedy OS -->
-                    <article class="work-card" style="--card-accent: #419ED1;">
+                    <article class="work-card" style="--card-accent: #4F9AC3;">
                         <header class="work-card-head">
                             <span class="work-num">02</span>
                             <span class="work-period lang-en">2025 — Now</span>
@@ -355,7 +488,7 @@
                     </article>
 
                     <!-- CARD 4: Dalay Zigarren -->
-                    <article class="work-card" style="--card-accent: #084374;">
+                    <article class="work-card" style="--card-accent: #134269;">
                         <header class="work-card-head">
                             <span class="work-num">04</span>
                             <span class="work-period">2011 — 2022</span>
@@ -376,7 +509,7 @@
                     </article>
 
                     <!-- CARD 5: Viktor Enns Fotografie & Branding -->
-                    <article class="work-card" style="--card-accent: #419ED1;">
+                    <article class="work-card" style="--card-accent: #4F9AC3;">
                         <header class="work-card-head">
                             <span class="work-num">05</span>
                             <span class="work-period">2011 — 2022</span>
@@ -597,25 +730,34 @@
                         <div class="sometimes-card-photo-wrap">
                             <div class="sometimes-card-carousel">
                                 <div class="carousel-slide">
-                                    <img src="assets/placeholder_weddings.png" alt="Wedding photography" loading="lazy">
+                                    <img src="assets/photography/portrait/001-Saarbrooklyn%20Salih%20Luciano%20Michael%20Mockups%20Test%20Portraits-088-20220419-NETZ.jpg" alt="Portrait photography" loading="lazy">
                                 </div>
                                 <div class="carousel-slide">
-                                    <img src="assets/placeholder_events.png" alt="Event photography" loading="lazy">
+                                    <img src="assets/photography/domrep/dom-rep-reise-thumbnail-02.jpg" alt="DomRep Cigar Trip Photography" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/photography/food/20160705%20DALAY%20EVENT%20Rocky%20Patel%20Private%20Dining-details-023-WEB-013.jpg" alt="Food and dining photography" loading="lazy">
                                 </div>
                             </div>
-                            <div class="carousel-badge glass glass--pill"><span>1 / 2</span></div>
+                            <div class="carousel-badge glass glass--pill"><span>1 / 3</span></div>
                         </div>
                     </div>
                     <div class="past-card-text-box">
-                        <span class="past-card-kicker">01 / PHOTOGRAPHY</span>
+                        <span class="past-card-kicker">01 / PHOTOGRAPHY &amp; VISUAL STORIES</span>
                         <h3 class="past-card-heading">
-                            <span class="lang-en">Wedding & Event Photography</span>
-                            <span class="lang-de">Hochzeit- & Eventfotografie</span>
+                            <span class="lang-en">Commercial &amp; Portrait Photography</span>
+                            <span class="lang-de">Kommerzielle &amp; Porträtfotografie</span>
                         </h3>
                         <p class="past-card-description">
-                            <span class="lang-en">I photographed weddings and events, which gave me an intimate understanding of deadlines, pressure, and the critical importance of being on time.</span>
-                            <span class="lang-de">Fotografie von Hochzeiten und Events — dadurch habe ich ein tiefes Verständnis für Deadlines und die kritische Bedeutung von absoluter Pünktlichkeit gewonnen.</span>
+                            <span class="lang-en">Extensive archive of 159 photographs spanning commercial portraits, high-end culinary photography, product branding, and documentary photojournalism in the Dominican Republic.</span>
+                            <span class="lang-de">Umfangreiches Archiv mit 159 Fotografien aus den Bereichen Porträt, Kulinarik, Produkt-Branding und Dokumentar-Fotografie in der Dominikanischen Republik.</span>
                         </p>
+                        <div class="past-card-actions" style="margin-top: 16px;">
+                            <a href="photography.html" class="proj-btn proj-btn-primary">
+                                <span class="lang-en">View Photography Galleries (159 Photos) ↗</span>
+                                <span class="lang-de">Fotogalerien ansehen (159 Fotos) ↗</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -787,7 +929,7 @@
                     </span>
                 </div>
                 <!-- 05 / PORTUGAL -->
-                <div class="sometimes-card" onclick="openLightbox('[&quot;azulejos PXL_20250422_144137898.jpg&quot;, &quot;azulejos PXL_20250422_144303103.jpg&quot;, &quot;azulejos PXL_20250422_144411370.jpg&quot;, &quot;azulejos PXL_20250422_150751128.jpg&quot;]', 'Aesthetics', 'Ästhetik', 'Portuguese Tiles', 'Portugiesische Fliesen', 'Sometimes I look at tiles (azuleju).', 'Manchmal schaue ich mir Fliesen (Azulejos) an.', '05 / PORTUGAL')" role="button" aria-label="Open preview for Portugal">
+                <div class="sometimes-card" onclick="openLightbox('[&quot;azulejos PXL_20250422_144137898.jpg&quot;, &quot;azulejos PXL_20250422_144303103.jpg&quot;, &quot;azulejos PXL_20250422_144411370.jpg&quot;, &quot;azulejos PXL_20250422_150751128.jpg&quot;]', 'Aesthetics', 'Ästhetik', 'Portuguese Tiles', 'Portugiesische Fliesen', 'Sometimes I look at tiles (Azulejos de Portugal).', 'Manchmal schaue ich mir Fliesen (Azulejos de Portugal) an.', '05 / PORTUGAL')" role="button" aria-label="Open preview for Portugal">
                     <div class="sometimes-card-photo-wrap">
                         
                         <div class="sometimes-card-carousel">
@@ -800,8 +942,8 @@
                         <span class="lang-de">Ästhetik</span>
                     </span>
                     <p class="sometimes-text">
-                        <span class="lang-en">“Sometimes I look at tiles (azuleju).”</span>
-                        <span class="lang-de">„Manchmal schaue ich mir Fliesen (Azulejos) an.“</span>
+                        <span class="lang-en">“Sometimes I look at tiles (Azulejos de Portugal).”</span>
+                        <span class="lang-de">„Manchmal schaue ich mir Fliesen (Azulejos de Portugal) an.“</span>
                     </p>
                     <span class="sometimes-num">
                         <span class="lang-en">05 / PORTUGAL</span>
@@ -1494,5 +1636,7 @@
     </div>
 
     <script src="script.js"></script>
+    <!-- Amicro Micro-Transitions Controller -->
+    <script src="amicro-transitions.js" defer></script>
 </body>
 </html>

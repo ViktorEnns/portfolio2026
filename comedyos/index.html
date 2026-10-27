@@ -1,0 +1,2011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ComedyOS — Joke Writing Workbench &amp; Mobile Keep</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..600;1,200..600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ==========================================================================
+       COMEDYOS MASTER DESIGN SYSTEM
+       Variant Typographic Ledger & Gallery Editorial Specification
+       Constitutional Invariants:
+         1. >=96% Open #1A1918 Canvas (Zero Box Soup, Zero Card Fills, Zero Shadows)
+         2. 4-Tier Optical Luminance (--ink, --ink-muted, --ink-faint, --hairline)
+         3. Strict Font Role Decoupling (Crimson Pro / Inter / JetBrains Mono)
+         4. Universal Tactile .btn Contract (1px stroke, 2px micro-chamfer)
+         5. Transparent Bottom-Line Input Architecture (.input-line-group)
+         6. Base-8 / Base-16 Modular Spatial Grid ({8, 16, 24, 32, 48, 64, 96}px)
+         7. Decoupled Mobile "Google Keep" Ingestion vs Desktop Sequential Workbench
+       ========================================================================== */
+    :root {
+      --bg: #1A1918;
+      --surface-hover: rgba(245, 242, 237, 0.03);
+      --ink: #F5F2ED;
+      --ink-muted: #A19F9A;
+      --ink-faint: rgba(245, 242, 237, 0.45);
+      --placeholder: rgba(245, 242, 237, 0.22);
+      --hairline: rgba(245, 242, 237, 0.10);
+      --hairline-btn: rgba(245, 242, 237, 0.25);
+      --hairline-btn-hover: rgba(245, 242, 237, 0.75);
+      --accent: #9FAF9A;
+      --accent-border: rgba(159, 175, 154, 0.65);
+      --accent-fill: rgba(159, 175, 154, 0.06);
+      --accent-fill-hover: rgba(159, 175, 154, 0.14);
+      --revision: #E26D5C;
+
+      --font-serif: 'Crimson Pro', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      min-height: 100%;
+      background-color: var(--bg);
+      color: var(--ink-muted);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      overflow-x: hidden;
+    }
+
+    *::-webkit-scrollbar {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    /* ==========================================================================
+       TYPOGRAPHIC PRIMITIVES
+       ========================================================================== */
+    .serif {
+      font-family: var(--font-serif);
+      color: var(--ink);
+      font-weight: 300;
+    }
+
+    .eyebrow {
+      font-family: var(--font-sans);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+
+    .micro-label {
+      font-family: var(--font-sans);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      user-select: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .mono {
+      font-family: var(--font-mono);
+      font-weight: 300;
+      font-size: 11px;
+      font-variant-numeric: tabular-nums;
+      color: var(--ink-faint);
+    }
+
+    .dot-leader {
+      flex-grow: 1;
+      border-bottom: 1px dotted var(--hairline);
+      margin: 0 12px 4px 12px;
+      min-width: 16px;
+    }
+
+    /* ==========================================================================
+       CANONICAL TACTILE BUTTON CONTRACT (.btn & .btn-primary)
+       ========================================================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 6px 12px;
+      font-family: var(--font-sans);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink);
+      background: transparent;
+      border: 1px solid var(--hairline-btn);
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 180ms cubic-bezier(0.25, 0.1, 0.25, 1);
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .btn:hover {
+      border-color: var(--hairline-btn-hover);
+      color: #FFFFFF;
+      background: var(--surface-hover);
+    }
+
+    .btn-primary {
+      border-color: var(--accent-border);
+      background: var(--accent-fill);
+      color: var(--ink);
+    }
+
+    .btn-primary:hover {
+      border-color: var(--accent);
+      background: var(--accent-fill-hover);
+    }
+
+    .btn-active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-fill);
+    }
+
+    .btn-compact {
+      padding: 4px 8px;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+    }
+
+    .btn-ghost {
+      border-color: transparent;
+      color: var(--ink-faint);
+      padding: 4px 8px;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--hairline-btn);
+      color: var(--ink);
+      background: transparent;
+    }
+
+    /* ==========================================================================
+       LAYOUT SHELL
+       ========================================================================== */
+    .app-root {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 24px 48px 64px 48px;
+      transition: max-width 220ms ease, padding 220ms ease;
+    }
+
+    /* Context Strip at the top */
+    .context-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--hairline);
+      flex-wrap: wrap;
+    }
+
+    .context-left, .context-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* Architectural Baseline Inputs */
+    .input-line-group {
+      border-bottom: 1px solid var(--hairline);
+      padding-bottom: 12px;
+      transition: border-color 180ms ease, opacity 180ms ease;
+      position: relative;
+    }
+
+    .input-line-group:focus-within {
+      border-bottom-color: var(--accent);
+    }
+
+    /* Ghost Suggested Block State */
+    .input-line-group.is-ghost-suggested {
+      opacity: 0.36;
+      border-bottom: 1px dotted var(--hairline);
+    }
+
+    .input-line-group.is-ghost-suggested:hover,
+    .input-line-group.is-ghost-suggested:focus-within {
+      opacity: 1;
+      border-bottom: 1px solid var(--accent);
+    }
+
+    .block-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .textarea-editorial {
+      width: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      resize: none;
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 300;
+      line-height: 1.5;
+      color: var(--ink);
+      overflow: hidden;
+      display: block;
+    }
+
+    .textarea-editorial::placeholder {
+      color: var(--placeholder);
+      font-style: italic;
+    }
+
+    .textarea-raw {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--ink-muted);
+      min-height: 120px;
+    }
+
+    .textarea-raw:focus {
+      color: var(--ink);
+    }
+
+    /* Progressive Action Rail under focused block */
+    .progressive-rail {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding-top: 8px;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      pointer-events: none;
+      transition: opacity 180ms ease, max-height 180ms ease;
+      flex-wrap: wrap;
+    }
+
+    .input-line-group:focus-within .progressive-rail,
+    .has-active-rail .progressive-rail {
+      opacity: 1;
+      max-height: 96px;
+      pointer-events: auto;
+    }
+
+    .rail-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    /* Between-Block Insertion Seam */
+    .insertion-seam {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 20px;
+      opacity: 0;
+      transition: opacity 150ms ease;
+      position: relative;
+    }
+
+    .insertion-seam::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      border-bottom: 1px dotted var(--hairline);
+      z-index: 1;
+    }
+
+    .insertion-seam .btn {
+      position: relative;
+      z-index: 2;
+      background: var(--bg);
+    }
+
+    .insertion-seam:hover, .insertion-seam:focus-within {
+      opacity: 1;
+    }
+
+    /* ==========================================================================
+       DESKTOP WORKBENCH VIEW
+       ========================================================================== */
+    .desktop-workbench-stage {
+      display: grid;
+      grid-template-columns: minmax(340px, 5fr) minmax(440px, 7fr);
+      gap: 64px;
+      align-items: start;
+      flex: 1;
+      transition: grid-template-columns 240ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .left-split-pane {
+      padding-right: 48px;
+      border-right: 1px solid var(--hairline);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .joke-circuit-pane {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* Gemini-Style Collapsible Headers */
+    .collapsible-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 8px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .collapsible-header:hover .micro-label {
+      color: var(--ink);
+    }
+
+    /* ==========================================================================
+       MOBILE "GOOGLE KEEP FOR JOKES" INGESTION CLIENT
+       ========================================================================== */
+    .mobile-keep-container {
+      display: none;
+      max-width: 460px;
+      margin: 0 auto;
+      width: 100%;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* Triggered via screen width or manual preview toggle */
+    .app-root.mobile-mode .desktop-workbench-stage {
+      display: none !important;
+    }
+
+    .app-root.mobile-mode .mobile-keep-container {
+      display: flex;
+    }
+
+    @media (max-width: 960px) {
+      .app-root {
+        padding: 16px 20px 80px 20px;
+      }
+      .desktop-workbench-stage {
+        display: none !important;
+      }
+      .mobile-keep-container {
+        display: flex;
+      }
+      .desktop-only {
+        display: none !important;
+      }
+    }
+
+    .keep-capture-box {
+      border-bottom: 1px solid var(--hairline);
+      padding-bottom: 16px;
+    }
+
+    .keep-actions-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .keep-feed-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .keep-feed-item {
+      border-bottom: 1px solid var(--hairline);
+      padding-bottom: 12px;
+      cursor: pointer;
+      transition: background-color 150ms ease;
+    }
+
+    .keep-feed-item:hover {
+      background-color: var(--surface-hover);
+    }
+
+    /* ==========================================================================
+       SPLIT JOURNAL LEDGER (Obsidian / Antigravity Style)
+       ========================================================================== */
+    .journal-drawer-panel {
+      display: none;
+      flex-direction: column;
+      gap: 16px;
+      border-bottom: 1px solid var(--hairline);
+      padding-bottom: 24px;
+      margin-bottom: 24px;
+    }
+
+    .journal-drawer-panel.visible {
+      display: flex;
+    }
+
+    .journal-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--hairline);
+      cursor: pointer;
+      transition: background-color 150ms ease;
+      flex-wrap: wrap;
+    }
+
+    .journal-row:hover {
+      background-color: var(--surface-hover);
+    }
+
+    /* Comparison Sub-Pane (Antigravity Diff View) */
+    .comparison-pane {
+      display: none;
+      border-top: 1px solid var(--hairline);
+      padding-top: 16px;
+      margin-top: 16px;
+    }
+
+    .comparison-pane.visible {
+      display: block;
+    }
+
+    /* Supabase Sync Drawer */
+    .supabase-sync-bar {
+      display: none;
+      flex-direction: column;
+      gap: 12px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--hairline);
+      margin-bottom: 20px;
+    }
+
+    .supabase-sync-bar.visible {
+      display: flex;
+    }
+
+    /* Floating Text Extractor Popover */
+    .selection-extractor {
+      position: fixed;
+      z-index: 100;
+      background: var(--bg);
+      border: 1px solid var(--accent-border);
+      border-radius: 2px;
+      padding: 6px 8px;
+      display: none;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .selection-extractor.visible {
+      display: inline-flex;
+    }
+
+    /* Recording Pulsing Status Line */
+    .voice-meter-active {
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 11px;
+    }
+
+    /* Image Attachment Preview */
+    .scan-attachment-preview {
+      margin-top: 8px;
+      max-height: 140px;
+      border: 1px solid var(--hairline);
+      border-radius: 2px;
+      display: none;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="app-root" id="appRoot">
+
+    <!-- =======================================================================
+         CONTEXT STRIP: Minimal, Zero-Nav Header
+         ======================================================================= -->
+    <header class="context-strip">
+      <div class="context-left">
+        <span class="mono" id="bitMetaStamp">B-104 · V1.0</span>
+        <button type="button" class="btn btn-compact" id="journalToggleBtn" onclick="toggleJournalView()">
+          <span id="journalIconSlot"></span> Journal (<span id="journalCountBadge">0</span>)
+        </button>
+        <button type="button" class="btn btn-compact" id="supabaseConfigBtn" onclick="toggleSupabaseBar()">
+          <span id="cloudIconSlot"></span> <span id="supabaseStatusText">Supabase Sync</span>
+        </button>
+      </div>
+
+      <div class="context-right">
+        <button type="button" class="btn btn-compact" id="modeSwitchBtn" onclick="toggleViewMode()" title="Toggle between Desktop Workbench and Mobile Google Keep Mode">
+          📱 Mobile Keep View
+        </button>
+        <button type="button" class="btn btn-compact btn-primary" onclick="commitAndNewJoke()" title="Save current note to vault and open fresh canvas">
+          + New Joke
+        </button>
+      </div>
+    </header>
+
+    <!-- =======================================================================
+         SUPABASE SYNC & AUTH DRAWER (CENTRAL COMEDYOS CLOUD)
+         ======================================================================= -->
+    <section class="supabase-sync-bar" id="supabaseSyncBar">
+      <div class="block-header-row">
+        <span class="micro-label">COMEDYOS CLOUD SYNC &amp; ACCOUNT</span>
+        <button type="button" class="btn btn-compact btn-ghost" onclick="toggleSupabaseBar()">Close</button>
+      </div>
+
+      <div id="authLoggedOutState" style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+          <!-- 1-Click Google Sign In -->
+          <button type="button" class="btn btn-primary" onclick="signInWithGoogle()" style="padding: 8px 16px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+            Continue with Google
+          </button>
+
+          <span class="mono" style="color: var(--ink-faint);">— OR EMAIL MAGIC LINK —</span>
+
+          <!-- Magic Link Auth Input -->
+          <div class="input-line-group" style="flex: 1; min-width: 240px; margin: 0;">
+            <input type="email" id="magicLinkEmailInput" class="textarea-editorial" style="font-size: 13px; padding: 6px 0;" placeholder="comic@viktorenns.de" />
+          </div>
+          <button type="button" class="btn" onclick="sendSupabaseMagicLink()">Send Magic Link</button>
+        </div>
+
+        <!-- Optional Config Drawer for API Key if not pre-baked -->
+        <details style="margin-top: 6px;">
+          <summary class="micro-label" style="cursor: pointer; opacity: 0.6;">API CONFIGURATION (wjaaplveswgfveolixqn)</summary>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px;">
+            <div class="input-line-group" style="flex: 1; min-width: 220px;">
+              <label class="micro-label">SUPABASE URL</label>
+              <input type="url" id="supabaseUrlInput" class="textarea-editorial" style="font-size: 13px;" value="https://wjaaplveswgfveolixqn.supabase.co" />
+            </div>
+            <div class="input-line-group" style="flex: 1; min-width: 220px;">
+              <label class="micro-label">SUPABASE ANON KEY</label>
+              <input type="password" id="supabaseKeyInput" class="textarea-editorial" style="font-size: 13px;" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndqYWFwbHZlc3dnZnZlb2xpeHFuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMwMjYxMzAsImV4cCI6MjEwODYwMjEzMH0.haMRqG4THIs9T66ZvKu76BNQdqM5Nlx7jLPSXFytpDo" />
+            </div>
+            <div style="display: flex; align-items: flex-end;">
+              <button type="button" class="btn btn-compact btn-primary" onclick="connectSupabaseClient()">Save Key</button>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <!-- Logged In State -->
+      <div id="authLoggedInState" style="display: none; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span class="mono" id="currentUserEmail">Signed in as: ...</span>
+          <span class="micro-label" style="color: #6ee7b7;">● LIVE SYNC ACTIVE</span>
+        </div>
+        <div style="display: flex; gap: 8px;">
+          <button type="button" class="btn btn-compact" onclick="fetchSupabaseJournal()">Sync Now</button>
+          <button type="button" class="btn btn-compact btn-ghost" onclick="signOutSupabaseUser()">Sign Out</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         DESKTOP WORKBENCH VIEW (> 960px)
+         Two-Stage: Brain Dump / Mobile Ingested Note -> Ghost Suggested Sequential Circuit
+         ======================================================================= -->
+    <div class="desktop-workbench-stage" id="desktopWorkbenchView">
+
+      <!-- LEFT PANE: Brain Dump / Transcript / Obsidian Split Journal -->
+      <section class="left-split-pane" id="leftSplitPane">
+
+        <!-- Optional Split Journal Ledger (Obsidian / Antigravity Style) -->
+        <div class="journal-drawer-panel" id="desktopJournalDrawer">
+          <div class="block-header-row">
+            <span class="micro-label">JOURNAL VAULT LEDGER</span>
+            <div style="display: flex; gap: 8px;">
+              <input type="text" id="journalSearchInput" class="textarea-editorial" style="font-size: 13px; width: 160px;" placeholder="Search vault..." oninput="renderJournalLedger()" />
+              <button type="button" class="btn btn-compact" onclick="exportVaultMarkdown()">Export MD</button>
+            </div>
+          </div>
+          <div id="journalLedgerRowsContainer"></div>
+        </div>
+
+        <!-- Stage 1: The Unconstrained Brain Dump / Ingested Mobile Note -->
+        <div class="input-line-group">
+          <div class="block-header-row">
+            <span class="micro-label" id="brainDumpLabel">01. BRAIN DUMP / RAW INPUT</span>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span class="mono" id="rawWordCount">0 WORDS</span>
+              <button type="button" class="btn btn-compact btn-ghost" id="extractModeToggleBtn" onclick="toggleExtractMode()" title="Move removes phrase from dump; Copy leaves it in dump">
+                Mode: Move
+              </button>
+            </div>
+          </div>
+
+          <textarea
+            id="rawInputTextarea"
+            class="textarea-editorial textarea-raw"
+            rows="5"
+            placeholder="Type raw thought, paste voice transcript, or scan a notebook page... (Select any phrase and press Alt+S, Alt+P, or Alt+B to structure)"
+          ></textarea>
+
+          <!-- Notebook Scan Image Preview (if present) -->
+          <img id="rawNotebookScanImg" class="scan-attachment-preview" alt="Notebook Page Scan" />
+
+          <!-- Progressive Actions for Brain Dump -->
+          <div class="progressive-rail">
+            <div class="rail-group">
+              <button type="button" class="btn btn-compact btn-primary" onclick="splitAtCursor('rawInputTextarea')" title="Split text at cursor into Set-up & Punchline (Ctrl+Enter)">
+                Split at Cursor
+              </button>
+              <button type="button" class="btn btn-compact" onclick="extractSelectionShortcut('setup')">
+                → Set-up (Alt+S)
+              </button>
+              <button type="button" class="btn btn-compact" onclick="extractSelectionShortcut('punch')">
+                → Punch (Alt+P)
+              </button>
+              <button type="button" class="btn btn-compact" onclick="extractSelectionShortcut('bridge')">
+                → Bridge (Alt+B)
+              </button>
+              <button type="button" class="btn btn-compact" onclick="extractSelectionShortcut('tag')">
+                → Tag (Alt+T)
+              </button>
+            </div>
+            <span class="mono">SELECT TEXT TO EXTRACT</span>
+          </div>
+        </div>
+
+        <!-- Optional Side-by-Side Comparison Sub-Pane (Antigravity Diff View) -->
+        <div class="comparison-pane" id="comparisonSubPane">
+          <div class="block-header-row">
+            <span class="micro-label" id="comparisonTitleLabel">COMPARISON SPECIMEN (SIDE-BY-SIDE)</span>
+            <button type="button" class="btn btn-compact btn-ghost" onclick="closeComparisonPane()">Close</button>
+          </div>
+          <div id="comparisonBlocksContainer" style="display: flex; flex-direction: column; gap: 12px;"></div>
+        </div>
+
+      </section>
+
+      <!-- RIGHT PANE: Two-Stage Sequential Joke Circuit (Setup -> Variable Bridges -> Punchlines -> Tags) -->
+      <section class="joke-circuit-pane" id="jokeCircuitPane">
+        <div class="block-header-row">
+          <span class="micro-label">02. SEQUENTIAL JOKE CIRCUIT</span>
+          <span class="mono" id="circuitTelemetry">0 WORDS · 0 SYL</span>
+        </div>
+
+        <!-- Sequential Blocks Container (Rendered dynamically from currentJoke.blocks) -->
+        <div id="sequentialCircuitContainer" style="display: flex; flex-direction: column; gap: 20px;"></div>
+      </section>
+
+    </div>
+
+    <!-- =======================================================================
+         MOBILE "GOOGLE KEEP FOR JOKES" VIEW (<= 960px or Mode Toggle)
+         ======================================================================= -->
+    <div class="mobile-keep-container" id="mobileKeepView">
+
+      <!-- Keep Capture Box -->
+      <div class="keep-capture-box">
+        <span class="micro-label" style="margin-bottom: 8px;">JOKE NOTE INGESTION · VAULT SYNC</span>
+        <textarea
+          id="mobileKeepInput"
+          class="textarea-editorial textarea-raw"
+          rows="3"
+          placeholder="Take a quick joke note, premise, or observation..."
+          style="min-height: 84px;"
+        ></textarea>
+
+        <!-- Hidden Native Camera / File Input for Handwritten Notebook OCR -->
+        <input type="file" id="mobileOcrFileInput" accept="image/*" capture="environment" style="display: none;" onchange="handleMobileOcrFile(event)" />
+
+        <!-- Scanned Photo Preview -->
+        <img id="mobileOcrPreviewImg" class="scan-attachment-preview" alt="Notebook Scan" />
+
+        <!-- Recording status indicator -->
+        <div id="mobileVoiceMeter" style="display: none; margin-top: 8px;" class="voice-meter-active">
+          ● Recording voice memo... (<span id="voiceTimer">00:00</span>) — Speak your bit
+        </div>
+
+        <div class="keep-actions-row">
+          <div style="display: flex; gap: 8px;">
+            <button type="button" class="btn btn-compact" id="mobileVoiceBtn" onclick="toggleMobileVoiceRecording()">
+              <span id="micIconSlot"></span> Voice Memo
+            </button>
+            <button type="button" class="btn btn-compact" onclick="triggerMobileOcr()">
+              <span id="camIconSlot"></span> Scan Notebook
+            </button>
+          </div>
+          <button type="button" class="btn btn-compact btn-primary" onclick="saveMobileKeepNote()">
+            Save to Vault →
+          </button>
+        </div>
+      </div>
+
+      <!-- Chronological Keep Feed Stream -->
+      <div class="keep-feed-section">
+        <div class="block-header-row">
+          <span class="micro-label">RECENT INGESTED JOKE SEEDS</span>
+          <span class="mono" id="mobileFeedCount">0 NOTES</span>
+        </div>
+        <div class="keep-feed-list" id="mobileKeepFeed"></div>
+      </div>
+
+    </div>
+
+    <!-- =======================================================================
+         FLOATING SELECTION EXTRACTOR POPOVER
+         ======================================================================= -->
+    <div class="selection-extractor" id="selectionExtractor">
+      <button type="button" class="btn btn-compact btn-primary" onmousedown="handlePopoverExtract('setup', event)">
+        → Set-up
+      </button>
+      <button type="button" class="btn btn-compact btn-primary" onmousedown="handlePopoverExtract('bridge', event)">
+        → Bridge
+      </button>
+      <button type="button" class="btn btn-compact btn-primary" onmousedown="handlePopoverExtract('punch', event)">
+        → Punchline
+      </button>
+      <button type="button" class="btn btn-compact" onmousedown="handlePopoverExtract('tag', event)">
+        → Tag
+      </button>
+    </div>
+
+  </main>
+
+  <!-- Load Supabase Client ESM dynamically when credentials are provided -->
+  <script type="module">
+    /* ==========================================================================
+       ARCHITECTURAL MONOLINE SVG ICON SYSTEM (14x14, 1.25px stroke)
+       ========================================================================== */
+    const ICONS = {
+      raw: `<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25"><path d="M8 14V8M8 8C8 5 10.5 2.5 13.5 2.5C13.5 5.5 11 8 8 8ZM8 8C8 5.5 5.5 3.5 2.5 3.5C2.5 6.5 5 8 8 8Z"/></svg>`,
+      setup: `<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25"><circle cx="8" cy="8" r="5.5"/><circle cx="8" cy="8" r="1.5"/><path d="M8 1V2.5M8 13.5V15M1 8H2.5M13.5 8H15"/></svg>`,
+      punchline: `<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25"><path d="M9.5 1.5L3.5 9H8L6.5 14.5L12.5 7H8L9.5 1.5Z"/></svg>`,
+      bridge: `<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25"><path d="M1.5 11.5C3.5 5.5 12.5 5.5 14.5 11.5M1 11.5H15M4.5 8V11.5M11.5 8V11.5"/></svg>`,
+      tag: `<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25"><path d="M2.5 8.5L7.5 3.5H13.5V9.5L8.5 14.5L2.5 8.5Z"/><circle cx="10.5" cy="6.5" r="1"/></svg>`,
+
+      // Bridge Variations
+      misdirect: `<svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25"><path d="M2 12H7C9.5 12 10.5 4 14 4M14 4L11.5 1.5M14 4L11.5 6.5M8 12L12 12"/></svg>`,
+      exaggeration: `<svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25"><path d="M2 11L13 3V13L2 9V11ZM10 2H14V6"/></svg>`,
+      repetition: `<svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25"><path d="M2 4H14M2 8H14M2 12H10"/><path d="M12 10L14 12L12 14"/></svg>`,
+      reimagine: `<svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25"><polygon points="8,2 14,13 2,13"/><path d="M8 7V10"/></svg>`,
+      reenact: `<svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="2.5" y="2.5" width="11" height="11" rx="1"/><path d="M5.5 6.5H6.5M9.5 6.5H10.5M5.5 10.5C6.5 9.2 9.5 9.2 10.5 10.5"/></svg>`,
+      the_bend: `<svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25"><path d="M3 13V7C3 4.5 5 3 7.5 3H13M10.5 0.5L13 3L10.5 5.5"/></svg>`,
+      list: `<svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25"><path d="M5 4H14M5 8H14M5 12H14M2 4H3M2 8H3M2 12H3"/></svg>`,
+      exploration: `<svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25"><circle cx="8" cy="8" r="6"/><polygon points="6.5,6.5 11,5 9.5,9.5 5,11"/></svg>`,
+
+      // System Controls
+      mic: `<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="5.5" y="1.5" width="5" height="8" rx="2.5"/><path d="M3 7.5C3 10.2 5.2 12.5 8 12.5C10.8 12.5 13 10.2 13 7.5M8 12.5V15M5.5 15H10.5"/></svg>`,
+      camera: `<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25"><path d="M2 5H4.5L6 3H10L11.5 5H14V13H2V5Z"/><circle cx="8" cy="9" r="2.5"/></svg>`,
+      journal: `<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="2" width="10" height="12"/><path d="M6 2V14M8.5 5.5H11M8.5 8.5H11"/></svg>`,
+      split: `<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="2" y="2.5" width="12" height="11"/><path d="M8 2.5V13.5"/></svg>`,
+      cloud: `<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25"><path d="M4.5 12.5H12C13.7 12.5 15 11.2 15 9.5C15 8 13.9 6.7 12.4 6.5C11.9 4.2 9.9 2.5 7.5 2.5C4.7 2.5 2.5 4.7 2.5 7.5C1.6 7.9 1 8.8 1 9.8C1 11.3 2.2 12.5 3.7 12.5H4.5Z"/></svg>`,
+      plus: `<svg width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 2.5V13.5M2.5 8H13.5"/></svg>`
+    };
+
+    // Populate static icon slots
+    document.getElementById('journalIconSlot').innerHTML = ICONS.journal;
+    document.getElementById('cloudIconSlot').innerHTML = ICONS.cloud;
+    document.getElementById('micIconSlot').innerHTML = ICONS.mic;
+    document.getElementById('camIconSlot').innerHTML = ICONS.camera;
+
+    /* ==========================================================================
+       LOCAL-FIRST STATE & SUPABASE CLIENT
+       ========================================================================== */
+    const STORAGE_KEY = 'comedyos_journal_v1';
+    let supabaseClient = null;
+    let extractMode = 'move'; // 'move' or 'copy'
+    let isDesktopJournalOpen = false;
+    let activeVoiceRecognition = null;
+    let voiceSeconds = 0;
+    let voiceTimerInterval = null;
+
+    // Active Joke In-Memory State
+    let currentJoke = {
+      id: generateUUID(),
+      display_code: 'B-104',
+      title: 'Undisputed Champion',
+      raw_text: "Undisputed heavyweight champion of the world. Wait — if it's undisputed, what is all the fighting about?",
+      modality: 'quick_text',
+      status: 'structured',
+      version_label: 'V1.0',
+      transcript_segments: [],
+      ocr_image_data_url: null,
+      blocks: [
+        {
+          id: 'blk_' + Math.random().toString(36).substr(2, 6),
+          sort_order: 0,
+          block_type: 'setup',
+          content: "Undisputed heavyweight champion of the world. If it's undisputed..."
+        },
+        {
+          id: 'blk_' + Math.random().toString(36).substr(2, 6),
+          sort_order: 1,
+          block_type: 'punchline',
+          punch_index: 1,
+          is_stage_active: true,
+          content: "...what's all the fighting about?"
+        }
+      ]
+    };
+
+    /* Helper: UUID Generator */
+    function generateUUID() {
+      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        const r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+      });
+    }
+
+    /* Helper: Text Metrics */
+    function computeCounts(text) {
+      const cleaned = (text || '').replace(/\[.*?\]/g, '').trim();
+      if (!cleaned) return { words: 0, syllables: 0 };
+      const wordsArr = cleaned.split(/\s+/).filter(Boolean);
+      let syllables = 0;
+      for (const w of wordsArr) {
+        const word = w.toLowerCase().replace(/[^a-z]/g, '');
+        if (!word) continue;
+        if (word.length <= 3) {
+          syllables += 1;
+        } else {
+          const matches = word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '')
+                              .replace(/^y/, '')
+                              .match(/[aeiouy]{1,2}/g);
+          syllables += matches ? matches.length : 1;
+        }
+      }
+      return { words: wordsArr.length, syllables };
+    }
+
+    function autoResize(el) {
+      if (!el) return;
+      el.style.height = 'auto';
+      el.style.height = el.scrollHeight + 'px';
+    }
+
+    /* ==========================================================================
+       LOCAL JOURNAL REPOSITORY (localStorage)
+       ========================================================================== */
+    function getJournalStore() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return [];
+        return JSON.parse(raw);
+      } catch (e) {
+        console.error('Failed to read journal from localStorage:', e);
+        return [];
+      }
+    }
+
+    function saveJournalStore(entries) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
+        updateJournalCountBadge();
+      } catch (e) {
+        console.error('Failed to save journal to localStorage:', e);
+      }
+    }
+
+    function updateJournalCountBadge() {
+      const store = getJournalStore();
+      document.getElementById('journalCountBadge').textContent = store.length;
+      document.getElementById('mobileFeedCount').textContent = `${store.length} NOTES`;
+    }
+
+    function autoSaveActiveJoke() {
+      const store = getJournalStore();
+      const existingIdx = store.findIndex(e => e.id === currentJoke.id);
+      currentJoke.updated_at = new Date().toISOString();
+
+      if (existingIdx >= 0) {
+        store[existingIdx] = currentJoke;
+      } else {
+        currentJoke.created_at = currentJoke.created_at || new Date().toISOString();
+        store.unshift(currentJoke);
+      }
+      saveJournalStore(store);
+
+      // Async sync to Supabase if connected
+      syncEntryToSupabase(currentJoke);
+    }
+
+    /* ==========================================================================
+       SUPABASE CLIENT & REALTIME SYNC
+       ========================================================================== */
+    function updateAuthUi(session) {
+      const loggedOutBox = document.getElementById('authLoggedOutState');
+      const loggedInBox = document.getElementById('authLoggedInState');
+      const statusText = document.getElementById('supabaseStatusText');
+      const configBtn = document.getElementById('supabaseConfigBtn');
+
+      if (session && session.user) {
+        if (loggedOutBox) loggedOutBox.style.display = 'none';
+        if (loggedInBox) loggedInBox.style.display = 'flex';
+        document.getElementById('currentUserEmail').textContent = `Comic: ${session.user.email}`;
+        statusText.textContent = session.user.email.split('@')[0];
+        configBtn.classList.add('btn-active');
+
+        // Clean URL hash/query after OAuth return
+        if (window.location.hash || window.location.search.includes('code=')) {
+          window.history.replaceState({}, document.title, window.location.pathname);
+        }
+      } else {
+        if (loggedOutBox) loggedOutBox.style.display = 'flex';
+        if (loggedInBox) loggedInBox.style.display = 'none';
+        statusText.textContent = supabaseClient ? 'Supabase: Ready' : 'Supabase Sync';
+        configBtn.classList.remove('btn-active');
+      }
+    }
+
+    window.connectSupabaseClient = async function() {
+      const url = document.getElementById('supabaseUrlInput').value.trim();
+      const key = document.getElementById('supabaseKeyInput').value.trim();
+      if (!url || !key) {
+        alert('Please provide both Supabase URL and Anon Key.');
+        return;
+      }
+
+      try {
+        const { createClient } = await import('https://esm.sh/@supabase/supabase-js@2');
+        supabaseClient = createClient(url, key);
+
+        localStorage.setItem('comedyos_supabase_url', url);
+        localStorage.setItem('comedyos_supabase_key', key);
+
+        // Check active session & set listener
+        const { data: { session } } = await supabaseClient.auth.getSession();
+        updateAuthUi(session);
+
+        supabaseClient.auth.onAuthStateChange((_event, session) => {
+          updateAuthUi(session);
+          if (session) {
+            fetchSupabaseJournal();
+          }
+        });
+
+        // Subscribe to real-time changes
+        supabaseClient.channel('journal-sync')
+          .on('postgres_changes', { event: '*', schema: 'public', table: 'journal_entries' }, payload => {
+            console.log('Realtime update from mobile / remote:', payload);
+            fetchSupabaseJournal();
+          })
+          .subscribe();
+
+        if (session) {
+          fetchSupabaseJournal();
+        }
+      } catch (err) {
+        console.error('Supabase connection error:', err);
+        alert('Could not connect to Supabase: ' + err.message);
+      }
+    };
+
+    window.signInWithGoogle = async function() {
+      if (!supabaseClient) {
+        // Attempt quick init if credentials stored
+        const url = document.getElementById('supabaseUrlInput').value.trim();
+        const key = document.getElementById('supabaseKeyInput').value.trim();
+        if (url && key) {
+          await connectSupabaseClient();
+        } else {
+          alert('Please enter your Supabase Anon Key in the API configuration first.');
+          return;
+        }
+      }
+
+      try {
+        const currentOrigin = window.location.origin.includes('viktorenns.de')
+          ? 'https://viktorenns.de/comedyos'
+          : window.location.href;
+
+        const { error } = await supabaseClient.auth.signInWithOAuth({
+          provider: 'google',
+          options: {
+            redirectTo: currentOrigin
+          }
+        });
+        if (error) throw error;
+      } catch (err) {
+        alert('Google Sign-In error: ' + err.message);
+      }
+    };
+
+    window.sendSupabaseMagicLink = async function() {
+      const email = document.getElementById('magicLinkEmailInput').value.trim();
+      if (!email) {
+        alert('Enter an email address to send magic link.');
+        return;
+      }
+      if (!supabaseClient) {
+        // Attempt quick init if credentials stored
+        const url = document.getElementById('supabaseUrlInput').value.trim();
+        const key = document.getElementById('supabaseKeyInput').value.trim();
+        if (url && key) {
+          await connectSupabaseClient();
+        } else {
+          alert('Please enter your Supabase Anon Key in the API configuration first.');
+          return;
+        }
+      }
+
+      try {
+        const currentOrigin = window.location.origin.includes('viktorenns.de')
+          ? 'https://viktorenns.de/comedyos'
+          : window.location.href;
+
+        const { error } = await supabaseClient.auth.signInWithOtp({
+          email,
+          options: {
+            emailRedirectTo: currentOrigin
+          }
+        });
+        if (error) throw error;
+        alert(`Magic link sent to ${email}! Check your inbox to sign in.`);
+      } catch (err) {
+        alert('Failed to send magic link: ' + err.message);
+      }
+    };
+
+    window.signOutSupabaseUser = async function() {
+      if (!supabaseClient) return;
+      await supabaseClient.auth.signOut();
+      updateAuthUi(null);
+    };
+
+    async function syncEntryToSupabase(entry) {
+      if (!supabaseClient) return;
+      try {
+        const { data: { session } } = await supabaseClient.auth.getSession();
+        if (!session || !session.user) return; // Comic operates locally until logged in
+
+        // Upsert journal entry
+        const { error: entryErr } = await supabaseClient
+          .from('journal_entries')
+          .upsert({
+            id: entry.id,
+            user_id: session.user.id,
+            display_code: entry.display_code,
+            title: entry.title || '',
+            raw_text: entry.raw_text || '',
+            modality: entry.modality || 'quick_text',
+            status: entry.status || 'seed',
+            version_label: entry.version_label || 'V1.0',
+            transcript_segments: entry.transcript_segments || [],
+            ocr_image_data_url: entry.ocr_image_data_url || null,
+            updated_at: new Date().toISOString()
+          });
+
+        if (entryErr) console.warn('Supabase entry sync error:', entryErr);
+
+        // Sync joke blocks if structured
+        if (entry.blocks && entry.blocks.length > 0) {
+          const blocksPayload = entry.blocks.map(b => ({
+            id: (b.id && b.id.length === 36) ? b.id : generateUUID(),
+            journal_entry_id: entry.id,
+            user_id: session.user.id,
+            sort_order: b.sort_order,
+            block_type: b.block_type,
+            bridge_category: b.bridge_category || 'bridge',
+            bridge_subtype: b.bridge_subtype || 'none',
+            content: b.content || '',
+            punch_index: b.punch_index || 1,
+            is_alt_variant: b.is_alt_variant || false,
+            is_stage_active: b.is_stage_active !== false,
+            updated_at: new Date().toISOString()
+          }));
+
+          await supabaseClient
+            .from('joke_blocks')
+            .upsert(blocksPayload);
+        }
+      } catch (e) {
+        console.warn('Supabase sync skipped/offline:', e);
+      }
+    }
+
+    async function fetchSupabaseJournal() {
+      if (!supabaseClient) return;
+      try {
+        const { data, error } = await supabaseClient
+          .from('journal_entries')
+          .select('*, joke_blocks(*)')
+          .order('created_at', { ascending: false });
+
+        if (error) throw error;
+        if (data && data.length > 0) {
+          const mapped = data.map(row => ({
+            id: row.id,
+            display_code: row.display_code,
+            title: row.title,
+            raw_text: row.raw_text,
+            modality: row.modality,
+            status: row.status,
+            version_label: row.version_label,
+            transcript_segments: row.transcript_segments || [],
+            blocks: (row.joke_blocks || []).sort((a, b) => a.sort_order - b.sort_order),
+            created_at: row.created_at,
+            updated_at: row.updated_at
+          }));
+          saveJournalStore(mapped);
+          renderJournalLedger();
+          renderMobileKeepFeed();
+        }
+      } catch (e) {
+        console.warn('Could not fetch from Supabase:', e);
+      }
+    }
+
+    // Canonical Supabase Cloud Configuration (Auto-initializes for seamless comic login)
+    const COMEDYOS_DEFAULT_SUPABASE_URL = 'https://wjaaplveswgfveolixqn.supabase.co';
+    const COMEDYOS_DEFAULT_SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndqYWFwbHZlc3dnZnZlb2xpeHFuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMwMjYxMzAsImV4cCI6MjEwODYwMjEzMH0.haMRqG4THIs9T66ZvKu76BNQdqM5Nlx7jLPSXFytpDo';
+
+    const savedUrl = localStorage.getItem('comedyos_supabase_url') || COMEDYOS_DEFAULT_SUPABASE_URL;
+    const savedKey = localStorage.getItem('comedyos_supabase_key') || COMEDYOS_DEFAULT_SUPABASE_KEY;
+
+    document.getElementById('supabaseUrlInput').value = savedUrl;
+    document.getElementById('supabaseKeyInput').value = savedKey;
+
+    // Immediately connect client so auth state & session are active on page load
+    connectSupabaseClient();
+
+    /* ==========================================================================
+       STAGE 1: BRAIN DUMP & SHORTCUT-DRIVEN PROMOTION
+       ========================================================================== */
+    const rawTextarea = document.getElementById('rawInputTextarea');
+
+    rawTextarea.addEventListener('input', () => {
+      autoResize(rawTextarea);
+      currentJoke.raw_text = rawTextarea.value;
+      const counts = computeCounts(rawTextarea.value);
+      document.getElementById('rawWordCount').textContent = `${counts.words} WORDS`;
+      debouncedAutoSave();
+    });
+
+    window.toggleExtractMode = function() {
+      extractMode = extractMode === 'move' ? 'copy' : 'move';
+      const btn = document.getElementById('extractModeToggleBtn');
+      btn.textContent = `Mode: ${extractMode.charAt(0).toUpperCase() + extractMode.slice(1)}`;
+      btn.classList.toggle('btn-active', extractMode === 'move');
+    };
+
+    function getSelectedOrCurrentLineText(ta) {
+      const start = ta.selectionStart;
+      const end = ta.selectionEnd;
+      const val = ta.value;
+
+      if (start !== end) {
+        const sel = val.substring(start, end).trim();
+        if (extractMode === 'move') {
+          ta.value = (val.slice(0, start) + val.slice(end)).replace(/\n\s*\n/g, '\n').trim();
+          ta.setSelectionRange(start, start);
+          autoResize(ta);
+          ta.dispatchEvent(new Event('input'));
+        }
+        return sel;
+      }
+
+      // If no text is highlighted, extract the current line/sentence
+      const lines = val.split('\n');
+      let charAccum = 0;
+      for (let i = 0; i < lines.length; i++) {
+        const lineLen = lines[i].length + 1;
+        if (start >= charAccum && start <= charAccum + lineLen) {
+          const lineText = lines[i].trim();
+          if (extractMode === 'move') {
+            lines.splice(i, 1);
+            ta.value = lines.join('\n').trim();
+            autoResize(ta);
+            ta.dispatchEvent(new Event('input'));
+          }
+          return lineText;
+        }
+        charAccum += lineLen;
+      }
+      return val.trim();
+    }
+
+    window.extractSelectionShortcut = function(targetType) {
+      const phrase = getSelectedOrCurrentLineText(rawTextarea);
+      if (!phrase) return;
+      promotePhraseToCircuit(phrase, targetType);
+    };
+
+    function promotePhraseToCircuit(phrase, targetType) {
+      if (targetType === 'setup') {
+        const setupBlock = currentJoke.blocks.find(b => b.block_type === 'setup');
+        if (setupBlock) {
+          setupBlock.content = phrase;
+        } else {
+          currentJoke.blocks.unshift({
+            id: 'blk_' + Math.random().toString(36).substr(2, 6),
+            sort_order: 0,
+            block_type: 'setup',
+            content: phrase
+          });
+        }
+      } else if (targetType === 'punch') {
+        // Find existing punchline or spawn Punch 02
+        const firstPunch = currentJoke.blocks.find(b => b.block_type === 'punchline' && !b.is_alt_variant);
+        if (firstPunch && !firstPunch.content.trim()) {
+          firstPunch.content = phrase;
+        } else {
+          const punchCount = currentJoke.blocks.filter(b => b.block_type === 'punchline').length;
+          currentJoke.blocks.push({
+            id: 'blk_' + Math.random().toString(36).substr(2, 6),
+            sort_order: currentJoke.blocks.length,
+            block_type: 'punchline',
+            punch_index: punchCount + 1,
+            is_stage_active: true,
+            content: phrase
+          });
+        }
+      } else if (targetType === 'bridge') {
+        // Insert after setup or after active punchline
+        const setupIdx = currentJoke.blocks.findIndex(b => b.block_type === 'setup');
+        const insertIdx = setupIdx >= 0 ? setupIdx + 1 : 0;
+        currentJoke.blocks.splice(insertIdx, 0, {
+          id: 'blk_' + Math.random().toString(36).substr(2, 6),
+          sort_order: insertIdx,
+          block_type: 'bridge',
+          bridge_category: 'development',
+          bridge_subtype: 'misdirect',
+          content: phrase
+        });
+      } else if (targetType === 'tag') {
+        currentJoke.blocks.push({
+          id: 'blk_' + Math.random().toString(36).substr(2, 6),
+          sort_order: currentJoke.blocks.length,
+          block_type: 'tag',
+          content: phrase
+        });
+      }
+
+      currentJoke.status = 'structured';
+      reindexBlockOrders();
+      renderSequentialCircuit();
+      debouncedAutoSave();
+    }
+
+    window.splitAtCursor = function(taId) {
+      const ta = document.getElementById(taId);
+      if (!ta) return;
+      const pos = ta.selectionStart;
+      const val = ta.value;
+      if (pos === 0 || pos >= val.length) return;
+
+      const before = val.slice(0, pos).trim();
+      const after = val.slice(pos).trim();
+
+      const setupBlock = currentJoke.blocks.find(b => b.block_type === 'setup');
+      const punchBlock = currentJoke.blocks.find(b => b.block_type === 'punchline');
+
+      if (setupBlock) setupBlock.content = before;
+      if (punchBlock) punchBlock.content = after;
+
+      currentJoke.status = 'structured';
+      renderSequentialCircuit();
+      debouncedAutoSave();
+    };
+
+    /* Floating Extractor Popover */
+    const extractorEl = document.getElementById('selectionExtractor');
+    function checkRawSelection() {
+      const selected = rawTextarea.value.substring(rawTextarea.selectionStart, rawTextarea.selectionEnd).trim();
+      if (selected.length > 2) {
+        const rect = rawTextarea.getBoundingClientRect();
+        const top = Math.max(12, rect.top - 42);
+        const left = Math.min(window.innerWidth - 320, Math.max(16, rect.left + 16));
+        extractorEl.style.top = `${top}px`;
+        extractorEl.style.left = `${left}px`;
+        extractorEl.classList.add('visible');
+      } else {
+        extractorEl.classList.remove('visible');
+      }
+    }
+    rawTextarea.addEventListener('mouseup', checkRawSelection);
+    rawTextarea.addEventListener('keyup', checkRawSelection);
+    document.addEventListener('mousedown', e => {
+      if (!extractorEl.contains(e.target) && e.target !== rawTextarea) {
+        extractorEl.classList.remove('visible');
+      }
+    });
+
+    window.handlePopoverExtract = function(type, e) {
+      e.preventDefault();
+      extractSelectionShortcut(type);
+      extractorEl.classList.remove('visible');
+    };
+
+    /* ==========================================================================
+       STAGE 2: SEQUENTIAL JOKE CIRCUIT RENDERING (Setup -> Bridges -> Punches -> Tags)
+       ========================================================================== */
+    function reindexBlockOrders() {
+      currentJoke.blocks.forEach((b, idx) => {
+        b.sort_order = idx;
+      });
+    }
+
+    function renderSequentialCircuit() {
+      const container = document.getElementById('sequentialCircuitContainer');
+      container.innerHTML = '';
+
+      let totalWords = 0;
+      let totalSyllables = 0;
+
+      currentJoke.blocks.forEach((block, idx) => {
+        const counts = computeCounts(block.content);
+        totalWords += counts.words;
+        totalSyllables += counts.syllables;
+
+        const isGhost = (!block.content || !block.content.trim());
+        const blockEl = document.createElement('div');
+        blockEl.className = `input-line-group ${isGhost ? 'is-ghost-suggested' : ''}`;
+        blockEl.dataset.blockIndex = idx;
+
+        // Block Header & Icon
+        let iconSvg = ICONS[block.block_type] || ICONS.setup;
+        let titleLabel = block.block_type.toUpperCase();
+
+        if (block.block_type === 'bridge') {
+          const sub = block.bridge_subtype && block.bridge_subtype !== 'none' ? block.bridge_subtype : null;
+          iconSvg = sub && ICONS[sub] ? ICONS[sub] : ICONS.bridge;
+          titleLabel = `BRIDGE ${sub ? '· ' + sub.replace('_', ' ').toUpperCase() : ''}`;
+        } else if (block.block_type === 'punchline') {
+          titleLabel = `PUNCHLINE 0${block.punch_index || 1} ${block.is_alt_variant ? '(VARIANT)' : ''}`;
+        } else if (block.block_type === 'tag') {
+          titleLabel = `TAG 0${idx}`;
+        }
+
+        blockEl.innerHTML = `
+          <div class="block-header-row">
+            <span class="micro-label">${iconSvg} ${titleLabel}</span>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              ${block.block_type === 'punchline' ? `
+                <button type="button" class="btn btn-compact ${block.is_stage_active ? 'btn-active' : ''}" onclick="toggleStageActive(${idx})">
+                  ${block.is_stage_active ? 'Stage Active' : 'Make Active'}
+                </button>
+              ` : ''}
+              ${block.block_type === 'bridge' ? renderBridgeVariationPills(idx, block) : ''}
+              <span class="mono">${counts.words}W · ${counts.syllables}S</span>
+              ${idx > 0 ? `<button type="button" class="btn btn-compact btn-ghost" onclick="removeBlock(${idx})">×</button>` : ''}
+            </div>
+          </div>
+
+          <textarea
+            class="textarea-editorial ${block.block_type === 'punchline' ? 'serif' : ''}"
+            rows="1"
+            placeholder="${isGhost ? 'Suggested ' + titleLabel + ' (Type here or extract from Brain Dump via Alt+S/Alt+P)...' : 'Write lines...'}"
+          >${block.content || ''}</textarea>
+
+          <!-- Progressive Sequential Action Rail -->
+          <div class="progressive-rail">
+            <div class="rail-group">
+              <button type="button" class="btn btn-compact btn-primary" onclick="insertSequentialBlock(${idx}, 'bridge')">
+                + Bridge
+              </button>
+              <button type="button" class="btn btn-compact" onclick="insertSequentialBlock(${idx}, 'punchline')">
+                + Punchline
+              </button>
+              <button type="button" class="btn btn-compact" onclick="insertSequentialBlock(${idx}, 'tag')">
+                + Tag
+              </button>
+              ${block.block_type === 'punchline' ? `
+                <button type="button" class="btn btn-compact" onclick="addAltPunchline(${idx})">
+                  + Alt Punch
+                </button>
+              ` : ''}
+              <button type="button" class="btn btn-compact" onclick="insertPauseCue(${idx})">
+                + Pause
+              </button>
+            </div>
+            <span class="mono">ALT+B BRIDGE · ENTER PUNCH</span>
+          </div>
+        `;
+
+        // Bind editor events
+        const ta = blockEl.querySelector('textarea');
+        ta.addEventListener('input', () => {
+          autoResize(ta);
+          block.content = ta.value;
+          if (block.content.trim()) {
+            blockEl.classList.remove('is-ghost-suggested');
+          }
+          debouncedAutoSave();
+        });
+
+        ta.addEventListener('keydown', e => {
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            insertSequentialBlock(idx, 'punchline');
+          }
+        });
+
+        container.appendChild(blockEl);
+
+        // Insertion seam between blocks
+        if (idx < currentJoke.blocks.length - 1) {
+          const seam = document.createElement('div');
+          seam.className = 'insertion-seam';
+          seam.innerHTML = `
+            <button type="button" class="btn btn-compact btn-ghost" onclick="insertSequentialBlock(${idx}, 'bridge')">+ Bridge Here</button>
+            <button type="button" class="btn btn-compact btn-ghost" onclick="insertSequentialBlock(${idx}, 'punchline')">+ Punch Here</button>
+          `;
+          container.appendChild(seam);
+        }
+
+        autoResize(ta);
+      });
+
+      document.getElementById('circuitTelemetry').textContent = `${totalWords} WORDS · ${totalSyllables} SYL`;
+    }
+
+    function renderBridgeVariationPills(blockIdx, block) {
+      const currentSub = block.bridge_subtype || 'misdirect';
+      return `
+        <select class="btn btn-compact" style="padding: 2px 4px; font-size: 9px;" onchange="updateBridgeSubtype(${blockIdx}, this.value)">
+          <option value="misdirect" ${currentSub === 'misdirect' ? 'selected' : ''}>Misdirect</option>
+          <option value="exaggeration" ${currentSub === 'exaggeration' ? 'selected' : ''}>Exaggeration</option>
+          <option value="the_bend" ${currentSub === 'the_bend' ? 'selected' : ''}>The Bend</option>
+          <option value="repetition" ${currentSub === 'repetition' ? 'selected' : ''}>Repetition</option>
+          <option value="reimagine" ${currentSub === 'reimagine' ? 'selected' : ''}>Reimagine</option>
+          <option value="reenact" ${currentSub === 'reenact' ? 'selected' : ''}>Reenact</option>
+          <option value="list" ${currentSub === 'list' ? 'selected' : ''}>List</option>
+          <option value="exploration" ${currentSub === 'exploration' ? 'selected' : ''}>Exploration</option>
+        </select>
+      `;
+    }
+
+    window.updateBridgeSubtype = function(idx, newSub) {
+      if (currentJoke.blocks[idx]) {
+        currentJoke.blocks[idx].bridge_subtype = newSub;
+        renderSequentialCircuit();
+        debouncedAutoSave();
+      }
+    };
+
+    window.insertSequentialBlock = function(afterIdx, type) {
+      const newBlock = {
+        id: 'blk_' + Math.random().toString(36).substr(2, 6),
+        sort_order: afterIdx + 1,
+        block_type: type,
+        content: ''
+      };
+
+      if (type === 'bridge') {
+        newBlock.bridge_category = 'development';
+        newBlock.bridge_subtype = 'misdirect';
+      } else if (type === 'punchline') {
+        const punchCount = currentJoke.blocks.filter(b => b.block_type === 'punchline').length;
+        newBlock.punch_index = punchCount + 1;
+        newBlock.is_stage_active = true;
+      }
+
+      currentJoke.blocks.splice(afterIdx + 1, 0, newBlock);
+      reindexBlockOrders();
+      renderSequentialCircuit();
+
+      // Focus new block
+      setTimeout(() => {
+        const container = document.getElementById('sequentialCircuitContainer');
+        const nextGroup = container.children[(afterIdx + 1) * 2] || container.lastElementChild;
+        const ta = nextGroup ? nextGroup.querySelector('textarea') : null;
+        if (ta) ta.focus();
+      }, 30);
+    };
+
+    window.addAltPunchline = function(targetIdx) {
+      const newAlt = {
+        id: 'blk_' + Math.random().toString(36).substr(2, 6),
+        sort_order: targetIdx + 1,
+        block_type: 'punchline',
+        punch_index: currentJoke.blocks[targetIdx].punch_index || 1,
+        is_alt_variant: true,
+        is_stage_active: false,
+        content: ''
+      };
+      currentJoke.blocks.splice(targetIdx + 1, 0, newAlt);
+      reindexBlockOrders();
+      renderSequentialCircuit();
+    };
+
+    window.toggleStageActive = function(idx) {
+      const block = currentJoke.blocks[idx];
+      if (!block || block.block_type !== 'punchline') return;
+      // If variant, toggle active among same index
+      const pIndex = block.punch_index;
+      currentJoke.blocks.forEach(b => {
+        if (b.block_type === 'punchline' && b.punch_index === pIndex) {
+          b.is_stage_active = false;
+        }
+      });
+      block.is_stage_active = true;
+      renderSequentialCircuit();
+      debouncedAutoSave();
+    };
+
+    window.removeBlock = function(idx) {
+      currentJoke.blocks.splice(idx, 1);
+      reindexBlockOrders();
+      renderSequentialCircuit();
+      debouncedAutoSave();
+    };
+
+    window.insertPauseCue = function(idx) {
+      const block = currentJoke.blocks[idx];
+      if (block) {
+        block.content = (block.content || '') + ' [p: 1.5s] ';
+        renderSequentialCircuit();
+        debouncedAutoSave();
+      }
+    };
+
+    /* ==========================================================================
+       OBSIDIAN / ANTIGRAVITY SPLIT-VIEW JOURNAL
+       ========================================================================== */
+    window.toggleJournalView = function() {
+      const drawer = document.getElementById('desktopJournalDrawer');
+      isDesktopJournalOpen = !isDesktopJournalOpen;
+      drawer.classList.toggle('visible', isDesktopJournalOpen);
+      document.getElementById('journalToggleBtn').classList.toggle('btn-active', isDesktopJournalOpen);
+      if (isDesktopJournalOpen) {
+        renderJournalLedger();
+      }
+    };
+
+    function renderJournalLedger() {
+      const container = document.getElementById('journalLedgerRowsContainer');
+      const query = (document.getElementById('journalSearchInput').value || '').toLowerCase();
+      const entries = getJournalStore().filter(e => {
+        if (!query) return true;
+        return (e.title || '').toLowerCase().includes(query) ||
+               (e.raw_text || '').toLowerCase().includes(query) ||
+               (e.display_code || '').toLowerCase().includes(query);
+      });
+
+      container.innerHTML = '';
+      if (entries.length === 0) {
+        container.innerHTML = '<span class="mono" style="padding: 8px 0; display: block;">No saved jokes yet in vault.</span>';
+        return;
+      }
+
+      entries.forEach(e => {
+        const row = document.createElement('div');
+        row.className = 'journal-row';
+        const titleSnippet = (e.title || e.raw_text || 'Untitled Note').split('\n')[0].slice(0, 42);
+        const blockSummary = (e.blocks || []).map(b => b.block_type.slice(0, 3).toUpperCase()).join(' → ') || 'RAW SEED';
+
+        row.innerHTML = `
+          <span class="mono">${e.display_code || 'B-100'}</span>
+          <span class="micro-label" style="color: var(--accent);">[${(e.status || 'seed').toUpperCase()}]</span>
+          <span class="serif" style="flex: 1; font-size: 15px;">${titleSnippet}</span>
+          <div class="dot-leader"></div>
+          <span class="mono">${blockSummary}</span>
+          <button type="button" class="btn btn-compact" onclick="pinComparison('${e.id}', event)">Compare</button>
+          <button type="button" class="btn btn-compact btn-ghost" onclick="deleteJournalEntry('${e.id}', event)">×</button>
+        `;
+        row.onclick = ev => {
+          if (ev.target.tagName === 'BUTTON') return;
+          loadJokeIntoActive(e);
+        };
+        container.appendChild(row);
+      });
+    }
+
+    function loadJokeIntoActive(entry) {
+      currentJoke = JSON.parse(JSON.stringify(entry));
+      rawTextarea.value = currentJoke.raw_text || '';
+      document.getElementById('bitMetaStamp').textContent = `${currentJoke.display_code || 'B-104'} · ${currentJoke.version_label || 'V1.0'}`;
+      autoResize(rawTextarea);
+      const counts = computeCounts(rawTextarea.value);
+      document.getElementById('rawWordCount').textContent = `${counts.words} WORDS`;
+
+      const scanImg = document.getElementById('rawNotebookScanImg');
+      if (currentJoke.ocr_image_data_url) {
+        scanImg.src = currentJoke.ocr_image_data_url;
+        scanImg.style.display = 'block';
+      } else {
+        scanImg.style.display = 'none';
+      }
+
+      renderSequentialCircuit();
+    }
+
+    window.pinComparison = function(id, ev) {
+      if (ev) ev.stopPropagation();
+      const entry = getJournalStore().find(e => e.id === id);
+      if (!entry) return;
+
+      const compPane = document.getElementById('comparisonSubPane');
+      const compContainer = document.getElementById('comparisonBlocksContainer');
+      document.getElementById('comparisonTitleLabel').textContent = `COMPARE: ${entry.display_code} (${entry.status.toUpperCase()})`;
+      compContainer.innerHTML = '';
+
+      (entry.blocks || []).forEach(b => {
+        const item = document.createElement('div');
+        item.className = 'input-line-group';
+        item.style.paddingBottom = '6px';
+        item.innerHTML = `
+          <div class="block-header-row">
+            <span class="micro-label">${b.block_type.toUpperCase()}</span>
+            <button type="button" class="btn btn-compact" onclick="pullLineToActive('${encodeURIComponent(b.content)}')">Pull Line</button>
+          </div>
+          <p class="serif" style="font-size: 17px; color: var(--ink-muted);">${b.content}</p>
+        `;
+        compContainer.appendChild(item);
+      });
+
+      compPane.classList.add('visible');
+    };
+
+    window.pullLineToActive = function(encodedLine) {
+      const line = decodeURIComponent(encodedLine);
+      promotePhraseToCircuit(line, 'bridge');
+    };
+
+    window.closeComparisonPane = function() {
+      document.getElementById('comparisonSubPane').classList.remove('visible');
+    };
+
+    window.deleteJournalEntry = async function(id, ev) {
+      if (ev) ev.stopPropagation();
+      let store = getJournalStore().filter(e => e.id !== id);
+      saveJournalStore(store);
+      renderJournalLedger();
+      renderMobileKeepFeed();
+      if (supabaseClient) {
+        try {
+          await supabaseClient.from('journal_entries').delete().eq('id', id);
+        } catch (err) {
+          console.warn('Could not delete from Supabase:', err);
+        }
+      }
+    };
+
+    window.exportVaultMarkdown = function() {
+      const store = getJournalStore();
+      let md = `# ComedyOS Vault Export — ${new Date().toISOString().split('T')[0]}\n\n`;
+      store.forEach(joke => {
+        md += `## ${joke.display_code}: ${joke.title || 'Untitled'}\n`;
+        md += `*Status: ${joke.status} | Modality: ${joke.modality}*\n\n`;
+        md += `### Raw Brain Dump / Note\n${joke.raw_text}\n\n`;
+        md += `### Structured Blocks\n`;
+        (joke.blocks || []).forEach(b => {
+          md += `- **${b.block_type.toUpperCase()}** ${b.bridge_subtype ? `(${b.bridge_subtype})` : ''}: ${b.content}\n`;
+        });
+        md += `\n---\n\n`;
+      });
+
+      const blob = new Blob([md], { type: 'text/markdown' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `comedyos-vault-${new Date().toISOString().split('T')[0]}.md`;
+      a.click();
+    };
+
+    /* ==========================================================================
+       MOBILE "GOOGLE KEEP FOR JOKES" CAPTURE CLIENT
+       ========================================================================== */
+    window.toggleViewMode = function() {
+      const root = document.getElementById('appRoot');
+      const isMobile = root.classList.toggle('mobile-mode');
+      const btn = document.getElementById('modeSwitchBtn');
+      btn.textContent = isMobile ? '🖥️ Desktop Workbench' : '📱 Mobile Keep View';
+      btn.classList.toggle('btn-active', isMobile);
+      if (isMobile) {
+        renderMobileKeepFeed();
+      }
+    };
+
+    window.saveMobileKeepNote = function() {
+      const input = document.getElementById('mobileKeepInput');
+      const text = input.value.trim();
+      if (!text) return;
+
+      const previewImg = document.getElementById('mobileOcrPreviewImg');
+      const hasImage = previewImg.style.display === 'block' ? previewImg.src : null;
+
+      const codeNum = Math.floor(100 + Math.random() * 899);
+      const newEntry = {
+        id: generateUUID(),
+        display_code: `B-${codeNum}`,
+        title: text.split('\n')[0].slice(0, 32),
+        raw_text: text,
+        modality: hasImage ? 'ocr_scan' : 'quick_text',
+        status: 'seed',
+        version_label: 'V1.0',
+        transcript_segments: [],
+        ocr_image_data_url: hasImage,
+        blocks: [
+          {
+            id: 'blk_' + Math.random().toString(36).substr(2, 6),
+            sort_order: 0,
+            block_type: 'setup',
+            content: ''
+          },
+          {
+            id: 'blk_' + Math.random().toString(36).substr(2, 6),
+            sort_order: 1,
+            block_type: 'punchline',
+            punch_index: 1,
+            is_stage_active: true,
+            content: ''
+          }
+        ],
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
+      };
+
+      const store = getJournalStore();
+      store.unshift(newEntry);
+      saveJournalStore(store);
+      syncEntryToSupabase(newEntry);
+
+      input.value = '';
+      previewImg.style.display = 'none';
+      previewImg.src = '';
+      renderMobileKeepFeed();
+    };
+
+    function renderMobileKeepFeed() {
+      const feed = document.getElementById('mobileKeepFeed');
+      const entries = getJournalStore();
+      feed.innerHTML = '';
+
+      if (entries.length === 0) {
+        feed.innerHTML = '<span class="mono" style="padding: 12px 0; display: block;">No jokes captured yet.</span>';
+        return;
+      }
+
+      entries.forEach(e => {
+        const item = document.createElement('div');
+        item.className = 'keep-feed-item';
+        const snippet = (e.raw_text || e.title || 'Untitled note').slice(0, 60);
+
+        item.innerHTML = `
+          <div class="block-header-row" style="margin-bottom: 4px;">
+            <span class="mono">${e.display_code || 'B-100'}</span>
+            <span class="micro-label" style="color: var(--accent);">${(e.modality || 'quick_text').toUpperCase()}</span>
+          </div>
+          <p class="serif" style="font-size: 16px; color: var(--ink); line-height: 1.4;">${snippet}...</p>
+          ${e.ocr_image_data_url ? `<img src="${e.ocr_image_data_url}" style="max-height: 80px; margin-top: 6px; border-radius: 2px;" alt="Notebook Scan" />` : ''}
+          <div class="block-header-row" style="margin-top: 6px;">
+            <span class="mono">${new Date(e.created_at || Date.now()).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+            <button type="button" class="btn btn-compact" onclick="openKeepNoteOnDesktop('${e.id}')">Edit on Desktop →</button>
+          </div>
+        `;
+        feed.appendChild(item);
+      });
+    }
+
+    window.openKeepNoteOnDesktop = function(id) {
+      const entry = getJournalStore().find(e => e.id === id);
+      if (entry) {
+        loadJokeIntoActive(entry);
+        toggleViewMode(); // Switch to Desktop view
+      }
+    };
+
+    /* Mobile Voice Recording (Web Speech + Audio Timer) */
+    window.toggleMobileVoiceRecording = function() {
+      const meter = document.getElementById('mobileVoiceMeter');
+      const btn = document.getElementById('mobileVoiceBtn');
+
+      if (activeVoiceRecognition) {
+        // Stop recording
+        activeVoiceRecognition.stop();
+        activeVoiceRecognition = null;
+        clearInterval(voiceTimerInterval);
+        meter.style.display = 'none';
+        btn.classList.remove('btn-active');
+        return;
+      }
+
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) {
+        alert('Voice recording: Web Speech API not supported on this browser. Voice memo fallback simulated.');
+        document.getElementById('mobileKeepInput').value += " [Voice Memo: I noticed airline passengers panic over luggage like it's their firstborn child.]";
+        return;
+      }
+
+      activeVoiceRecognition = new SpeechRecognition();
+      activeVoiceRecognition.continuous = true;
+      activeVoiceRecognition.interimResults = true;
+
+      voiceSeconds = 0;
+      meter.style.display = 'block';
+      btn.classList.add('btn-active');
+
+      voiceTimerInterval = setInterval(() => {
+        voiceSeconds++;
+        const mins = String(Math.floor(voiceSeconds / 60)).padStart(2, '0');
+        const secs = String(voiceSeconds % 60).padStart(2, '0');
+        document.getElementById('voiceTimer').textContent = `${mins}:${secs}`;
+      }, 1000);
+
+      activeVoiceRecognition.onresult = event => {
+        let transcript = '';
+        for (let i = 0; i < event.results.length; i++) {
+          transcript += event.results[i][0].transcript;
+        }
+        document.getElementById('mobileKeepInput').value = transcript;
+        autoResize(document.getElementById('mobileKeepInput'));
+      };
+
+      activeVoiceRecognition.onerror = err => {
+        console.warn('Speech recognition error:', err);
+        clearInterval(voiceTimerInterval);
+        meter.style.display = 'none';
+        btn.classList.remove('btn-active');
+      };
+
+      activeVoiceRecognition.start();
+    };
+
+    /* Mobile Camera / Handwritten Notebook OCR */
+    window.triggerMobileOcr = function() {
+      document.getElementById('mobileOcrFileInput').click();
+    };
+
+    window.handleMobileOcrFile = function(event) {
+      const file = event.target.files && event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = e => {
+        const dataUrl = e.target.result;
+        const preview = document.getElementById('mobileOcrPreviewImg');
+        preview.src = dataUrl;
+        preview.style.display = 'block';
+
+        // Simulated OCR extraction (In production, calls Cloudflare Pages /api/ocr -> Gemini Flash Vision)
+        const sampleExtracted = "TSA agent yells at everyone taking off their belts like we're unruly prisoners. 'Bin 1 shoes, Bin 2 dignity!'";
+        const input = document.getElementById('mobileKeepInput');
+        input.value = (input.value ? input.value + '\n\n' : '') + `[OCR Scan Extracted]: ${sampleExtracted}`;
+        autoResize(input);
+      };
+      reader.readAsDataURL(file);
+    };
+
+    /* ==========================================================================
+       TOP CONTEXT BAR ACTIONS
+       ========================================================================== */
+    window.toggleSupabaseBar = function() {
+      document.getElementById('supabaseSyncBar').classList.toggle('visible');
+    };
+
+    window.commitAndNewJoke = function() {
+      autoSaveActiveJoke();
+
+      const num = Math.floor(105 + Math.random() * 800);
+      currentJoke = {
+        id: generateUUID(),
+        display_code: `B-${num}`,
+        title: '',
+        raw_text: '',
+        modality: 'quick_text',
+        status: 'seed',
+        version_label: 'V1.0',
+        transcript_segments: [],
+        ocr_image_data_url: null,
+        blocks: [
+          {
+            id: 'blk_' + Math.random().toString(36).substr(2, 6),
+            sort_order: 0,
+            block_type: 'setup',
+            content: ''
+          },
+          {
+            id: 'blk_' + Math.random().toString(36).substr(2, 6),
+            sort_order: 1,
+            block_type: 'punchline',
+            punch_index: 1,
+            is_stage_active: true,
+            content: ''
+          }
+        ]
+      };
+
+      rawTextarea.value = '';
+      document.getElementById('rawNotebookScanImg').style.display = 'none';
+      document.getElementById('bitMetaStamp').textContent = `${currentJoke.display_code} · V1.0`;
+      document.getElementById('rawWordCount').textContent = '0 WORDS';
+
+      renderSequentialCircuit();
+      rawTextarea.focus();
+    };
+
+    // Keyboard Shortcuts (Alt+S, Alt+P, Alt+B, Alt+T, Cmd+Enter)
+    document.addEventListener('keydown', e => {
+      // Cmd/Ctrl + J -> Toggle Journal
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'j') {
+        e.preventDefault();
+        toggleJournalView();
+        return;
+      }
+
+      // If typing inside Raw Input Textarea
+      if (document.activeElement === rawTextarea) {
+        if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+          e.preventDefault();
+          splitAtCursor('rawInputTextarea');
+          return;
+        }
+        if (e.altKey && e.key.toLowerCase() === 's') {
+          e.preventDefault();
+          extractSelectionShortcut('setup');
+          return;
+        }
+        if (e.altKey && e.key.toLowerCase() === 'p') {
+          e.preventDefault();
+          extractSelectionShortcut('punch');
+          return;
+        }
+        if (e.altKey && e.key.toLowerCase() === 'b') {
+          e.preventDefault();
+          extractSelectionShortcut('bridge');
+          return;
+        }
+        if (e.altKey && e.key.toLowerCase() === 't') {
+          e.preventDefault();
+          extractSelectionShortcut('tag');
+          return;
+        }
+      }
+    });
+
+    // Debounced Auto-Save
+    let debounceTimer = null;
+    function debouncedAutoSave() {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        autoSaveActiveJoke();
+      }, 300);
+    }
+
+    // Initial setup on load
+    renderSequentialCircuit();
+    updateJournalCountBadge();
+    autoResize(rawTextarea);
+  </script>
+</body>
+</html>

@@ -135,6 +135,25 @@ window.openLightbox = function(mediaSrcsJson, tagEn, tagDe, titleEn, titleDe, te
     // Re-bind mouse drag handlers for the new lightbox carousel
     setupCarousels();
 
+    // Support opening directly to a specific slide (e.g. clicked from Amicro Fan Out)
+    const startSlide = (typeof initialIndex === "number" && initialIndex >= 0)
+        ? initialIndex
+        : (typeof window.amicroClickedSlideIndex === "number" ? window.amicroClickedSlideIndex : 0);
+    window.amicroClickedSlideIndex = undefined;
+
+    if (startSlide > 0 && mediaList.length > 1) {
+        const lbCarousel = mediaContainer.querySelector(".lightbox-media-carousel");
+        if (lbCarousel) {
+            requestAnimationFrame(() => {
+                lbCarousel.scrollLeft = startSlide * lbCarousel.offsetWidth;
+                const badgeSpan = mediaContainer.querySelector(".carousel-badge span");
+                if (badgeSpan) {
+                    badgeSpan.textContent = `${startSlide + 1} / ${mediaList.length}`;
+                }
+            });
+        }
+    }
+
     // Load captions & metadata in both languages so they auto-toggle with the global language switcher!
     if (tagEl) {
         tagEl.innerHTML = `<span class="lang-en">${tagEn}</span><span class="lang-de">${tagDe}</span>`;
@@ -238,6 +257,7 @@ document.addEventListener("keydown", (e) => {
 function setupCarousels() {
     const carousels = document.querySelectorAll(".sometimes-card-carousel");
     carousels.forEach(carousel => {
+        if (carousel.classList.contains("amicro-fan-carousel")) return;
         if (carousel.dataset.listenersBound) return;
         carousel.dataset.listenersBound = "true";
 
