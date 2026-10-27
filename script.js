@@ -89,8 +89,14 @@ window.openLightbox = function(mediaSrcsJson, tagEn, tagDe, titleEn, titleDe, te
     // Parse index from 'num' metadata string (e.g. "01 / FAUCETS" -> 1 -> index 0)
     const cardNumStr = num.split(" / ")[0];
     const cardNum = parseInt(cardNumStr, 10);
-    if (!isNaN(cardNum)) {
+    const navButtons = document.querySelectorAll(".lightbox-nav");
+    
+    if (!isNaN(cardNum) && num.includes(" / ")) {
         currentCardIndex = cardNum - 1;
+        navButtons.forEach(btn => btn.style.display = "");
+    } else {
+        currentCardIndex = -1;
+        navButtons.forEach(btn => btn.style.display = "none");
     }
 
     // Parse media sources (can be a JSON array string or a single string)
