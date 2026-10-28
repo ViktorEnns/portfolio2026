@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Mastery Field Guide: Strategic Rules & Principles — Viktor Enns</title>
+    <meta name="description" content="A comprehensive tactical & strategic field guide for competitive chess players. 15 Grandmaster Rules from GM Igor Smirnov, calculation protocols, blunder prevention, and open repertoire.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="chessmoves/favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="amicro-transitions.css">
+    <script>
+      (function(){
+        var savedTheme = localStorage.getItem('theme');
+        var systemTheme = (window.matchMedia && matchMedia('(prefers-color-scheme:dark)').matches) ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme || systemTheme);
+        var savedLang = localStorage.getItem('lang') || 'en';
+        document.documentElement.setAttribute('data-lang', savedLang);
+      })();
+    </script>
+    <style>
+        .doc-container {
+            max-width: 1080px;
+            margin: 110px auto 80px;
+            padding: 0 var(--gutter);
+        }
+
+        .back-nav-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+
+        .back-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+            transition: transform 0.2s var(--ease);
+        }
+        .back-nav:hover {
+            transform: translateX(-4px);
+        }
+
+        .play-launcher-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: var(--radius-pill);
+            background: #f59e0b;
+            color: #09090b;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+            box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+        }
+        .play-launcher-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+        }
+
+        .doc-header {
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--rule);
+            padding-bottom: 28px;
+        }
+
+        .doc-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: var(--radius-pill);
+            background: rgba(245, 158, 11, 0.15);
+            border: 1px solid rgba(245, 158, 11, 0.35);
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #f59e0b;
+            margin-bottom: 14px;
+            font-weight: 700;
+        }
+
+        .doc-title {
+            font-family: var(--sans);
+            font-size: clamp(2rem, 3.8vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            color: var(--ink);
+        }
+
+        .doc-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 0.85rem;
+            color: var(--muted);
+            font-family: var(--mono);
+        }
+
+        .doc-intro {
+            font-size: 1.1rem;
+            line-height: 1.65;
+            color: var(--ink-soft);
+            margin-bottom: 36px;
+        }
+
+        /* Category Filter Tabs */
+        .filter-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 32px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .tab-btn {
+            padding: 6px 14px;
+            border-radius: var(--radius-pill);
+            border: 1px solid var(--glass-border);
+            background: var(--bg-raised);
+            color: var(--muted);
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s var(--ease);
+        }
+        .tab-btn.active, .tab-btn:hover {
+            color: var(--ink);
+            border-color: #f59e0b;
+            background: rgba(245, 158, 11, 0.12);
+        }
+
+        /* Rule Cards Grid */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .rule-card {
+            background: var(--bg-raised);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            display: flex;
+            flex-col: column;
+            justify-content: space-between;
+            box-shadow: var(--glass-shadow);
+            transition: transform 0.25s var(--ease), border-color 0.25s var(--ease);
+            position: relative;
+            overflow: hidden;
+        }
+        .rule-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(245, 158, 11, 0.6);
+        }
+
+        .rule-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--card-border-color, #f59e0b);
+        }
+
+        .rule-num {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            color: #f59e0b;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .rule-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 12px;
+            color: var(--ink);
+        }
+
+        .rule-maxim {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--ink-soft);
+            margin-bottom: 16px;
+        }
+
+        .rule-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: auto;
+        }
+
+        .rule-tag {
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: var(--radius-pill);
+            background: var(--bg-canvas);
+            border: 1px solid var(--rule);
+            color: var(--muted);
+            font-family: var(--mono);
+        }
+
+        /* Section Headings */
+        .section-heading-wrap {
+            margin: 50px 0 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .section-heading-wrap h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--ink);
+            white-space: nowrap;
+        }
+
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        /* In-depth Repertoire Section */
+        .deep-guide-box {
+            background: var(--bg-raised);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--glass-shadow);
+        }
+
+        .deep-guide-box h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #f59e0b;
+            margin-bottom: 12px;
+        }
+
+        .deep-guide-box ul {
+            padding-left: 20px;
+            margin-bottom: 16px;
+            color: var(--ink-soft);
+            line-height: 1.7;
+        }
+
+        .deep-guide-box li strong {
+            color: var(--ink);
+        }
+
+        pre.ascii-box {
+            background: #09090b;
+            border: 1px solid var(--rule);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            font-family: var(--mono);
+            font-size: 0.82rem;
+            line-height: 1.45;
+            color: #e4e4e7;
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="cursor-light" aria-hidden="true"></div>
+
+    <main class="doc-container">
+        <!-- Navigation Bar -->
+        <div class="back-nav-bar">
+            <a href="index.html" class="back-nav">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                <span>Back to Portfolio</span>
+            </a>
+            <a href="chessmoves/" target="_blank" rel="noopener" class="play-launcher-btn">
+                <span>♟️ Launch ChessMoves PWA</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+        </div>
+
+        <!-- Header -->
+        <header class="doc-header">
+            <span class="doc-badge">STRATEGY REPOSITORY • CHESS MASTERY</span>
+            <h1 class="doc-title">Chess Mastery Field Guide: Strategic Rules, Attacking Principles &amp; Blunder Prevention</h1>
+            <div class="doc-meta">
+                <span>AUTHOR: GM IGOR SMIRNOV (33 YRS EXP) &amp; CARLSON PRINCIPLES</span>
+                <span>•</span>
+                <span>UPDATED: OCTOBER 2026</span>
+                <span>•</span>
+                <span>INTEGRATED WITH OTB CHESS RECORDER</span>
+            </div>
+        </header>
+
+        <!-- Intro -->
+        <p class="doc-intro">
+            A comprehensive tactical field guide compiling universal calculation techniques, grandmaster blunder-prevention filters, piece-coordination guidelines, and opening repertoire playbooks. Keep this reference open during training or while recording OTB games.
+        </p>
+
+        <!-- ==================== SECTION 1: 15 GM SMIRNOV RULES ==================== -->
+        <div class="section-heading-wrap">
+            <h2>The 15 Grandmaster Rules (GM Igor Smirnov)</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="rules-grid">
+            <!-- Rule 01 -->
+            <article class="rule-card" style="--card-border-color: #3b82f6;">
+                <div>
+                    <div class="rule-num">Rule 01 • Study Philosophy</div>
+                    <h3 class="rule-title">Study Capablanca Over Carlsen</h3>
+                    <p class="rule-maxim">
+                        Modern grandmaster games often violate classical principles due to deep computer preparation (e.g. <code>...Na6</code>, moving same piece twice). Capablanca teaches clear, transparent plans and logical piece coordination you can actually apply in your games.
+                    </p>
+                </div>
+                <div class="rule-tags">
+                    <span class="rule-tag">Fundamentals</span>
+                    <span class="rule-tag">Capablanca</span>
+                    <span class="rule-tag">Study Plan</span>
+                </div>
+            </article>
+
+            <!-- Rule 02 -->
+            <article class="rule-card" style="--card-border-color: #ef4444;">
+                <div>
+                    <div class="rule-num">Rule 02 • Decision Making</div>
+                    <h3 class="rule-title">Hope Chess Is Not a Strategy</h3>
+                    <p class="rule-maxim">
+                        Primitive one-move threats hoping for an opponent blunder stop working past 1000 ELO. Real attacks require bringing your whole army into play and creating threats that cannot be easily parried by natural developing moves.
+                    </p>
+                </div>
+                <div class="rule-tags">
+                    <span class="rule-tag">Blunder Filter</span>
+                    <span class="rule-tag">Sub-1500 ELO</span>
+                </div>
+            </article>
+
+            <!-- Rule 03 -->
+            <article class="rule-card" style="--card-border-color: #f59e0b;">
+                <div>
+                    <div class="rule-num">Rule 03 • Tactical Awareness</div>
+                    <h3 class="rule-title">Attacking a Piece? See If It Can Retreat Forward</h3>
+                    <p class="rule-maxim">
+                        One of the most common blunders across all ratings. When you attack an enemy piece (e.g. with a rook or pawn), never assume it steps backward. Always calculate if it can leap <strong>forward</strong> with a check, capture, or counter-threat!
+                    </p>
+                </div>
+                <div class="rule-tags">
+                    <span class="rule-tag">Forward Leap</span>
+                    <span class="rule-tag">Blunder Audit</span>
+                </div>
+            </article>
+
+            <!-- Rule 04 -->
+            <article class="rule-card" style="--card-border-color: #10b981;">
+                <div>
+                    <div class="rule-num">Rule 04 • Defense &amp; Resilience</div>
+                    <h3 class="rule-title">If You Blundered, Look for a Counterattack</h3>
+                    <p class="rule-maxim">
+                        Do not freeze or play passive, self-weakening moves after a mistake. Treat a blunder as a trigger to immediately search for an active counter-threat against their Queen or King. Counter-attacking is your "Get Out of Jail Free" card.
+                    </p>
+                </div>
+                <div class="rule-tags">
+                    <span class="rule-tag">Resilience</span>
+                    <span class="rule-tag">Counter-Threat</span>
+                </div>
+            </article>
+
+            <!-- Rule 05 -->
+            <article class="rule-card" style="--card-border-color: #8b5cf6;">
+                <div>
+                    <div class="rule-num">Rule 05 • Middlegame Transition</div>
+                    <h3 class="rule-title">Middlegame Switch: Move Forward &amp; Threaten</h3>
+                    <p class="rule-maxim">
+                        In the opening, prioritize balanced development and castling. But once castled, flip the mental switch: stop playing neutral waiting shuffles and constantly ask: <em>"How can I move pieces forward onto their half and create concrete threats?"</em>
+                    </p>
+                </div>
+                <div class="rule-tags">
+                    <span class="rule-tag">Middlegame</span>
+                    <span class="rule-tag">Forward Infiltration</span>
+                </div>
+            </article>
+
+            <!-- Rule 06 -->
+            <article class="rule-card" style="--card-border-color: #06b6d4;">
+                <div>
+                    <div class="rule-num">Rule 06 • Kasparov's Law</div>
+                    <h3 class="rule-title">If There Is No Attack, Improve and Wait</h3>
+                    <p class="rule-maxim">
+                        When no immediate tactical breakthrough exists, do not force weak pawn thrusts. Quietly improve your worst-placed piece (e.g. rerouting an idle knight with <code>Nc3</code>) and maintain tension. The opponent will soon make an awkward concession.
+                    </p>
+                </div>
+                <div class="rule-tags">
+                    <span class="rule-tag">Kasparov</span>
+                    <span class="rule-tag">Patience</span>
+                    <span class="rule-tag">Prophylaxis</span>
+                </div>
+            </article>
+
+            <!-- Rule 07 -->
+            <article class="rule-card" style="--card-border-color: #ec4899;">
+                <div>
+                    <div class="rule-num">Rule 07 • Flank Dominance</div>
+                    <h3 class="rule-title">Shift Play Where You Outnumber the Opponent</h3>
+                    <p class="rule-maxim">
+                        Conduct a flank headcount. If the opponent concentrates their pieces on the queenside, do not fight them there—unleash devastating tactical sacrifices (like Kasparov's <code>Nf6+!!</code> vs. Karpov) against their undefended kingside!
+                    </p>
+                </div>
+                <div class="rule-tags">
+                    <span class="rule-tag">Force Concentration</span>
+                    <span class="rule-tag">Flank Assault</span>
+                </div>
+            </article>
+
+            <!-- Rule 08 -->
+            <article class="rule-card" style="--card-border-color: #f97316;">
+                <div>
+                    <div class="rule-num">Rule 08 • Attacking Mechanics</div>
+                    <h3 class="rule-title">Bring New Pieces Into the Attack</h3>
+                    <p class="rule-maxim">
+                        Study Morphy and Tal: when faced with recapturing or advancing, introduce dormant back-rank pieces into the battle rather than moving an already active piece. 3 attackers beat 2 defenders; 4 attackers almost always guarantee a breakthrough.
+                    </p>
+                </div>
+                <div class="rule-tags">
+                    <span class="rule-tag">Morphy</span>
+                    <span class="rule-tag">Tal</span>
+                    <span class="rule-tag">Overpowering</span>
+                </div>
+            </article>
+
+            <!-- Rule 09 -->
+            <article class="rule-card" style="--card-border-color: #eab308;">
+                <div>
+                    <div class="rule-num">Rule 09 • Attacking Justification</div>
+                    <h3 class="rule-title">Launch Attacks When You Outnumber Defenders</h3>
+                    <p class="rule-maxim">
+                        Tal's brilliant sacrifices weren't mystical gambles; they were mathematically sound strikes launched when White had 5 mobilized combat units against Black's 1 active defender. Verify full mobilization before sacrificing.
+                    </p>
+                </div>
+                <div class="rule-tags">
+                    <span class="rule-tag">Tal Sacrifice</span>
+                    <span class="rule-tag">Mobilization</span>
+                </div>
+            </article>
+
+            <!-- Rule 10 -->
+            <article class="rule-card" style="--card-border-color: #14b8a6;">
+                <div>
+                    <div class="rule-num">Rule 10 • Territory Control</div>
+                    <h3 class="rule-title">Eliminate Enemy Pieces Off Your Territory</h3>
+                    <p class="rule-maxim">
+                        Over 70% of blunders happen because an enemy piece was allowed to camp on ranks 1–4. Never ignore an intruder simply because it has no immediate check. Proactively evict it, challenge it, or force a Queen trade.
+                    </p>
+                </div>
+                <div class="rule-tags">
+                    <span class="rule-tag">Ranks 1-4</span>
+                    <span class="rule-tag">Proactive Eviction</span>
+                </div>
+            </article>
+
+            <!-- Rule 11 -->
+            <article class="rule-card" style="--card-border-color: #6366f1;">
+                <div>
+                    <div class="rule-num">Rule 11 • Clock Psychology</div>
+                    <h3 class="rule-title">Never Give Up Mentally: Look for Counter-Tricks</h3>
+                    <p class="rule-maxim">
+                        Even when down a full minor piece, human opponents frequently misplay winning positions under time pressure. Keep queens on the board, set back-rank swindles (like <code>Rd7!!</code> or intermediate check <code>Qf7!</code>), and fight on.
+                    </p>
+                </div>
+                <div class="rule-tags">
+                    <span class="rule-tag">Swindles</span>
+                    <span class="rule-tag">Trailing Material</span>
+                </div>
+            </article>
+
+            <!-- Rule 12 -->
+            <article class="rule-card" style="--card-border-color: #a855f7;">
+                <div>
+                    <div class="rule-num">Rule 12 • Calculation Efficiency</div>
+                    <h3 class="rule-title">Calculate Deeply Only When There Is Tension</h3>
+                    <p class="rule-maxim">
+                        Calculating forcing moves on every turn burns clock time and causes endgame fatigue. Save deep calculation strictly for moments of tactical tension—when pieces directly attack each other or pawns clash in the center.
+                    </p>
+                </div>
+                <div class="rule-tags">
+                    <span class="rule-tag">Clock Management</span>
+                    <span class="rule-tag">Tactical Tension</span>
+                </div>
+            </article>
+
+            <!-- Rule 13 -->
+            <article class="rule-card" style="--card-border-color: #3b82f6;">
+                <div>
+                    <div class="rule-num">Rule 13 • Prophylactic Filter</div>
+                    <h3 class="rule-title">Carlsen's Question: "Can My Opponent Attack Me?"</h3>
+                    <p class="rule-maxim">
+                        Before making your intended move, pause for 3 seconds. Never assume the opponent will make a passive retreat. Ask: <em>"Can my opponent jump forward and attack or check me?"</em> This inoculates you against sudden incursion mates.
+                    </p>
+                </div>
+                <div class="rule-tags">
+                    <span class="rule-tag">Carlsen</span>
+                    <span class="rule-tag">Pre-Move Filter</span>
+                </div>
+            </article>
+
+            <!-- Rule 14 -->
+            <article class="rule-card" style="--card-border-color: #f43f5e;">
+                <div>
+                    <div class="rule-num">Rule 14 • Initiative Defense</div>
+                    <h3 class="rule-title">Break the Attack-Defend Reflex</h3>
+                    <p class="rule-maxim">
+                        When attacked, do not reflexively play a passive defensive guard move (like <code>...Qe7</code>). Always prioritize forward counter-attacks hitting their Queen (<code>...Nd4!</code>) or central pawn breaks (<code>...d5!</code>) to steal the initiative.
+                    </p>
+                </div>
+                <div class="rule-tags">
+                    <span class="rule-tag">Counter-Strike</span>
+                    <span class="rule-tag">Initiative</span>
+                </div>
+            </article>
+
+            <!-- Rule 15 -->
+            <article class="rule-card" style="--card-border-color: #84cc16;">
+                <div>
+                    <div class="rule-num">Rule 15 • Habitual Protocol</div>
+                    <h3 class="rule-title">Ask: "What Does He Want?" After Every Move</h3>
+                    <p class="rule-maxim">
+                        Never play autopilot pawn moves. The instant your opponent moves, decipher their intention: Did they clear a file? Are they preparing a central pawn fork (like <code>...e5-e4</code>)? Address their threat before executing your plan.
+                    </p>
+                </div>
+                <div class="rule-tags">
+                    <span class="rule-tag">Golden Habit</span>
+                    <span class="rule-tag">Blunder Shield</span>
+                </div>
+            </article>
+        </div>
+
+        <!-- ==================== SECTION 2: CALCULATION & DEFENSIVE MECHANICS ==================== -->
+        <div class="section-heading-wrap">
+            <h2>Universal Calculation &amp; Comeback Mechanics</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="deep-guide-box">
+            <h3>The 3-Second Pre-Move Blunder Check</h3>
+            <p>Before releasing your piece in any rapid or classical game, run this mandatory 3-point audit:</p>
+            <ul>
+                <li><strong>1. Checks:</strong> Does my opponent have any legal checks available on the next move?</li>
+                <li><strong>2. Incursions:</strong> Can an enemy piece jump forward into my half with tempo or a double attack?</li>
+                <li><strong>3. Loose Pieces:</strong> Did my intended move leave any square or piece undefended?</li>
+            </ul>
+
+            <h3 style="margin-top: 24px;">Tactical Mechanics When Trailing Material</h3>
+            <pre class="ascii-box">
+                       ┌────────────────────────────┐
+                       │   When Trailing Material   │
+                       └─────────────┬──────────────┘
+                                     │
+           ┌─────────────────────────┼─────────────────────────┐
+           ▼                         ▼                         ▼
+     Avoid Trades          Maximize Asymmetry        Exploit Heavy Pins
+  • Keep Queens on board   • Unbalance pawn chains   • Freeze extra pieces
+  • Dodge quiet endgames   • Open complex files      • Provoke clock fatigue
+            </pre>
+            <ul>
+                <li><strong>Keep Queens on the Board:</strong> The player with extra material wants to trade queens and coast into an easy endgame. Resist trades to keep mating nets and perpetual checks alive.</li>
+                <li><strong>Pawn Umbrellas (The Korchnoi Technique):</strong> When your king's pawn shield is broken, advance an adjacent pawn (<code>...g5!</code>) to force an advance or capture (<code>hxg6</code>), then tuck your king directly behind the opponent's advanced pawn (<code>...Kg7!</code>). The enemy pawn shields you from vertical rook/queen checks!</li>
+                <li><strong>Attack the Foundation:</strong> Flank attacks collapse when their central anchor pawns (e.g. <code>e5</code> or <code>d4</code>) are destroyed. Sever the base rather than chasing the vanguard.</li>
+            </ul>
+        </div>
+
+        <!-- ==================== SECTION 3: OPENING REPERTOIRE PLAYBOOKS ==================== -->
+        <div class="section-heading-wrap">
+            <h2>Opening Repertoire &amp; System Playbooks</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="deep-guide-box">
+            <h3>1. The Caro-Kann Defense (<code>1. e4 c6 2. d4 d5</code>)</h3>
+            <ul>
+                <li><strong>Philosophy:</strong> Unbreachable security. Concedes slight spatial center to establish a rock-solid pawn chain (<code>c6–d5</code>) that blunts Italian-style <code>Bc4</code> attacks.</li>
+                <li><strong>The Bishop Golden Rule:</strong> Never play <code>...e6</code> before developing your light-squared bishop outside the pawn chain (to <code>f5</code> or <code>g4</code>).</li>
+                <li><strong>Advance Variation (<code>3. e5</code>):</strong> Black develops <code>...Bf5</code>, solidifies with <code>...e6</code>, strikes the base with <code>...c5</code>, and routes the knight via <code>...Nh6–f5</code>.</li>
+                <li><strong>Anti-Alien Gambit Resource:</strong> Against <code>Ng5</code> and <code>Nxf7</code> threats, Black plays an immediate <code>...Bg4!</code> before <code>...h6</code>. If White persists with <code>Nxf7</code>, Black unleashes the intermediate counter-strike <code>...Bxf3!</code>, trading queens into a winning endgame up a full piece.</li>
+            </ul>
+
+            <h3 style="margin-top: 24px;">2. The King's Indian Defense (<code>1. d4 Nf6 2. c4 g6 3. Nc3 Bg7 4. e4 d6</code>)</h3>
+            <ul>
+                <li><strong>Philosophy:</strong> Hypermodern counter-attack. Invites White to build a broad center, then dynamically undermines it with <code>...e5</code> or <code>...c5</code>.</li>
+                <li><strong>The Wing Race (Classical Mar del Plata):</strong> When White locks the center with <code>d5</code>, Black accepts a queenside disadvantage and reroutes the f6-knight to launch an all-out kingside pawn storm (<code>...f5–f4</code>, <code>...g5</code>, <code>...h5</code>).</li>
+                <li><strong>Punishing Premature Central Pushes:</strong> If White plays <code>e5</code> after <code>...d6</code> and trades queens (<code>dxe5 dxe5 Qxd1+</code>):
+                    <ul>
+                        <li>If <code>Kxd1</code>: Play <strong><code>8...Ng4!</code></strong> threatening <code>...Nf2+</code> and central blast <code>...f6</code>.</li>
+                        <li>If <code>Nxd1</code>: Play <strong><code>8...Ne8!</code></strong> clearing <code>d8</code> for the rook and undermining with <code>...f6</code> and <code>...Nc6</code>.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3 style="margin-top: 24px;">3. The Scotch Gambit (<code>1. e4 e5 2. Nf3 Nc6 3. d4 exd4 4. Bc4</code>)</h3>
+            <ul>
+                <li><strong>Philosophy:</strong> White sacrifices central material for rapid development, open attacking channels, and persistent pressure on <code>f7</code>.</li>
+                <li><strong>Against <code>4...Bc5</code>:</strong> Play <strong><code>5. c3</code></strong>. If Black takes (<code>5...dxc3</code>), White exploits tactical motifs like <code>6. Bxf7+ Kxf7 7. Qd5+</code> or seizes dynamic control with <code>6. Nxc3 d6 7. Qb3</code>.</li>
+                <li><strong>Against <code>4...Nf6</code>:</strong> Challenge immediately with <code>5. e5 d5! 6. Bb5 Ne4 7. Nxd4</code> or enter the sharp Max Lange Attack via <code>5. O-O Nxe4 6. Re1 d5 7. Bxd5! Qxd5 8. Nc3</code>.</li>
+            </ul>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
