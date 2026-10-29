@@ -7,6 +7,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..600;1,200..600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <!-- Supabase JS CDN: Pre-loaded in head for reliable OAuth redirects -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
     /* ==========================================================================
        COMEDYOS MASTER DESIGN SYSTEM
@@ -840,7 +842,7 @@
         <!-- Auth Step -->
         <div id="onboardingAuthStep" style="display: flex; flex-direction: column; gap: 16px;">
           <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-            <button type="button" class="btn btn-primary" onclick="signInWithGoogle()" style="padding: 10px 18px; font-size: 11px;">
+            <button type="button" class="btn btn-primary" id="onboardingGoogleBtn" onclick="signInWithGoogle(this)" style="padding: 10px 18px; font-size: 11px;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
               Continue with Google
             </button>
@@ -938,11 +940,12 @@
 
           <!-- Account Popover Menu -->
           <div class="account-popover" id="accountPopoverMenu">
-            <span class="micro-label" id="accountPopoverUserText">LOCAL GUEST MODE</span>
+            <span class="micro-label" id="accountPopoverUserText">LOCAL GUEST SANDBOX</span>
             <div style="display: flex; flex-direction: column; gap: 6px; margin-top: 4px;">
+              <button type="button" class="btn btn-compact btn-primary" id="accountPopoverSignInBtn" onclick="reopenOnboardingGate()">Sign In / Connect Cloud</button>
               <button type="button" class="btn btn-compact" onclick="fetchSupabaseJournal()">Sync with Cloud</button>
-              <button type="button" class="btn btn-compact" onclick="reopenOnboardingGate()">Account / Login</button>
-              <button type="button" class="btn btn-compact btn-ghost" id="accountPopoverSignOutBtn" style="display: none;" onclick="signOutSupabaseUser()">Sign Out</button>
+              <button type="button" class="btn btn-compact" onclick="reopenOnboardingGate()">Account Settings</button>
+              <button type="button" class="btn btn-compact btn-ghost" id="accountPopoverSignOutBtn" style="display: none; color: #f87171;" onclick="signOutSupabaseUser()">Sign Out</button>
             </div>
           </div>
         </div>
@@ -966,7 +969,7 @@
       <div id="authLoggedOutState" style="display: flex; flex-direction: column; gap: 12px;">
         <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
           <!-- 1-Click Google Sign In -->
-          <button type="button" class="btn btn-primary" onclick="signInWithGoogle()" style="padding: 8px 16px;">
+          <button type="button" class="btn btn-primary" id="syncBarGoogleBtn" onclick="signInWithGoogle(this)" style="padding: 8px 16px;">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
             Continue with Google
           </button>
@@ -1371,7 +1374,7 @@
           console.warn('Could not save profile metadata:', err);
         }
       }
-      updateAccountPillUi({ user: { email: stageName } });
+      updateAccountPillUi(currentSupabaseSession);
     };
 
     /* Account Pill & Popover */
@@ -1386,24 +1389,32 @@
       }
     });
 
+    let currentSupabaseSession = null;
+
     function updateAccountPillUi(session) {
+      currentSupabaseSession = session;
       const label = document.getElementById('accountPillLabel');
       const dot = document.getElementById('accountPillDot');
       const popoverUser = document.getElementById('accountPopoverUserText');
       const signOutBtn = document.getElementById('accountPopoverSignOutBtn');
+      const signInBtn = document.getElementById('accountPopoverSignInBtn');
       const savedStageName = localStorage.getItem('comedyos_stage_name');
 
-      if (session && session.user) {
-        const displayName = savedStageName || session.user.email.split('@')[0];
-        label.textContent = `@${displayName}`;
-        dot.style.color = '#6ee7b7';
-        popoverUser.textContent = `SIGNED IN: ${session.user.email}`;
+      const isAuthenticated = Boolean(session && session.user && session.user.id);
+
+      if (isAuthenticated) {
+        const displayName = savedStageName || (session.user.email ? session.user.email.split('@')[0] : 'Comic');
+        if (label) label.textContent = `@${displayName}`;
+        if (dot) dot.style.color = '#6ee7b7';
+        if (popoverUser) popoverUser.textContent = `VERIFIED: ${session.user.email || displayName}`;
         if (signOutBtn) signOutBtn.style.display = 'block';
+        if (signInBtn) signInBtn.style.display = 'none';
       } else {
-        label.textContent = savedStageName ? `@${savedStageName} (Local)` : 'Guest';
-        dot.style.color = 'var(--accent)';
-        popoverUser.textContent = 'LOCAL GUEST SANDBOX';
+        if (label) label.textContent = savedStageName ? `@${savedStageName} (Local)` : 'Guest';
+        if (dot) dot.style.color = 'var(--accent)';
+        if (popoverUser) popoverUser.textContent = 'LOCAL GUEST SANDBOX';
         if (signOutBtn) signOutBtn.style.display = 'none';
+        if (signInBtn) signInBtn.style.display = 'block';
       }
     }
 
@@ -1941,17 +1952,24 @@
     }
 
     window.connectSupabaseClient = async function() {
-      const url = document.getElementById('supabaseUrlInput').value.trim();
-      const key = document.getElementById('supabaseKeyInput').value.trim();
-      if (!url || !key) {
-        alert('Please provide both Supabase URL and Anon Key.');
-        return;
-      }
+      const urlEl = document.getElementById('supabaseUrlInput');
+      const keyEl = document.getElementById('supabaseKeyInput');
+      const url = urlEl ? urlEl.value.trim() : 'https://wjaaplveswgfveolixqn.supabase.co';
+      const key = keyEl ? keyEl.value.trim() : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndqYWFwbHZlc3dnZnZlb2xpeHFuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMwMjYxMzAsImV4cCI6MjEwODYwMjEzMH0.haMRqG4THIs9T66ZvKu76BNQdqM5Nlx7jLPSXFytpDo';
 
       try {
-        const { createClient } = await import('https://esm.sh/@supabase/supabase-js@2');
-        supabaseClient = createClient(url, key);
+        let createClientFn = (window.supabase && window.supabase.createClient);
+        if (!createClientFn) {
+          const mod = await import('https://esm.sh/@supabase/supabase-js@2').catch(() => null);
+          createClientFn = mod && mod.createClient;
+        }
 
+        if (!createClientFn) {
+          console.warn('Supabase JS not available; direct REST fallbacks active.');
+          return null;
+        }
+
+        supabaseClient = createClientFn(url, key);
         localStorage.setItem('comedyos_supabase_url', url);
         localStorage.setItem('comedyos_supabase_key', key);
 
@@ -1966,49 +1984,63 @@
           }
         });
 
-        // Subscribe to real-time changes
-        supabaseClient.channel('journal-sync')
-          .on('postgres_changes', { event: '*', schema: 'public', table: 'journal_entries' }, payload => {
-            console.log('Realtime update from mobile / remote:', payload);
-            fetchSupabaseJournal();
-          })
-          .subscribe();
+        // Realtime subscription
+        try {
+          supabaseClient.channel('journal-sync')
+            .on('postgres_changes', { event: '*', schema: 'public', table: 'journal_entries' }, () => {
+              fetchSupabaseJournal();
+            })
+            .subscribe();
+        } catch (subErr) {
+          console.warn('Realtime subscription notice:', subErr);
+        }
 
         if (session) {
           fetchSupabaseJournal();
         }
+        return supabaseClient;
       } catch (err) {
-        console.error('Supabase connection error:', err);
-        alert('Could not connect to Supabase: ' + err.message);
+        console.warn('Supabase connection notice:', err);
+        return null;
       }
     };
 
-    window.signInWithGoogle = async function() {
+    window.signInWithGoogle = async function(btnElement) {
+      const btn = btnElement || document.getElementById('onboardingGoogleBtn') || document.getElementById('syncBarGoogleBtn');
+      if (btn) {
+        btn.innerHTML = `<span class="mono" style="font-size: 11px;">● Redirecting to Google...</span>`;
+        btn.disabled = true;
+      }
+
+      const currentOrigin = (window.location.protocol.startsWith('http') && window.location.origin.includes('viktorenns.de'))
+        ? 'https://viktorenns.de/comedyos'
+        : (window.location.protocol.startsWith('http') ? window.location.origin + window.location.pathname : 'https://viktorenns.de/comedyos');
+
+      const directAuthUrl = `https://wjaaplveswgfveolixqn.supabase.co/auth/v1/authorize?provider=google&redirect_to=${encodeURIComponent(currentOrigin)}`;
+
       try {
         if (!supabaseClient) {
           await connectSupabaseClient();
         }
-        if (!supabaseClient) {
-          throw new Error('Supabase client failed to initialize.');
-        }
 
-        const currentOrigin = window.location.origin.includes('viktorenns.de')
-          ? 'https://viktorenns.de/comedyos'
-          : window.location.href.split('#')[0];
-
-        const { data, error } = await supabaseClient.auth.signInWithOAuth({
-          provider: 'google',
-          options: {
-            redirectTo: currentOrigin
+        if (supabaseClient) {
+          const { data, error } = await supabaseClient.auth.signInWithOAuth({
+            provider: 'google',
+            options: {
+              redirectTo: currentOrigin,
+              skipBrowserRedirect: false
+            }
+          });
+          if (error) throw error;
+          if (data && data.url) {
+            window.location.href = data.url;
+            return;
           }
-        });
-        if (error) throw error;
-        if (data && data.url) {
-          window.location.href = data.url;
         }
+        window.location.href = directAuthUrl;
       } catch (err) {
-        console.error('Google OAuth error:', err);
-        alert('Google Sign-In error: ' + err.message);
+        console.warn('OAuth JS call notice, executing direct endpoint redirect:', err);
+        window.location.href = directAuthUrl;
       }
     };
 
@@ -2049,9 +2081,18 @@
     };
 
     window.signOutSupabaseUser = async function() {
-      if (!supabaseClient) return;
-      await supabaseClient.auth.signOut();
+      if (supabaseClient) {
+        try {
+          await supabaseClient.auth.signOut();
+        } catch (e) {
+          console.warn('Supabase signOut notice:', e);
+        }
+      }
+      localStorage.removeItem('comedyos_stage_name');
+      currentSupabaseSession = null;
       updateAuthUi(null);
+      const popover = document.getElementById('accountPopoverMenu');
+      if (popover) popover.classList.remove('visible');
     };
 
     async function syncEntryToSupabase(entry) {
