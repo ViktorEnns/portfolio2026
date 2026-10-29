@@ -540,6 +540,229 @@
       display: none;
       object-fit: cover;
     }
+  
+    /* ==========================================================================
+       COMEDYOS V1.1 ENHANCEMENTS: TASTE, LEXICON & WAYFINDING
+       ========================================================================== */
+    /* View Visibility Controls */
+    .view-stage {
+      display: none;
+      width: 100%;
+    }
+    .view-stage.active {
+      display: flex;
+    }
+
+    /* Pre-App Onboarding & Tester Credential Gate */
+    .onboarding-overlay {
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 9999;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      overflow-y: auto;
+    }
+    .onboarding-overlay.visible {
+      display: flex;
+    }
+    .onboarding-card {
+      max-width: 620px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      animation: fadeIn 220ms ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Global Wayfinding Masthead */
+    .global-wayfinding-masthead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--hairline);
+      flex-wrap: wrap;
+    }
+    .nav-tabs-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(245, 242, 237, 0.02);
+      border: 1px solid var(--hairline);
+      border-radius: 2px;
+      padding: 2px 4px;
+    }
+    .nav-tab-btn {
+      padding: 5px 10px;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-family: var(--font-sans);
+      font-weight: 500;
+      color: var(--ink-muted);
+      background: transparent;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 150ms ease;
+    }
+    .nav-tab-btn:hover {
+      color: var(--ink);
+    }
+    .nav-tab-btn.active {
+      color: #FFFFFF;
+      background: var(--surface-hover);
+      border: 1px solid var(--hairline-btn);
+    }
+
+    /* Granola Document Title Stack & Metadata Pills */
+    .document-header-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--hairline);
+      padding-bottom: 16px;
+    }
+    .joke-title-editorial {
+      font-family: var(--font-serif);
+      font-size: 32px;
+      font-weight: 300;
+      color: var(--ink);
+      background: transparent;
+      border: none;
+      outline: none;
+      width: 100%;
+      line-height: 1.2;
+    }
+    .joke-title-editorial::placeholder {
+      color: var(--placeholder);
+      font-style: italic;
+    }
+    .metadata-pills-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 8px;
+      border-radius: 2px;
+      border: 1px solid var(--hairline);
+      background: rgba(245, 242, 237, 0.02);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--ink-muted);
+      user-select: none;
+      transition: all 150ms ease;
+    }
+    .meta-pill:hover {
+      border-color: var(--hairline-btn);
+      color: var(--ink);
+    }
+    .meta-pill.pill-active {
+      border-color: var(--accent-border);
+      color: var(--ink);
+      background: var(--accent-fill);
+    }
+
+    /* beUI Inline Linguistic Word Highlighting (Lexicon Lens) */
+    .word-hl {
+      display: inline;
+      padding: 1px 4px;
+      margin: 0 -1px;
+      border-radius: 2px;
+      font-weight: inherit;
+    }
+    .word-hl-repeat {
+      background-color: rgba(147, 197, 253, 0.20);
+      color: #BFDBFE;
+      border-bottom: 1px solid rgba(147, 197, 253, 0.50);
+    }
+    .word-hl-heavy {
+      background-color: rgba(253, 186, 116, 0.20);
+      color: #FED7AA;
+      border-bottom: 1px solid rgba(253, 186, 116, 0.50);
+    }
+    .word-hl-filler {
+      background-color: rgba(226, 109, 92, 0.20);
+      color: #FCA5A5;
+      text-decoration: underline wavy rgba(226, 109, 92, 0.60);
+    }
+    .word-hl-punch {
+      background-color: rgba(159, 175, 154, 0.25);
+      color: #ECFDF5;
+      border-bottom: 1px solid rgba(159, 175, 154, 0.70);
+    }
+
+    /* Variant e4b3ad22 Single-Joke Mobile Cards & Set Builder Grid */
+    .set-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+      width: 100%;
+    }
+    .joke-stage-card {
+      border: 1px solid var(--hairline);
+      border-radius: 2px;
+      padding: 16px;
+      background: rgba(245, 242, 237, 0.015);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      cursor: pointer;
+      transition: all 180ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    .joke-stage-card:hover {
+      border-color: var(--hairline-btn-hover);
+      background: var(--surface-hover);
+    }
+    .joke-stage-card.is-active-card {
+      border-color: var(--accent-border);
+      background: var(--accent-fill);
+    }
+    .card-punch-preview {
+      border-left: 2px solid var(--accent);
+      padding-left: 10px;
+      margin-left: 4px;
+      color: var(--ink);
+      font-style: italic;
+    }
+
+    /* Popover Menu for Account Pill */
+    .account-popover {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 8px;
+      width: 240px;
+      background: var(--bg);
+      border: 1px solid var(--hairline-btn);
+      border-radius: 2px;
+      padding: 10px;
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 500;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    }
+    .account-popover.visible {
+      display: flex;
+    }
+
   </style>
 </head>
 <body>
@@ -547,24 +770,132 @@
   <main class="app-root" id="appRoot">
 
     <!-- =======================================================================
-         CONTEXT STRIP: Minimal, Zero-Nav Header
+         PRE-APP TESTER ONBOARDING & CREDENTIAL GATE
          ======================================================================= -->
-    <header class="context-strip">
-      <div class="context-left">
-        <span class="mono" id="bitMetaStamp">B-104 · V1.0</span>
-        <button type="button" class="btn btn-compact" id="journalToggleBtn" onclick="toggleJournalView()">
-          <span id="journalIconSlot"></span> Journal (<span id="journalCountBadge">0</span>)
-        </button>
-        <button type="button" class="btn btn-compact" id="supabaseConfigBtn" onclick="toggleSupabaseBar()">
-          <span id="cloudIconSlot"></span> <span id="supabaseStatusText">Supabase Sync</span>
-        </button>
+    <div class="onboarding-overlay" id="onboardingGateView">
+      <div class="onboarding-card">
+        <div style="border-bottom: 1px solid var(--hairline); padding-bottom: 20px;">
+          <span class="micro-label" style="color: var(--accent);">COMEDYOS · EARLY TESTER COHORT V1.1</span>
+          <h1 class="serif" style="font-size: 40px; line-height: 1.15; margin: 12px 0 8px 0;">
+            Stop guessing what works.<br>Make bombing productive.
+          </h1>
+          <p class="serif" style="font-size: 18px; color: var(--ink-muted); font-style: italic; line-height: 1.5;">
+            The typographic workbench and stage telemetry system for stand-up comedians. See with your eyes which lines hit—without cringing at your own voice.
+          </p>
+        </div>
+
+        <!-- Auth Step -->
+        <div id="onboardingAuthStep" style="display: flex; flex-direction: column; gap: 16px;">
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <button type="button" class="btn btn-primary" onclick="signInWithGoogle()" style="padding: 10px 18px; font-size: 11px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+              Continue with Google
+            </button>
+            <button type="button" class="btn" onclick="bypassOnboardingGuest()" style="padding: 10px 16px;">
+              Try Local Guest Sandbox →
+            </button>
+          </div>
+
+          <div style="display: flex; gap: 12px; align-items: center; margin-top: 8px;">
+            <div class="input-line-group" style="flex: 1; margin: 0;">
+              <input type="email" id="onboardingEmailInput" class="textarea-editorial" style="font-size: 14px; padding: 6px 0;" placeholder="Or email magic link: comic@comedyos.de" />
+            </div>
+            <button type="button" class="btn" onclick="sendOnboardingMagicLink()">Send Link</button>
+          </div>
+        </div>
+
+        <!-- Tester Credentials Step (Shown once authenticated if profile incomplete) -->
+        <div id="onboardingCredentialsStep" style="display: none; flex-direction: column; gap: 16px;">
+          <span class="micro-label" style="color: var(--accent);">TESTER CALIBRATION · 30 SECONDS</span>
+          <div class="input-line-group">
+            <label class="micro-label">STAGE NAME / ALIAS</label>
+            <input type="text" id="testerStageNameInput" class="textarea-editorial" style="font-size: 18px;" placeholder="e.g. Viktor Enns" />
+          </div>
+          <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+            <div class="input-line-group" style="flex: 1; min-width: 220px;">
+              <label class="micro-label">HOME SCENE / CITY</label>
+              <input type="text" id="testerHomeSceneInput" class="textarea-editorial" style="font-size: 15px;" placeholder="e.g. Austin, TX / Berlin / NYC" />
+            </div>
+            <div class="input-line-group" style="flex: 1; min-width: 220px;">
+              <label class="micro-label">YEARS ON STAGE</label>
+              <select id="testerYearsSelect" class="btn" style="width: 100%; padding: 8px 4px; font-size: 11px; margin-top: 4px;">
+                <option value="open_mic">Open Mic (< 2 Years)</option>
+                <option value="club_regular">Club Regular (2–5 Years)</option>
+                <option value="touring_pro">Touring Pro (5+ Years)</option>
+              </select>
+            </div>
+          </div>
+          <div class="input-line-group">
+            <label class="micro-label">INSTAGRAM / CONTACT HANDLE (FOR TESTER FOLLOW-UP)</label>
+            <input type="text" id="testerSocialInput" class="textarea-editorial" style="font-size: 15px;" placeholder="@yourname or phone" />
+          </div>
+          <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 8px;">
+            <button type="button" class="btn btn-primary" onclick="submitTesterCredentials()" style="padding: 10px 20px;">
+              Enter ComedyOS Workbench →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =======================================================================
+         GLOBAL 4-TAB WAYFINDING HEADER & BREADCRUMB
+         ======================================================================= -->
+    <header class="global-wayfinding-masthead" id="globalWayfindingHeader">
+      <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+        <!-- Brand & View Switcher -->
+        <span class="serif" style="font-size: 18px; letter-spacing: -0.02em; color: var(--ink);">COMEDYOS</span>
+
+        <nav class="nav-tabs-group">
+          <button type="button" class="nav-tab-btn active" id="tabWorkbench" onclick="switchMainView('workbench')">
+            01 Workbench
+          </button>
+          <button type="button" class="nav-tab-btn" id="tabJournal" onclick="switchMainView('journal')">
+            02 Journal (<span id="headerJournalCount">0</span>)
+          </button>
+          <button type="button" class="nav-tab-btn" id="tabSetCards" onclick="switchMainView('setcards')">
+            03 Set Cards
+          </button>
+          <button type="button" class="nav-tab-btn" id="tabArchive" onclick="switchMainView('archive')">
+            04 Archive
+          </button>
+        </nav>
+
+        <span class="mono" style="color: var(--ink-faint);">/</span>
+        <span class="mono" id="bitBreadcrumbLabel" style="color: var(--ink);">B-104 · Undisputed Champion</span>
       </div>
 
-      <div class="context-right">
-        <button type="button" class="btn btn-compact" id="modeSwitchBtn" onclick="toggleViewMode()" title="Toggle between Desktop Workbench and Mobile Google Keep Mode">
-          📱 Mobile Keep View
+      <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; position: relative;">
+        <!-- 10-Min ADHD Hyperfocus Sprint Timer -->
+        <button type="button" class="btn btn-compact" id="sprintTimerBtn" onclick="toggleSprintTimer()" title="10-Minute Hyperfocus Writing Sprint">
+          ⚡ <span id="sprintTimerDisplay">10:00 Sprint</span>
         </button>
-        <button type="button" class="btn btn-compact btn-primary" onclick="commitAndNewJoke()" title="Save current note to vault and open fresh canvas">
+
+        <!-- Command Menu Trigger -->
+        <button type="button" class="btn btn-compact" onclick="openCommandPalette()" title="Press Cmd+K">
+          ⌘K
+        </button>
+
+        <!-- Compact Account & Live Sync Status Pill -->
+        <div style="position: relative;">
+          <button type="button" class="btn btn-compact" id="accountPillBtn" onclick="toggleAccountPopover()">
+            <span id="accountPillDot" style="color: var(--accent);">●</span>
+            <span id="accountPillLabel">Guest</span>
+          </button>
+
+          <!-- Account Popover Menu -->
+          <div class="account-popover" id="accountPopoverMenu">
+            <span class="micro-label" id="accountPopoverUserText">LOCAL GUEST MODE</span>
+            <div style="display: flex; flex-direction: column; gap: 6px; margin-top: 4px;">
+              <button type="button" class="btn btn-compact" onclick="fetchSupabaseJournal()">Sync with Cloud</button>
+              <button type="button" class="btn btn-compact" onclick="reopenOnboardingGate()">Account / Login</button>
+              <button type="button" class="btn btn-compact btn-ghost" onclick="signOutSupabaseUser()">Sign Out</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- + New Joke Action -->
+        <button type="button" class="btn btn-compact btn-primary" onclick="commitAndNewJoke()" title="Commit and start fresh canvas (C)">
           + New Joke
         </button>
       </div>
@@ -629,10 +960,10 @@
     </section>
 
     <!-- =======================================================================
-         DESKTOP WORKBENCH VIEW (> 960px)
-         Two-Stage: Brain Dump / Mobile Ingested Note -> Ghost Suggested Sequential Circuit
+         VIEW STAGE 01: WORKBENCH (Desktop & Mobile Unified Stage)
          ======================================================================= -->
-    <div class="desktop-workbench-stage" id="desktopWorkbenchView">
+    <div class="view-stage active" id="workbenchViewStage" style="width: 100%; flex-direction: column;">
+      <div class="desktop-workbench-stage" id="desktopWorkbenchView">
 
       <!-- LEFT PANE: Brain Dump / Transcript / Obsidian Split Journal -->
       <section class="left-split-pane" id="leftSplitPane">
@@ -705,8 +1036,36 @@
 
       </section>
 
-      <!-- RIGHT PANE: Two-Stage Sequential Joke Circuit (Setup -> Variable Bridges -> Punchlines -> Tags) -->
+      <!-- RIGHT PANE: Granola Title + beUI Lexicon Lens + Sequential Circuit -->
       <section class="joke-circuit-pane" id="jokeCircuitPane">
+        <!-- Granola Document Header Stack -->
+        <div class="document-header-stack" id="docHeaderStack">
+          <input type="text" id="activeJokeTitleInput" class="joke-title-editorial" placeholder="Untitled Bit / Premise Hook..." oninput="updateActiveJokeTitle(this.value)" />
+          
+          <div class="metadata-pills-row">
+            <!-- Stage Status Pill -->
+            <select id="jokeStatusSelect" class="meta-pill" style="cursor: pointer; outline: none; border-radius: 2px;" onchange="updateJokeStatus(this.value)">
+              <option value="seed">○ Seed</option>
+              <option value="structured" selected>◐ Structured</option>
+              <option value="stage_ready">● Stage Ready</option>
+              <option value="retired">✕ Retired</option>
+            </select>
+
+            <!-- Projected LPM & Runtime Pill -->
+            <span class="meta-pill" id="lpmRuntimePill" title="Projected Laughs Per Minute (Target 6-10 LPM)">
+              ⏱ <span id="estDurationBadge">00:45</span> · <span id="lpmBadge" style="color: var(--accent);">7.5 LPM</span>
+            </span>
+
+            <!-- beUI Inline Lexicon Lens Filters -->
+            <span class="micro-label" style="margin-left: 6px;">LEXICON LENS:</span>
+            <button type="button" class="meta-pill" id="lexiconFilterNone" onclick="setLexiconFilter('none')" style="cursor: pointer;">Off</button>
+            <button type="button" class="meta-pill" id="lexiconFilterRepeat" onclick="setLexiconFilter('repeat')" style="cursor: pointer;" title="Highlight repeated words">🔁 Repetition</button>
+            <button type="button" class="meta-pill" id="lexiconFilterHeavy" onclick="setLexiconFilter('heavy')" style="cursor: pointer;" title="Highlight heavy words (>3 syllables)">🧱 Heavy >3S</button>
+            <button type="button" class="meta-pill" id="lexiconFilterFiller" onclick="setLexiconFilter('filler')" style="cursor: pointer;" title="Highlight weak filler words">✂ Filler</button>
+            <button type="button" class="meta-pill" id="lexiconFilterPunch" onclick="setLexiconFilter('punch')" style="cursor: pointer;" title="Highlight laugh trigger words">⚡ Punch Word</button>
+          </div>
+        </div>
+
         <div class="block-header-row">
           <span class="micro-label">02. SEQUENTIAL JOKE CIRCUIT</span>
           <span class="mono" id="circuitTelemetry">0 WORDS · 0 SYL</span>
@@ -716,6 +1075,38 @@
         <div id="sequentialCircuitContainer" style="display: flex; flex-direction: column; gap: 20px;"></div>
       </section>
 
+      </div>
+    </div>
+
+    <!-- =======================================================================
+         VIEW STAGE 03: SET CARDS & STAGE BUILDER (Variant e4b3ad22 Specimen)
+         ======================================================================= -->
+    <div class="view-stage" id="setCardsViewStage" style="flex-direction: column; gap: 24px;">
+      <div class="block-header-row" style="border-bottom: 1px solid var(--hairline); padding-bottom: 12px;">
+        <div>
+          <span class="micro-label">STAGE SET CARDS &amp; RUNTIME BUILDER</span>
+          <h2 class="serif" style="font-size: 26px; margin-top: 4px;">Tonight's Set Selection</h2>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span class="mono" id="setCardsTotalStats">0 JOKES · 00:00 EST · 0.0 LPM</span>
+          <button type="button" class="btn btn-compact btn-primary" onclick="switchMainView('workbench')">+ Add Current Bit</button>
+        </div>
+      </div>
+      <div class="set-cards-grid" id="setCardsGridContainer"></div>
+    </div>
+
+    <!-- =======================================================================
+         VIEW STAGE 04: CRAFT ARCHIVE (Axioms & Masterclasses from Vault)
+         ======================================================================= -->
+    <div class="view-stage" id="craftArchiveViewStage" style="flex-direction: column; gap: 24px;">
+      <div class="block-header-row" style="border-bottom: 1px solid var(--hairline); padding-bottom: 12px;">
+        <div>
+          <span class="micro-label">CRAFT ARCHIVE · VERBATIM AXIOMS</span>
+          <h2 class="serif" style="font-size: 26px; margin-top: 4px;">Stand-Up Knowledge Base</h2>
+        </div>
+        <input type="text" id="archiveSearchInput" class="textarea-editorial" style="font-size: 13px; width: 220px;" placeholder="Search masters (Seinfeld, Louis CK...)" oninput="filterArchiveAxioms()" />
+      </div>
+      <div id="craftAxiomsListContainer" style="display: flex; flex-direction: column; gap: 16px;"></div>
     </div>
 
     <!-- =======================================================================
@@ -789,10 +1180,513 @@
       </button>
     </div>
 
+    <!-- =======================================================================
+         COMMAND PALETTE MODAL (Cmd+K / Ctrl+K)
+         ======================================================================= -->
+    <div id="commandPaletteModal" style="display: none; position: fixed; inset: 0; background: rgba(26,25,24,0.85); z-index: 999; align-items: flex-start; justify-content: center; padding-top: 120px;" onclick="closeCommandPalette(event)">
+      <div style="background: var(--bg); border: 1px solid var(--hairline-btn); border-radius: 2px; width: 540px; max-width: 90vw; padding: 16px; box-shadow: 0 16px 48px rgba(0,0,0,0.7);" onclick="event.stopPropagation()">
+        <div class="input-line-group" style="margin-bottom: 12px;">
+          <input type="text" id="commandPaletteInput" class="textarea-editorial" style="font-size: 18px;" placeholder="Type a command or search bits..." oninput="handleCommandSearch()" />
+        </div>
+        <div id="commandResultsList" style="display: flex; flex-direction: column; gap: 4px; max-height: 280px; overflow-y: auto;"></div>
+      </div>
+    </div>
   </main>
 
   <!-- Load Supabase Client ESM dynamically when credentials are provided -->
   <script type="module">
+    
+    /* ==========================================================================
+       COMEDYOS V1.1 MASTER CONTROLLERS & SECURE RUNTIME
+       ========================================================================== */
+    let currentMainView = 'workbench';
+    let currentLexiconFilter = 'none'; // 'none', 'repeat', 'heavy', 'filler', 'punch'
+    let sprintSecondsRemaining = 600;
+    let sprintTimerInterval = null;
+
+    // Craft Archive Axioms from Vault
+    const CRAFT_AXIOMS = [
+      { id: 'ax1', domain: 'Writing & Joke Construction', speaker: 'Jerry Seinfeld', text: 'A joke is like a poem: every syllable counts. If you can take out one word and the joke still works, take it out.' },
+      { id: 'ax2', domain: 'Writing & Joke Construction', speaker: 'Jimmy Carr', text: 'On jokes: It is the fastest possible connection between two ideas. The surprise is what produces the involuntary physical spasm we call laughter.' },
+      { id: 'ax3', domain: 'Performance & Stagecraft', speaker: 'Louis C.K.', text: 'The cringe of bombing is the only way to find out what is actually true. If you don\'t bomb, you aren\'t writing anything real.' },
+      { id: 'ax4', domain: 'Linguistic Economy', speaker: 'Mark Normand', text: 'Put the punch word at the very end of the sentence. Don\'t trail off with \'you know what I mean\'. Hit the hard consonant and stop talking.' },
+      { id: 'ax5', domain: 'Stage Telemetry', speaker: 'Steve Martin', text: 'The single person not laughing will obsess you. Turn that obsession into data: find the gap and restructure the bridge.' }
+    ];
+
+    // Common filler fluff words in comedy writing
+    const FILLER_WORDS = new Set(['just', 'basically', 'actually', 'really', 'literally', 'very', 'like', 'sorta', 'kinda', 'obviously', 'honestly']);
+
+    /* Security: DOM XSS Sanitizer */
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    /* ==========================================================================
+       VIEW NAVIGATION CONTROLLER (Workbench, Journal, Set Cards, Archive)
+       ========================================================================== */
+    window.switchMainView = function(viewName) {
+      currentMainView = viewName;
+      document.querySelectorAll('.view-stage').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.nav-tab-btn').forEach(btn => btn.classList.remove('active'));
+
+      if (viewName === 'workbench') {
+        document.getElementById('workbenchViewStage').classList.add('active');
+        document.getElementById('tabWorkbench').classList.add('active');
+      } else if (viewName === 'journal') {
+        document.getElementById('workbenchViewStage').classList.add('active');
+        document.getElementById('tabJournal').classList.add('active');
+        if (!isDesktopJournalOpen) toggleJournalView();
+      } else if (viewName === 'setcards') {
+        document.getElementById('setCardsViewStage').classList.add('active');
+        document.getElementById('tabSetCards').classList.add('active');
+        renderSetCardsGrid();
+      } else if (viewName === 'archive') {
+        document.getElementById('craftArchiveViewStage').classList.add('active');
+        document.getElementById('tabArchive').classList.add('active');
+        renderCraftAxioms();
+      }
+    };
+
+    /* ==========================================================================
+       PRE-APP ONBOARDING & TESTER GATE
+       ========================================================================== */
+    function checkOnboardingState() {
+      const isCompleted = localStorage.getItem('comedyos_onboarding_done');
+      const gate = document.getElementById('onboardingGateView');
+      if (!isCompleted) {
+        gate.classList.add('visible');
+      } else {
+        gate.classList.remove('visible');
+      }
+    }
+
+    window.bypassOnboardingGuest = function() {
+      localStorage.setItem('comedyos_onboarding_done', 'true');
+      document.getElementById('onboardingGateView').classList.remove('visible');
+      updateAccountPillUi(null);
+    };
+
+    window.reopenOnboardingGate = function() {
+      document.getElementById('onboardingGateView').classList.add('visible');
+      document.getElementById('accountPopoverMenu').classList.remove('visible');
+    };
+
+    window.sendOnboardingMagicLink = async function() {
+      const email = document.getElementById('onboardingEmailInput').value.trim();
+      if (!email) {
+        alert('Please enter your email to receive a magic sign-in link.');
+        return;
+      }
+      document.getElementById('magicLinkEmailInput').value = email;
+      await sendSupabaseMagicLink();
+    };
+
+    window.submitTesterCredentials = async function() {
+      const stageName = document.getElementById('testerStageNameInput').value.trim() || 'Comic';
+      const homeScene = document.getElementById('testerHomeSceneInput').value.trim();
+      const years = document.getElementById('testerYearsSelect').value;
+      const social = document.getElementById('testerSocialInput').value.trim();
+
+      localStorage.setItem('comedyos_stage_name', stageName);
+      localStorage.setItem('comedyos_onboarding_done', 'true');
+      document.getElementById('onboardingGateView').classList.remove('visible');
+
+      if (supabaseClient) {
+        try {
+          const { data: { session } } = await supabaseClient.auth.getSession();
+          if (session && session.user) {
+            await supabaseClient.from('profiles').upsert({
+              id: session.user.id,
+              stage_name: stageName,
+              home_scene: homeScene,
+              years_performing: years,
+              social_handle: social,
+              onboarding_completed: true,
+              updated_at: new Date().toISOString()
+            });
+          }
+        } catch (err) {
+          console.warn('Could not save profile metadata:', err);
+        }
+      }
+      updateAccountPillUi({ user: { email: stageName } });
+    };
+
+    /* Account Pill & Popover */
+    window.toggleAccountPopover = function() {
+      document.getElementById('accountPopoverMenu').classList.toggle('visible');
+    };
+    document.addEventListener('click', e => {
+      const pill = document.getElementById('accountPillBtn');
+      const popover = document.getElementById('accountPopoverMenu');
+      if (pill && popover && !pill.contains(e.target) && !popover.contains(e.target)) {
+        popover.classList.remove('visible');
+      }
+    });
+
+    function updateAccountPillUi(session) {
+      const label = document.getElementById('accountPillLabel');
+      const dot = document.getElementById('accountPillDot');
+      const popoverUser = document.getElementById('accountPopoverUserText');
+      const savedStageName = localStorage.getItem('comedyos_stage_name');
+
+      if (session && session.user) {
+        const displayName = savedStageName || session.user.email.split('@')[0];
+        label.textContent = `@${displayName}`;
+        dot.style.color = '#6ee7b7';
+        popoverUser.textContent = `SIGNED IN: ${session.user.email}`;
+      } else {
+        label.textContent = savedStageName ? `@${savedStageName} (Local)` : 'Guest';
+        dot.style.color = 'var(--accent)';
+        popoverUser.textContent = 'LOCAL GUEST SANDBOX';
+      }
+    }
+
+    /* ==========================================================================
+       GRANOLA HEADER STACK & TELEMETRY CONTROLLERS
+       ========================================================================== */
+    window.updateActiveJokeTitle = function(val) {
+      currentJoke.title = val;
+      const displayTitle = val || 'Untitled Bit';
+      document.getElementById('bitBreadcrumbLabel').textContent = `${currentJoke.display_code} · ${displayTitle}`;
+      debouncedAutoSave();
+    };
+
+    window.updateJokeStatus = function(val) {
+      currentJoke.status = val;
+      debouncedAutoSave();
+    };
+
+    function updateGranolaTelemetry() {
+      let totalWords = 0;
+      let totalSyllables = 0;
+      let pauseSeconds = 0;
+      let punchCount = 0;
+
+      (currentJoke.blocks || []).forEach(b => {
+        const counts = computeCounts(b.content);
+        totalWords += counts.words;
+        totalSyllables += counts.syllables;
+
+        // Count pauses [p: 1.5s]
+        const pauses = (b.content || '').match(/\[p:\s*([\d\.]+)s?\]/g);
+        if (pauses) {
+          pauses.forEach(p => {
+            const m = p.match(/[\d\.]+/);
+            if (m) pauseSeconds += parseFloat(m[0]);
+          });
+        }
+
+        if (b.block_type === 'punchline' && b.is_stage_active) punchCount++;
+        if (b.block_type === 'tag') punchCount++;
+      });
+
+      // Duration: 130 WPM baseline + pauses
+      const speakingMinutes = (totalWords / 130) + (pauseSeconds / 60);
+      const safeMinutes = Math.max(0.1, speakingMinutes);
+      const estSeconds = Math.round(speakingMinutes * 60);
+      const mins = String(Math.floor(estSeconds / 60)).padStart(2, '0');
+      const secs = String(estSeconds % 60).padStart(2, '0');
+      const durationStr = `${mins}:${secs}`;
+
+      // LPM = Active Punches & Tags / safeMinutes
+      const lpm = (punchCount / safeMinutes).toFixed(1);
+
+      document.getElementById('estDurationBadge').textContent = durationStr;
+      const lpmBadge = document.getElementById('lpmBadge');
+      lpmBadge.textContent = `${lpm} LPM`;
+      if (lpm >= 6.0 && lpm <= 10.0) {
+        lpmBadge.style.color = '#6ee7b7';
+      } else {
+        lpmBadge.style.color = 'var(--accent)';
+      }
+
+      document.getElementById('circuitTelemetry').textContent = `${totalWords} WORDS · ${totalSyllables} SYL`;
+      updateGranolaTelemetry();
+    }
+
+    /* ==========================================================================
+       beUI INLINE LEXICON LENS (WORD ECONOMY HIGHLIGHTING)
+       ========================================================================== */
+    window.setLexiconFilter = function(filterType) {
+      currentLexiconFilter = filterType;
+      const buttons = {
+        none: document.getElementById('lexiconFilterNone'),
+        repeat: document.getElementById('lexiconFilterRepeat'),
+        heavy: document.getElementById('lexiconFilterHeavy'),
+        filler: document.getElementById('lexiconFilterFiller'),
+        punch: document.getElementById('lexiconFilterPunch')
+      };
+      Object.keys(buttons).forEach(k => {
+        if (buttons[k]) buttons[k].classList.toggle('pill-active', k === filterType);
+      });
+      renderSequentialCircuit();
+    };
+
+    function generateLexiconHighlightedHtml(text, blockType, isStageActive) {
+      if (currentLexiconFilter === 'none' || !text) {
+        return escapeHtml(text);
+      }
+
+      // Collect word frequencies across bit for repetition detection
+      const wordCounts = {};
+      (currentJoke.blocks || []).forEach(b => {
+        const words = (b.content || '').toLowerCase().match(/[a-z']+/g) || [];
+        words.forEach(w => {
+          if (w.length > 2) wordCounts[w] = (wordCounts[w] || 0) + 1;
+        });
+      });
+
+      const tokens = text.split(/(\s+|[.,!?;:"])/);
+      const cleanTokens = tokens.filter(t => /[a-zA-Z]/.test(t));
+      const lastWordClean = cleanTokens.length > 0 ? cleanTokens[cleanTokens.length - 1].toLowerCase().replace(/[^a-z]/g, '') : null;
+
+      let resultHtml = '';
+      tokens.forEach(tok => {
+        const rawLower = tok.toLowerCase().replace(/[^a-z]/g, '');
+        if (!rawLower) {
+          resultHtml += escapeHtml(tok);
+          return;
+        }
+
+        let hlClass = '';
+        if (currentLexiconFilter === 'repeat' && wordCounts[rawLower] >= 2) {
+          hlClass = 'word-hl-repeat';
+        } else if (currentLexiconFilter === 'heavy') {
+          const syl = computeCounts(tok).syllables;
+          if (syl >= 3) hlClass = 'word-hl-heavy';
+        } else if (currentLexiconFilter === 'filler' && FILLER_WORDS.has(rawLower)) {
+          hlClass = 'word-hl-filler';
+        } else if (currentLexiconFilter === 'punch' && blockType === 'punchline' && isStageActive && rawLower === lastWordClean) {
+          hlClass = 'word-hl-punch';
+        }
+
+        if (hlClass) {
+          resultHtml += `<span class="word-hl ${hlClass}">${escapeHtml(tok)}</span>`;
+        } else {
+          resultHtml += escapeHtml(tok);
+        }
+      });
+
+      return resultHtml;
+    }
+
+    /* ==========================================================================
+       VARIANT e4b3ad22 SINGLE-JOKE CARDS & STAGE BUILDER VIEW
+       ========================================================================== */
+    function renderSetCardsGrid() {
+      const container = document.getElementById('setCardsGridContainer');
+      const store = getJournalStore();
+      container.innerHTML = '';
+
+      if (store.length === 0) {
+        container.innerHTML = '<span class="mono">No jokes in vault. Capture some premises on Workbench first.</span>';
+        document.getElementById('setCardsTotalStats').textContent = '0 JOKES · 00:00 EST · 0.0 LPM';
+        return;
+      }
+
+      let totalEstSecs = 0;
+      let totalPunches = 0;
+
+      store.forEach(joke => {
+        const setupBlock = (joke.blocks || []).find(b => b.block_type === 'setup');
+        const activePunch = (joke.blocks || []).find(b => b.block_type === 'punchline' && b.is_stage_active) ||
+                            (joke.blocks || []).find(b => b.block_type === 'punchline');
+
+        const card = document.createElement('div');
+        card.className = `joke-stage-card ${joke.id === currentJoke.id ? 'is-active-card' : ''}`;
+
+        const counts = computeCounts(joke.raw_text || (setupBlock ? setupBlock.content : ''));
+        const jokeSecs = Math.round((counts.words / 130) * 60) + 3;
+        totalEstSecs += jokeSecs;
+        if (activePunch) totalPunches++;
+
+        const mins = String(Math.floor(jokeSecs / 60)).padStart(2, '0');
+        const secs = String(jokeSecs % 60).padStart(2, '0');
+
+        card.innerHTML = `
+          <div class="block-header-row" style="margin-bottom: 2px;">
+            <span class="mono">${escapeHtml(joke.display_code || 'B-100')}</span>
+            <span class="micro-label" style="color: var(--accent);">${escapeHtml((joke.status || 'seed').toUpperCase())}</span>
+          </div>
+          <h3 class="serif" style="font-size: 19px; color: var(--ink); line-height: 1.3;">
+            ${escapeHtml(joke.title || (setupBlock ? setupBlock.content.slice(0, 50) : 'Untitled Bit'))}
+          </h3>
+          ${activePunch && activePunch.content ? `
+            <div class="card-punch-preview serif" style="font-size: 16px;">
+              "${escapeHtml(activePunch.content)}"
+            </div>
+          ` : ''}
+          <div class="block-header-row" style="margin-top: 8px;">
+            <span class="mono">${mins}:${secs} EST</span>
+            <div style="display: flex; gap: 6px;">
+              <button type="button" class="btn btn-compact" onclick="openJokeOnWorkbench('${escapeHtml(joke.id)}', event)">Edit Bit →</button>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+
+      const totalMins = String(Math.floor(totalEstSecs / 60)).padStart(2, '0');
+      const totalSecs = String(totalEstSecs % 60).padStart(2, '0');
+      const avgLpm = ((totalPunches / Math.max(0.1, totalEstSecs / 60))).toFixed(1);
+      document.getElementById('setCardsTotalStats').textContent = `${store.length} JOKES · ${totalMins}:${totalSecs} EST · ${avgLpm} LPM`;
+    }
+
+    window.openJokeOnWorkbench = function(id, ev) {
+      if (ev) ev.stopPropagation();
+      const entry = getJournalStore().find(e => e.id === id);
+      if (entry) {
+        loadJokeIntoActive(entry);
+        switchMainView('workbench');
+      }
+    };
+
+    /* ==========================================================================
+       CRAFT ARCHIVE CONTROLLER
+       ========================================================================== */
+    function renderCraftAxioms(query = '') {
+      const container = document.getElementById('craftAxiomsListContainer');
+      container.innerHTML = '';
+      const q = query.toLowerCase();
+
+      const filtered = CRAFT_AXIOMS.filter(a => {
+        if (!q) return true;
+        return a.speaker.toLowerCase().includes(q) || a.text.toLowerCase().includes(q) || a.domain.toLowerCase().includes(q);
+      });
+
+      filtered.forEach(axiom => {
+        const row = document.createElement('div');
+        row.className = 'input-line-group';
+        row.style.paddingBottom = '12px';
+        row.innerHTML = `
+          <div class="block-header-row" style="margin-bottom: 4px;">
+            <span class="micro-label" style="color: var(--accent);">${escapeHtml(axiom.domain.toUpperCase())}</span>
+            <span class="mono">${escapeHtml(axiom.speaker)}</span>
+          </div>
+          <p class="serif" style="font-size: 19px; color: var(--ink); line-height: 1.45;">
+            "${escapeHtml(axiom.text)}"
+          </p>
+        `;
+        container.appendChild(row);
+      });
+    }
+
+    window.filterArchiveAxioms = function() {
+      const q = document.getElementById('archiveSearchInput').value;
+      renderCraftAxioms(q);
+    };
+
+    /* ==========================================================================
+       10-MINUTE ADHD HYPERFOCUS SPRINT TIMER
+       ========================================================================== */
+    window.toggleSprintTimer = function() {
+      const btn = document.getElementById('sprintTimerBtn');
+      const display = document.getElementById('sprintTimerDisplay');
+
+      if (sprintTimerInterval) {
+        clearInterval(sprintTimerInterval);
+        sprintTimerInterval = null;
+        btn.classList.remove('btn-active');
+        display.textContent = '10:00 Sprint';
+        sprintSecondsRemaining = 600;
+        return;
+      }
+
+      btn.classList.add('btn-active');
+      sprintTimerInterval = setInterval(() => {
+        sprintSecondsRemaining--;
+        if (sprintSecondsRemaining <= 0) {
+          clearInterval(sprintTimerInterval);
+          sprintTimerInterval = null;
+          btn.classList.remove('btn-active');
+          display.textContent = 'Sprint Done! 🎉';
+          alert('10-Minute Sprint Complete! Great work. Take a breather.');
+          return;
+        }
+        const m = String(Math.floor(sprintSecondsRemaining / 60)).padStart(2, '0');
+        const s = String(sprintSecondsRemaining % 60).padStart(2, '0');
+        display.textContent = `${m}:${s}`;
+      }, 1000);
+    };
+
+    /* ==========================================================================
+       COMMAND PALETTE (Cmd+K)
+       ========================================================================== */
+    window.openCommandPalette = function() {
+      const modal = document.getElementById('commandPaletteModal');
+      const input = document.getElementById('commandPaletteInput');
+      modal.style.display = 'flex';
+      input.value = '';
+      input.focus();
+      handleCommandSearch();
+    };
+
+    window.closeCommandPalette = function(ev) {
+      document.getElementById('commandPaletteModal').style.display = 'none';
+    };
+
+    window.handleCommandSearch = function() {
+      const input = document.getElementById('commandPaletteInput');
+      const container = document.getElementById('commandResultsList');
+      const q = (input.value || '').toLowerCase().trim();
+      container.innerHTML = '';
+
+      const COMMANDS = [
+        { label: 'Go to 01 Workbench', shortcut: '1', action: () => switchMainView('workbench') },
+        { label: 'Go to 02 Journal Vault', shortcut: '2', action: () => switchMainView('journal') },
+        { label: 'Go to 03 Set Cards', shortcut: '3', action: () => switchMainView('setcards') },
+        { label: 'Go to 04 Craft Archive', shortcut: '4', action: () => switchMainView('archive') },
+        { label: 'Create New Joke Bit', shortcut: 'C', action: () => commitAndNewJoke() },
+        { label: 'Toggle 10-Minute Hyperfocus Sprint', shortcut: 'Alt+X', action: () => toggleSprintTimer() },
+        { label: 'Filter Lexicon: Repetition', shortcut: 'Alt+1', action: () => setLexiconFilter('repeat') },
+        { label: 'Filter Lexicon: Heavy Syllables (>3S)', shortcut: 'Alt+2', action: () => setLexiconFilter('heavy') },
+        { label: 'Filter Lexicon: Filler Fluff Words', shortcut: 'Alt+3', action: () => setLexiconFilter('filler') },
+        { label: 'Turn Off Lexicon Filter', shortcut: 'Alt+0', action: () => setLexiconFilter('none') }
+      ];
+
+      // Add matching system commands
+      COMMANDS.filter(c => !q || c.label.toLowerCase().includes(q)).forEach(cmd => {
+        const item = document.createElement('div');
+        item.className = 'journal-row';
+        item.style.padding = '8px 10px';
+        item.innerHTML = `
+          <span class="serif" style="flex: 1; font-size: 15px; color: var(--ink);">${escapeHtml(cmd.label)}</span>
+          <span class="mono" style="color: var(--accent);">${escapeHtml(cmd.shortcut)}</span>
+        `;
+        item.onclick = () => {
+          cmd.action();
+          closeCommandPalette();
+        };
+        container.appendChild(item);
+      });
+
+      // Add matching bits from vault
+      const store = getJournalStore();
+      store.filter(j => q && ((j.title||'').toLowerCase().includes(q) || (j.raw_text||'').toLowerCase().includes(q) || (j.display_code||'').toLowerCase().includes(q))).slice(0, 5).forEach(joke => {
+        const item = document.createElement('div');
+        item.className = 'journal-row';
+        item.style.padding = '8px 10px';
+        item.innerHTML = `
+          <span class="mono">${escapeHtml(joke.display_code)}</span>
+          <span class="serif" style="flex: 1; font-size: 15px; color: var(--ink);">${escapeHtml(joke.title || joke.raw_text.slice(0, 30))}</span>
+          <span class="micro-label" style="color: var(--accent);">JUMP TO BIT</span>
+        `;
+        item.onclick = () => {
+          loadJokeIntoActive(joke);
+          switchMainView('workbench');
+          closeCommandPalette();
+        };
+        container.appendChild(item);
+      });
+    };
+
     /* ==========================================================================
        ARCHITECTURAL MONOLINE SVG ICON SYSTEM (14x14, 1.25px stroke)
        ========================================================================== */
@@ -928,8 +1822,12 @@
 
     function updateJournalCountBadge() {
       const store = getJournalStore();
-      document.getElementById('journalCountBadge').textContent = store.length;
-      document.getElementById('mobileFeedCount').textContent = `${store.length} NOTES`;
+      const badge = document.getElementById('journalCountBadge');
+      if (badge) badge.textContent = store.length;
+      const headerCount = document.getElementById('headerJournalCount');
+      if (headerCount) headerCount.textContent = store.length;
+      const mobileCount = document.getElementById('mobileFeedCount');
+      if (mobileCount) mobileCount.textContent = `${store.length} NOTES`;
     }
 
     function autoSaveActiveJoke() {
@@ -961,19 +1859,33 @@
       if (session && session.user) {
         if (loggedOutBox) loggedOutBox.style.display = 'none';
         if (loggedInBox) loggedInBox.style.display = 'flex';
-        document.getElementById('currentUserEmail').textContent = `Comic: ${session.user.email}`;
-        statusText.textContent = session.user.email.split('@')[0];
-        configBtn.classList.add('btn-active');
+        if (statusText) statusText.textContent = session.user.email.split('@')[0];
+        if (configBtn) configBtn.classList.add('btn-active');
+        updateAccountPillUi(session);
 
-        // Clean URL hash/query after OAuth return
+        // Check if tester profile completed
+        const savedStage = localStorage.getItem('comedyos_stage_name');
+        if (!savedStage) {
+          const authStep = document.getElementById('onboardingAuthStep');
+          const credStep = document.getElementById('onboardingCredentialsStep');
+          if (authStep && credStep) {
+            authStep.style.display = 'none';
+            credStep.style.display = 'flex';
+            document.getElementById('onboardingGateView').classList.add('visible');
+          }
+        } else {
+          document.getElementById('onboardingGateView').classList.remove('visible');
+        }
+
         if (window.location.hash || window.location.search.includes('code=')) {
           window.history.replaceState({}, document.title, window.location.pathname);
         }
       } else {
         if (loggedOutBox) loggedOutBox.style.display = 'flex';
         if (loggedInBox) loggedInBox.style.display = 'none';
-        statusText.textContent = supabaseClient ? 'Supabase: Ready' : 'Supabase Sync';
-        configBtn.classList.remove('btn-active');
+        if (statusText) statusText.textContent = supabaseClient ? 'Supabase: Ready' : 'Supabase Sync';
+        if (configBtn) configBtn.classList.remove('btn-active');
+        updateAccountPillUi(null);
       }
     }
 
@@ -1096,7 +2008,7 @@
       if (!supabaseClient) return;
       try {
         const { data: { session } } = await supabaseClient.auth.getSession();
-        if (!session || !session.user) return; // Comic operates locally until logged in
+        if (!session || !session.user) return;
 
         // Upsert journal entry
         const { error: entryErr } = await supabaseClient
@@ -1117,22 +2029,33 @@
 
         if (entryErr) console.warn('Supabase entry sync error:', entryErr);
 
-        // Sync joke blocks if structured
+        // Fix Bug: Delete removed blocks first to prevent ghost orphan block resurrection
+        await supabaseClient
+          .from('joke_blocks')
+          .delete()
+          .eq('journal_entry_id', entry.id);
+
+        // Fix Bug: Ensure deterministic 36-char RFC4122 UUIDs persisted in-memory
         if (entry.blocks && entry.blocks.length > 0) {
-          const blocksPayload = entry.blocks.map(b => ({
-            id: (b.id && b.id.length === 36) ? b.id : generateUUID(),
-            journal_entry_id: entry.id,
-            user_id: session.user.id,
-            sort_order: b.sort_order,
-            block_type: b.block_type,
-            bridge_category: b.bridge_category || 'bridge',
-            bridge_subtype: b.bridge_subtype || 'none',
-            content: b.content || '',
-            punch_index: b.punch_index || 1,
-            is_alt_variant: b.is_alt_variant || false,
-            is_stage_active: b.is_stage_active !== false,
-            updated_at: new Date().toISOString()
-          }));
+          const blocksPayload = entry.blocks.map((b, idx) => {
+            if (!b.id || b.id.length !== 36) {
+              b.id = generateUUID();
+            }
+            return {
+              id: b.id,
+              journal_entry_id: entry.id,
+              user_id: session.user.id,
+              sort_order: idx,
+              block_type: b.block_type,
+              bridge_category: b.bridge_category || 'bridge',
+              bridge_subtype: b.bridge_subtype || 'none',
+              content: b.content || '',
+              punch_index: b.punch_index || 1,
+              is_alt_variant: b.is_alt_variant || false,
+              is_stage_active: b.is_stage_active !== false,
+              updated_at: new Date().toISOString()
+            };
+          });
 
           await supabaseClient
             .from('joke_blocks')
@@ -1369,6 +2292,20 @@
       const container = document.getElementById('sequentialCircuitContainer');
       container.innerHTML = '';
 
+      // Sync active joke title & status in Granola Header Stack
+      const titleInput = document.getElementById('activeJokeTitleInput');
+      if (titleInput && titleInput.value !== (currentJoke.title || '')) {
+        titleInput.value = currentJoke.title || '';
+      }
+      const statusSelect = document.getElementById('jokeStatusSelect');
+      if (statusSelect && statusSelect.value !== (currentJoke.status || 'structured')) {
+        statusSelect.value = currentJoke.status || 'structured';
+      }
+      const breadcrumb = document.getElementById('bitBreadcrumbLabel');
+      if (breadcrumb) {
+        breadcrumb.textContent = `${currentJoke.display_code || 'B-104'} · ${currentJoke.title || 'Untitled Bit'}`;
+      }
+
       let totalWords = 0;
       let totalSyllables = 0;
 
@@ -1411,11 +2348,18 @@
             </div>
           </div>
 
+          <!-- beUI Lexicon Inline Preview if active filter -->
+          ${currentLexiconFilter !== 'none' && block.content ? `
+            <div class="serif" style="font-size: 20px; line-height: 1.5; padding: 4px 0 8px 0; color: var(--ink);">
+              ${generateLexiconHighlightedHtml(block.content, block.block_type, block.is_stage_active)}
+            </div>
+          ` : ''}
+
           <textarea
             class="textarea-editorial ${block.block_type === 'punchline' ? 'serif' : ''}"
             rows="1"
             placeholder="${isGhost ? 'Suggested ' + titleLabel + ' (Type here or extract from Brain Dump via Alt+S/Alt+P)...' : 'Write lines...'}"
-          >${block.content || ''}</textarea>
+          >${escapeHtml(block.content || '')}</textarea>
 
           <!-- Progressive Sequential Action Rail -->
           <div class="progressive-rail">
@@ -1477,6 +2421,7 @@
       });
 
       document.getElementById('circuitTelemetry').textContent = `${totalWords} WORDS · ${totalSyllables} SYL`;
+      updateGranolaTelemetry();
     }
 
     function renderBridgeVariationPills(blockIdx, block) {
@@ -1954,13 +2899,29 @@
       rawTextarea.focus();
     };
 
-    // Keyboard Shortcuts (Alt+S, Alt+P, Alt+B, Alt+T, Cmd+Enter)
+    // Keyboard Shortcuts (Cmd+K, View Chords 1-4, Alt+S/P/B/T, Cmd+Enter)
     document.addEventListener('keydown', e => {
+      // Cmd/Ctrl + K -> Open Command Palette
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        openCommandPalette();
+        return;
+      }
+
       // Cmd/Ctrl + J -> Toggle Journal
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'j') {
         e.preventDefault();
-        toggleJournalView();
+        switchMainView('journal');
         return;
+      }
+
+      // Outside inputs: Single-key view switching (1=Workbench, 2=Journal, 3=SetCards, 4=Archive, C=New)
+      if (document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+        if (e.key === '1') { switchMainView('workbench'); return; }
+        if (e.key === '2') { switchMainView('journal'); return; }
+        if (e.key === '3') { switchMainView('setcards'); return; }
+        if (e.key === '4') { switchMainView('archive'); return; }
+        if (e.key.toLowerCase() === 'c') { commitAndNewJoke(); return; }
       }
 
       // If typing inside Raw Input Textarea
@@ -2003,9 +2964,11 @@
     }
 
     // Initial setup on load
+    checkOnboardingState();
     renderSequentialCircuit();
     updateJournalCountBadge();
     autoResize(rawTextarea);
+    renderCraftAxioms();
   </script>
 </body>
 </html>
